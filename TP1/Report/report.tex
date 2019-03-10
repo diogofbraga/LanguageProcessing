@@ -1,4 +1,4 @@
-\documentclass[a4paper]{article}
+\documentclass[11pt,a4paper]{report}
 
 \usepackage[utf8]{inputenc}
 \usepackage[portuges]{babel}
@@ -13,8 +13,16 @@
 \usepackage{mathtools}
 \renewcommand{\familydefault}{\sfdefault}
 
-\title{Processamento de Linguagens - TP1}
-\author{Diogo Braga A82547 \and João Silva A82005 \and Ricardo Caçador A81064}
+% packages que adicionei do stor
+\usepackage{xspace}
+\setlength{\oddsidemargin}{-1cm}
+\setlength{\textwidth}{18cm}
+\setlength{\headsep}{-1cm}
+\setlength{\textheight}{23cm}
+
+\title{Processamento de Linguagens (3º ano de Curso)\\
+	\textbf{Trabalho Prático Nº1}\\ Relatório de Desenvolvimento}
+\author{Diogo Braga\\ A82547 \and João Silva\\ A82005 \and Ricardo Caçador\\ A81064}
 \date{\today}
 
 \begin{document}
@@ -22,7 +30,8 @@
 \maketitle
 
 \begin{abstract}
-Neste relatório é apresentada a resolução de um exercício referente ao TP1, que tem como objetivos a utilização de Expressões Regulares para descrição de padrões de frases, e a utilização do Flex para gerar filtros de texto em C.
+	Neste relatório é apresentada a resolução de um exercício referente ao TP1, que tem como objetivos a utilização de Expressões Regulares para descrição de padrões de frases, e a utilização do Flex para gerar filtros de texto em C.
+Outro objetivo será ainda desenvolver, apartir de ERs, sistemática e automaticamente Processadores de Linguagens Regulares, que filtrem ou transformem textos com base no conceito de regras de produção Condição-Ação.
 \end{abstract}
 
 \tableofcontents
@@ -30,12 +39,12 @@ Neste relatório é apresentada a resolução de um exercício referente ao TP1,
 \newpage
 
 
-\section{Introdução}
+\chapter{Introdução}
 \label{sec:intro}
 
 Seguindo a fórmula \emph{exe= (N\_Alu\% 7) + 1} e o número de aluno mais baixo presente no nosso grupo (81064), o enunciado correspondente é o \textbf{5 WikiQuotes: provérbios}.
 
-\section{Conclusão}
+\chapter{Conclusão}
 \label{sec:conclusao}
 
 
