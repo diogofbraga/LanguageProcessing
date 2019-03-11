@@ -1,21 +1,45 @@
 %{
 // definiçoes gerais do sistema
 #include <stdio.h>
+
 int paginas = 0;
+int paginas_autor = 0;
+char* nome;
+int count = 0;
 %}
+espaco          (\ )
+nova_pagina     \<page\>
+fim_pagina      \<\/page\>
+nome_linguas    (Nome|Nombre|Name)
+inicio_autor    \{\{(?i:Autor)
+fim_autor       \}\}
+nome_autor      \|{espaco}{0,9}?{nome_linguas}{espaco}{0,9}?={espaco}{0,9}?
+
 %x PAGE
+%x AUTOR
+%x NOME_AUTOR
 %%
-\<page>                 {paginas++; BEGIN PAGE;}
-<PAGE>\<\/page>         {BEGIN INITIAL;}
-<*>.|\n                 {;}
+{nova_pagina}                     {paginas++; BEGIN PAGE;}
+
+<PAGE>{inicio_autor}              {paginas_autor++;BEGIN AUTOR;}
+<PAGE>{fim_pagina}                {BEGIN INITIAL;}
+
+<AUTOR>{nome_autor}               {BEGIN NOME_AUTOR;}
+<AUTOR>{fim_autor}                {BEGIN PAGE;}
+
+<NOME_AUTOR>[^(\n|\|)]+           {nome = yytext;printf("%s\n",nome);count++;BEGIN AUTOR;}
+
+<*>.|\n                           {;}
 %%
 
 int yywrap(){ return 1; }
 
 int main(int argc, char* argv[]){
-    printf("A inicializar filtragem...\n");
+    printf("A inicializar filtragem...\n\n");
     yylex();
-    printf("Terminei. Número de páginas: %d\n", paginas);
+    printf("\nTerminei. Número de páginas: %d\n", paginas);
+    printf("Terminei. Número de páginas de autor: %d\n", paginas_autor);
+    printf("Terminei. Número de autores: %d\n", count);
     return 0;
 }
 
