@@ -8,12 +8,13 @@ char* nome;
 int count = 0;
 %}
 espaco          (\ )
+espacos         [ ]*
 nova_pagina     \<page\>
 fim_pagina      \<\/page\>
 nome_linguas    (Nome|Nombre|Name)
 inicio_autor    \{\{(?i:Autor)
 fim_autor       \}\}
-nome_autor      \|{espaco}{0,9}?{nome_linguas}{espaco}{0,9}?={espaco}{0,9}?
+nome_autor      \|{espacos}{nome_linguas}{espacos}={espacos}
 
 %x PAGE
 %x AUTOR
