@@ -13,5 +13,5 @@ program:
 	$(CC) $(CFLAGS2) filtro2.c
 
 clean:
-	rm filtro
-	rm filtro.c
+	rm filtro1 filtro2
+	rm *.c
