@@ -1,6 +1,9 @@
 %{
 // definiçoes gerais do sistema
 #include <stdio.h>
+#include "estruturas.h"
+
+
 
 int paginas = 0;
 int paginas_autor = 0;
