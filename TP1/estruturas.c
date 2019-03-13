@@ -23,7 +23,7 @@ struct TodasCitacoes{
     GHashTable* autor_quote;
 };
 
-Autor createTodasCitacoes() {
+TodasCitacoes createTodasCitacoes() {
   TodasCitacoes tc = malloc(sizeof(struct TodasCitacoes));
   tc->autor_quote = g_hash_table_new(g_str_hash, g_str_equal);
   return tc;

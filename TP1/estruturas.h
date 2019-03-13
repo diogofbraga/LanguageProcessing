@@ -11,6 +11,6 @@ Autor createAutor(char* novo_nome);
 
 
 
-Autor createTodasCitacoes();
+TodasCitacoes createTodasCitacoes();
 
 void insereCitacao(TodasCitacoes tc, char* nome, char* citacao);
