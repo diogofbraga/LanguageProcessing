@@ -1,13 +1,12 @@
 %{
-// definiçoes gerais do sistema
 #include <stdio.h>
 #include "estruturas.h"
 
+TodasCitacoes tc = NULL;
 
-
+char* nome;
 int paginas = 0;
 int paginas_autor = 0;
-char* nome;
 int count = 0;
 int quote = 0;
 %}
@@ -25,17 +24,17 @@ quote_token     {espacos}\&quot\;
 %%
 {nova_pagina}                     {paginas++; BEGIN PAGE;}
 
-<PAGE>{inicio_autor}              {paginas_autor++;BEGIN AUTOR;}
+<PAGE>{inicio_autor}              {paginas_autor++; BEGIN AUTOR;}
 <PAGE,AUTOR>{fim_pagina}          {BEGIN INITIAL;}
 
 <AUTOR>{nome_autor}               {BEGIN NOME_AUTOR;}
-<AUTOR>\*{quote_token}            {quote++;BEGIN QUOTE;}
+<AUTOR>\*{quote_token}            {quote++; BEGIN QUOTE;}
 
-<NOME_AUTOR>[^(\n|\||\=)]*[\n\|]  {yytext[yyleng-1] = '\0';nome = yytext;
-                                   if(strlen(nome) <= 1) BEGIN PAGE;
-                                   else{printf("%s\n",nome);count++;BEGIN AUTOR;}}
+<NOME_AUTOR>[^(\n|\||\=)]*[\n\|]  {yytext[yyleng-1] = '\0'; nome = strdup(yytext);
+                                   if(strlen(nome) <= 1){ nome = NULL; BEGIN PAGE;}
+                                   else{count++; BEGIN AUTOR;}}
 
-<QUOTE>.*{quote_token}?\n(:)?:-   {/**printf("     %s\n\n",yytext);*/BEGIN AUTOR;}
+<QUOTE>.*{quote_token}?\n(:)?:-   {insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
 
 <*>.|\n                           {;}
 %%
@@ -43,8 +42,10 @@ quote_token     {espacos}\&quot\;
 int yywrap(){ return 1; }
 
 int main(int argc, char* argv[]){
+    tc = createTodasCitacoes();
     printf("A inicializar filtragem...\n\n");
     yylex();
+    imprimeCitacoes(tc);
     printf("\nTerminei. Número de páginas: %d\n", paginas);
     printf("Terminei. Número de páginas de autor: %d\n", paginas_autor);
     printf("Terminei. Número de autores: %d\n", count);

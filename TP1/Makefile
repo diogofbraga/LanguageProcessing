@@ -5,10 +5,11 @@ LIBS = `pkg-config --libs libxml-2.0` `pkg-config --libs glib-2.0`
 FLEX=flex
 FLEXFLAGS1 = -o filtro1.c
 FLEXFLAGS2 = -o filtro2.c
+LIBS = `pkg-config --libs libxml-2.0` `pkg-config --libs glib-2.0`
 
 program:
 	$(FLEX) $(FLEXFLAGS1) filtro1.l
-	$(CC) $(CFLAGS1) filtro1.c
+	$(CC) $(CFLAGS1) filtro1.c estruturas.c $(LIBS)
 	$(FLEX) $(FLEXFLAGS2) filtro2.l
 	$(CC) $(CFLAGS2) filtro2.c
 
