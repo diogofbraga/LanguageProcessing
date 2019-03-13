@@ -15,3 +15,4 @@ program:
 clean:
 	rm filtro1 filtro2
 	rm *.c
+	rm -rf *.dSYM

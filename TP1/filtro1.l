@@ -28,9 +28,11 @@ quote_token     {espacos}\&quot\;
 <AUTOR>{nome_autor}               {BEGIN NOME_AUTOR;}
 <AUTOR>\*{quote_token}            {quote++;BEGIN QUOTE;}
 
-<NOME_AUTOR>[^(\n|\||\=)]*[\n\|]  {nome = yytext;printf("%s\n",nome);count++;BEGIN AUTOR;}
+<NOME_AUTOR>[^(\n|\||\=)]*[\n\|]  {yytext[yyleng-1] = '\0';nome = yytext;
+                                   if(strlen(nome) <= 1) BEGIN PAGE;
+                                   else{printf("%s\n",nome);count++;BEGIN AUTOR;}}
 
-<QUOTE>.*{quote_token}?\n(:)?:-   {printf("     %s\n\n",yytext);BEGIN AUTOR;}
+<QUOTE>.*{quote_token}?\n(:)?:-   {/**printf("     %s\n\n",yytext);*/BEGIN AUTOR;}
 
 <*>.|\n                           {;}
 %%
