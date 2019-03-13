@@ -31,10 +31,19 @@ quote_token     {espacos}\&quot\;
 <AUTOR>\*{quote_token}            {quote++; BEGIN QUOTE;}
 
 <NOME_AUTOR>[^(\n|\||\=)]*[\n\|]  {yytext[yyleng-1] = '\0'; nome = strdup(yytext);
-                                   if(strlen(nome) <= 1){ nome = NULL; BEGIN PAGE;}
+                                   if(strlen(nome) <= 1){ nome = ""; BEGIN PAGE;}
                                    else{count++; BEGIN AUTOR;}}
 
-<QUOTE>.*{quote_token}?\n(:)?:-   {insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
+<QUOTE>.*{quote_token}            {yytext[yyleng-6] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
+<QUOTE>.*{quote_token}\n:-        {yytext[yyleng-9] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
+<QUOTE>.*{quote_token}\.\n:-       {yytext[yyleng-10] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
+<QUOTE>.*{quote_token}\n::-       {yytext[yyleng-10] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
+<QUOTE>.*{quote_token}\.\n::-     {yytext[yyleng-11] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
+<QUOTE>.*{quote_token}\n\*\*\     {yytext[yyleng-10] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
+<QUOTE>.*{quote_token}\.\n\*\*\    {yytext[yyleng-11] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
+<QUOTE>.*\n:-                     {yytext[yyleng-3] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
+<QUOTE>.*\n::-                    {yytext[yyleng-4] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
+<QUOTE>.*\n\*\*                   {yytext[yyleng-3] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
 
 <*>.|\n                           {;}
 %%
@@ -43,15 +52,15 @@ int yywrap(){ return 1; }
 
 int main(int argc, char* argv[]){
     tc = createTodasCitacoes();
-    printf("A inicializar filtragem...\n\n");
+    printf("Organizado por autor e citações.\n");
     yylex();
     imprimeCitacoes(tc);
-    printf("\nTerminei. Número de páginas: %d\n", paginas);
-    printf("Terminei. Número de páginas de autor: %d\n", paginas_autor);
-    printf("Terminei. Número de autores: %d\n", count);
-    printf("Terminei. Número de citações: %d\n", quote);
+    printf("\n\nNúmero de páginas: %d\n", paginas);
+    printf("Número de páginas de autor: %d\n", paginas_autor);
+    printf("Número de autores: %d\n", count);
+    printf("Número de citações: %d\n", quote);
     return 0;
 }
 
 // invoquem assim:
-// bzcat ptwikiquote-20190301-pages-articles.xml.bz2 | ./filtro
+// bzcat ptwikiquote-20190301-pages-articles.xml.bz2 | ./filtro1 > saida.txt
