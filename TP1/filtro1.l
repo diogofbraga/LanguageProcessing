@@ -44,7 +44,7 @@ quote_token     {espacos}\&quot\;
 <QUOTE>.*\n::-                    {yytext[yyleng-4] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
 <QUOTE>.*\n\*\*                   {yytext[yyleng-3] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
 
-<*>{fim_pagina}          {BEGIN INITIAL;}
+<*>{fim_pagina}                   {BEGIN INITIAL;}
 <*>.|\n                           {;}
 %%
 
