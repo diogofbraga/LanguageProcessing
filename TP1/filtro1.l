@@ -25,26 +25,26 @@ quote_token     {espacos}\&quot\;
 {nova_pagina}                     {paginas++; BEGIN PAGE;}
 
 <PAGE>{inicio_autor}              {paginas_autor++; BEGIN AUTOR;}
-<PAGE,AUTOR>{fim_pagina}          {BEGIN INITIAL;}
 
 <AUTOR>{nome_autor}               {BEGIN NOME_AUTOR;}
 <AUTOR>\*{quote_token}            {quote++; BEGIN QUOTE;}
 
-<NOME_AUTOR>[^(\n|\||\=)]*[\n\|]  {yytext[yyleng-1] = '\0'; nome = strdup(yytext);
+<NOME_AUTOR>.*[\n\|]              {yytext[yyleng-1] = '\0'; nome = strdup(yytext);
                                    if(strlen(nome) <= 1){ nome = ""; BEGIN PAGE;}
                                    else{count++; BEGIN AUTOR;}}
 
 <QUOTE>.*{quote_token}            {yytext[yyleng-6] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
 <QUOTE>.*{quote_token}\n:-        {yytext[yyleng-9] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
-<QUOTE>.*{quote_token}\.\n:-       {yytext[yyleng-10] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
+<QUOTE>.*{quote_token}\.\n:-      {yytext[yyleng-10] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
 <QUOTE>.*{quote_token}\n::-       {yytext[yyleng-10] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
 <QUOTE>.*{quote_token}\.\n::-     {yytext[yyleng-11] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
 <QUOTE>.*{quote_token}\n\*\*\     {yytext[yyleng-10] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
-<QUOTE>.*{quote_token}\.\n\*\*\    {yytext[yyleng-11] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
+<QUOTE>.*{quote_token}\.\n\*\*\   {yytext[yyleng-11] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
 <QUOTE>.*\n:-                     {yytext[yyleng-3] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
 <QUOTE>.*\n::-                    {yytext[yyleng-4] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
 <QUOTE>.*\n\*\*                   {yytext[yyleng-3] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
 
+<*>{fim_pagina}          {BEGIN INITIAL;}
 <*>.|\n                           {;}
 %%
 
