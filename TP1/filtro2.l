@@ -27,9 +27,9 @@ quote_token     {espacos}\&quot\;
 <CONTEUDO_TITULO>\*{quote_token}            {quote++; BEGIN QUOTE;}
 <CONTEUDO_TITULO>{fim_pagina}               {BEGIN INITIAL;}
 
-<QUOTE>.*{quote_token}            {yytext[yyleng-6] = '\0'; printf("%s\n",yytext); BEGIN CONTEUDO_TITULO;}
+<QUOTE>.*{quote_token}                      {yytext[yyleng-6] = '\0'; printf("%s\n",yytext); BEGIN CONTEUDO_TITULO;}
 
-<*>.|\n                           {;}
+<*>.|\n                                     {;}
 %%
 // tenho que ver os quotes só ate ao final da pagina
 
