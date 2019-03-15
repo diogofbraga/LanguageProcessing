@@ -16,34 +16,32 @@ fim_titulo      \<\/title\>
 quote_token     {espacos}\&quot\;
 
 
-%x PAGE TITULO CONTEUDO_TITULO QUOTE
+%x PAGE TITLE CONTEUDO_PAGE QUOTE
 %%
-{nova_pagina}                               {paginas++; BEGIN PAGE;}
+{nova_pagina}                              {paginas++; BEGIN PAGE;}
 
-<PAGE>{inicio_titulo}                       {BEGIN TITULO;}
+<PAGE>{inicio_titulo}                      {BEGIN TITLE;}
 
-<TITULO>Provérbios.*{fim_titulo}            {paginas_titulo++; yytext[yyleng-8] = '\0'; title = yytext; printf("%s\n\n\n",title); BEGIN CONTEUDO_TITULO;}
+<TITLE>Provérbios.*{fim_titulo}            {paginas_titulo++; yytext[yyleng-8] = '\0'; printf("\nTitle: %s\n\n",yytext); BEGIN CONTEUDO_PAGE;}
 
-<CONTEUDO_TITULO>\*{quote_token}            {quote++; BEGIN QUOTE;}
-<CONTEUDO_TITULO>{fim_pagina}               {BEGIN INITIAL;}
+<CONTEUDO_PAGE>\*{quote_token}{espacos}    {quote++; BEGIN QUOTE;}
 
-<QUOTE>.*{quote_token}                      {yytext[yyleng-6] = '\0'; printf("%s\n",yytext); BEGIN CONTEUDO_TITULO;}
+<QUOTE>.*{quote_token}                     {yytext[yyleng-6] = '\0'; printf("    - Quote: %s\n",yytext); BEGIN CONTEUDO_PAGE;}
 
-<*>.|\n                                     {;}
+<*>{fim_pagina}                            {BEGIN INITIAL;}
+<*>.|\n                                    {;}
 %%
-// tenho que ver os quotes só ate ao final da pagina
 
 int yywrap(){ return 1; }
 
 int main(int argc, char* argv[]){
-    printf("A inicializar filtragem...\n\n");
+    printf("Organizado por título e citações.\n\n");
     yylex();
-    printf("\nTerminei. Número de páginas: %d\n", paginas);
-    printf("Terminei. Número de páginas com título começado por 'Provérbios': %d\n", paginas_titulo);
+    printf("\n\nNúmero de páginas: %d\n", paginas);
+    printf("Número de páginas com título começado por 'Provérbios': %d\n", paginas_titulo);
     printf("Número de citações: %d\n", quote);
     return 0;
 }
 
 // invoquem assim:
-// bzcat ptwikiquote-20190301-pages-articles.xml.bz2 | head -5000 | ./filtro2
 // bzcat ptwikiquote-20190301-pages-articles.xml.bz2 | ./filtro2 > saida.txt
