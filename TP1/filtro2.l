@@ -15,18 +15,19 @@ inicio_titulo   \<title\>
 fim_titulo      \<\/title\>
 quote_token     {espacos}\&quot\;
 
-
 %x PAGE TITLE CONTEUDO_PAGE QUOTE
 %%
 {nova_pagina}                              {paginas++; BEGIN PAGE;}
 
 <PAGE>{inicio_titulo}                      {BEGIN TITLE;}
 
-<TITLE>Provérbios.*{fim_titulo}            {paginas_titulo++; yytext[yyleng-8] = '\0'; printf("\nTitle: %s\n\n",yytext); BEGIN CONTEUDO_PAGE;}
+<TITLE>Provérbios.*{fim_titulo}            {paginas_titulo++; yytext[yyleng-8] = '\0';
+                                           printf("\nTitle: %s\n\n",yytext); BEGIN CONTEUDO_PAGE;}
 
 <CONTEUDO_PAGE>\*{quote_token}{espacos}    {quote++; BEGIN QUOTE;}
 
-<QUOTE>.*{quote_token}                     {yytext[yyleng-6] = '\0'; printf("    - Quote: %s\n",yytext); BEGIN CONTEUDO_PAGE;}
+<QUOTE>.*{quote_token}                     {yytext[yyleng-6] = '\0'; printf("    - Quote: %s\n",yytext);
+                                           BEGIN CONTEUDO_PAGE;}
 
 <*>{fim_pagina}                            {BEGIN INITIAL;}
 <*>.|\n                                    {;}
