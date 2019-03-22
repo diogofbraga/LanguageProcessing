@@ -1,10 +1,8 @@
 %{
-// definiçoes gerais do sistema
 #include <stdio.h>
 
 int paginas = 0;
 int paginas_titulo = 0;
-char* title;
 int quote = 0;
 %}
 espaco          (\ )
