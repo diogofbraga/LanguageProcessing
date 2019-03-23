@@ -16,3 +16,7 @@ TodasCitacoes createTodasCitacoes();
 void insereCitacao(TodasCitacoes tc, char* nome, char* citacao);
 
 void imprimeCitacoes(TodasCitacoes tc);
+
+
+
+void deleteWord(char* str, char* toRemove);
