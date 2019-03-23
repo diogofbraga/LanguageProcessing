@@ -5,12 +5,12 @@
 TodasCitacoes tc = NULL;
 
 char* nome;
+char* citacao;
 int paginas = 0;
 int paginas_autor = 0;
 int count = 0;
 int quote = 0;
 %}
-espaco          (\ )
 espacos         [ ]*
 nova_pagina     \<page\>
 fim_pagina      \<\/page\>
@@ -33,16 +33,16 @@ quote_token     {espacos}\&quot\;
                                    if(strlen(nome) <= 1){ nome = ""; BEGIN PAGE;}
                                    else{count++; BEGIN AUTOR;}}
 
-<QUOTE>.*{quote_token}            {yytext[yyleng-6] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
-<QUOTE>.*{quote_token}\n:-        {yytext[yyleng-9] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
-<QUOTE>.*{quote_token}\.\n:-      {yytext[yyleng-10] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
-<QUOTE>.*{quote_token}\n::-       {yytext[yyleng-10] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
-<QUOTE>.*{quote_token}\.\n::-     {yytext[yyleng-11] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
-<QUOTE>.*{quote_token}\n\*\*\     {yytext[yyleng-10] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
-<QUOTE>.*{quote_token}\.\n\*\*\   {yytext[yyleng-11] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
-<QUOTE>.*\n:-                     {yytext[yyleng-3] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
-<QUOTE>.*\n::-                    {yytext[yyleng-4] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
-<QUOTE>.*\n\*\*                   {yytext[yyleng-3] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
+<QUOTE>.+{quote_token}            {yytext[yyleng-6] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
+<QUOTE>.+{quote_token}\n:-        {yytext[yyleng-9] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
+<QUOTE>.+{quote_token}\.\n:-      {yytext[yyleng-10] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
+<QUOTE>.+{quote_token}\n::-       {yytext[yyleng-10] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
+<QUOTE>.+{quote_token}\.\n::-     {yytext[yyleng-11] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
+<QUOTE>.+{quote_token}\n\*\*\     {yytext[yyleng-10] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
+<QUOTE>.+{quote_token}\.\n\*\*\   {yytext[yyleng-11] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
+<QUOTE>.+\n:-                     {yytext[yyleng-3] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
+<QUOTE>.+\n::-                    {yytext[yyleng-4] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
+<QUOTE>.+\n\*\*                   {yytext[yyleng-3] = '\0'; insereCitacao(tc,nome,strdup(yytext)); BEGIN AUTOR;}
 
 <*>{fim_pagina}                   {BEGIN INITIAL;}
 <*>.|\n                           {;}
