@@ -20,20 +20,17 @@ adulterados     '''Adulterados:'''
 portugal        {espacos}(Portugal)
 brasil          {espacos}(Brasil)
 
-%x PAGE TITLE CONTEUDO_PAGE QUOTE ADULTERACAO ALTERNATIVOS QUOTES_ADULTERACAO QUOTES_ALTERNATIVOS QUOTE_CONT
+%x PAGE CONTEUDO_PAGE QUOTE ADULTERACAO ALTERNATIVOS QUOTES_ADULTERACAO QUOTES_ALTERNATIVOS QUOTE_CONT
 %%
 {nova_pagina}                                                  {paginas++; BEGIN PAGE;}
 
-<PAGE>{inicio_titulo}                                          {BEGIN TITLE;}
-
-<TITLE>Provérbios.*{fim_titulo}                                {paginas_titulo++; yytext[yyleng-8] = '\0';
+<PAGE>{inicio_titulo}Provérbios.*{fim_titulo}                  {yytext = yytext+7; paginas_titulo++; yytext[yyleng-15] = '\0';
                                                                printf("\nTitle: %s\n\n",yytext); BEGIN CONTEUDO_PAGE;}
 
 <CONTEUDO_PAGE,QUOTE_CONT>\*{quote_token}{espacos}             {citacao = "";BEGIN QUOTE;}
 
 <QUOTE>.*{quote_token}                                         {yytext[yyleng-6] = '\0';citacao=strdup(yytext);
                                                                BEGIN QUOTE_CONT;}
-
 
 <QUOTE_CONT>\n\*\*{espacos}{adulterados}                       {quote++;printf("    - Quote: %s\n",citacao);
                                                                BEGIN ADULTERACAO;}
@@ -63,11 +60,15 @@ brasil          {espacos}(Brasil)
                                                                BEGIN ALTERNATIVOS;}
 
 <ADULTERACAO>\*\*\*{quote_token}                               {BEGIN QUOTES_ADULTERACAO;}
+
 <ADULTERACAO>\*{quote_token}{espacos}                          {BEGIN QUOTE;}
 
 <ALTERNATIVOS>\*\*\*{quote_token}                              {BEGIN QUOTES_ALTERNATIVOS;}
+
 <ALTERNATIVOS>\*{quote_token}{espacos}                         {BEGIN QUOTE;}
+
 <ALTERNATIVOS>\*\*{espacos}{adulterados}                       {yytext[yyleng-20] = '\0'; BEGIN ADULTERACAO;}
+
 <ALTERNATIVOS>\*\*{espacos}{adulteracao}                       {yytext[yyleng-20] = '\0'; BEGIN ADULTERACAO;}
 
 <QUOTES_ADULTERACAO>.*{quote_token}                            {adulterados++; yytext[yyleng-6] = '\0';
