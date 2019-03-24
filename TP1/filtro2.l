@@ -172,13 +172,6 @@ quote_token     {espacos}\&quot\;
 <*>.|\n                                         {;}
 %%
 
-/*
-
-<CONTEUDO_PAGE>^\*{espaco}.*\n:                  {quote++; yytext[yyleng-2] = '\0'; printf("    - Quote: %s\n",yytext);
-                                                BEGIN QUOTE_BULG; }
-
-*/
-
 int yywrap(){ return 1; }
 
 int main(int argc, char* argv[]){
