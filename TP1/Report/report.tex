@@ -56,18 +56,29 @@ Para uma melhor visão do que irá ser abordado neste relatório deixamos uma br
 \chapter{Análise e Especificação}
 \label{chap:analise}
 
-\section{Descrição informal do problema}
+Analisando o problema como um todo o que podemos encontrar aquando da observação do ficheiro \textbf{ptwikiquote-20190301-pages-articles.xml}, são várias meticulosidades no que toca à organização das páginas, títulos, citações, provérbios, etc. Contudo o nosso objetivo central é filtrar somente o que achamos necessário para respeitar os requisitos impostos pelo enunciado e descritos nas subsecções seguintes.
 
-\section{Especificação do Requisitos}
+Nas secções seguintes serão apresentados os objetivos de cada alínea do exercício e ainda as observações que foram feitas ao ficheiro que contém todo o \emph{XML}, por forma a pensar que casos iríamos ter futuramente e começarmos a delinear uma arquitetura duma possível solução.
+
+\section{Análise e Especificação dos Requisitos}
 \subsection{Lista de Citações}
+
+Na primeira alínea do exercício, era requerido um filtro que criasse uma lista de citações com o respetivo autor, somente se estas citações se encontrarem numa página de autor.
 
 
 \subsection{Lista de Provérbios}
 
-Nesta segunda alínea do exercício, é requerido um filtro que crie uma lista de provérbios (citações contidas em páginas cujo título começa por "Provérbios").
+Nesta segunda alínea do exercício, era requerido um filtro que criasse uma lista de provérbios (citações contidas em páginas cujo título começa por "Provérbios").
 
 
 \subsection{Lista de Provérbios Adulterados}
+
+Nesta terceira alínea do exercício, era requerida a listagem dos provérbios "adulterados" e o seu original. Era suposto procurar um padrão que identificasse estes provérbios.
+
+\subsection{Estatísticas dos elementos encontrados}
+
+Nesta quarta alínea do exercício, era requerida a apresentação duma estatísticas referentes ao que foi filtrado nas alíneas anteriores.
+
 
 
 \chapter{Concepção/desenho da Resolução}
@@ -85,6 +96,7 @@ Nesta segunda alínea do exercício, é requerido um filtro que crie uma lista d
 
 
 \subsection{Lista de Provérbios Adulterados}
+
 
 
 \chapter{Codificação e Testes}
