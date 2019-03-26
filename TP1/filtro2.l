@@ -19,18 +19,27 @@ quote_token     {espacos}\&quot\;
 %%
 {nova_pagina}                                   {paginas++; BEGIN PAGE;}
 
+<PAGE>{inicio_titulo}Provérbios.*{fim_titulo}                            {yytext = yytext+7; paginas_titulo++; yytext[yyleng-15] = '\0';
+                                                                         printf("\nTitle: %s\n\n",yytext); BEGIN CONTEUDO_PAGE;}
 
-<PAGE>{inicio_titulo}Provérbios{espaco}em{espaco}Português{fim_titulo}   {yytext = yytext+7; paginas_titulo++; yytext[yyleng-15] = '\0';
-                                                                         printf("\nTitle: %s\n\n",yytext); BEGIN CONTEUDO_PT;}
-
-<CONTEUDO_PT>^\*{espacos}{quote_token}{espacos}                          {quote++; BEGIN QUOTE_PT;}
-
-<QUOTE_PT>.+{quote_token}                                                {yytext[yyleng-6] = '\0'; printf("    - Quote: %s\n",yytext);
-                                                                         BEGIN CONTEUDO_PT ;}
+<CONTEUDO_PAGE>\*{espacos}{quote_token}{espacos}                        {quote++; BEGIN QUOTE;}
+<CONTEUDO_PAGE>\*{espacos}{quote_token}{espacos}''                      {quote++; BEGIN QUOTE;}
+<CONTEUDO_PAGE>\*{espacos}{quote_token}{espacos}'''                     {quote++; BEGIN QUOTE;}
+<CONTEUDO_PAGE>\*{espacos}''{espacos}{quote_token}                      {quote++; BEGIN QUOTE;}
+<CONTEUDO_PAGE>:{espacos}'''{espacos}{quote_token}                      {quote++; BEGIN QUOTE;}
 
 
-<PAGE>{inicio_titulo}Provérbios{espaco}galegos{fim_titulo}              {yytext = yytext+7; paginas_titulo++; yytext[yyleng-15] = '\0';
-                                                                         printf("\nTitle: %s\n\n",yytext); BEGIN CONTEUDO_GAL;}
+<QUOTE>.+'''{quote_token}                                             {yytext[yyleng-9] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                      BEGIN CONTEUDO_PAGE;}
+<QUOTE>.+''{quote_token}                                              {yytext[yyleng-8] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                      BEGIN CONTEUDO_PAGE;}
+<QUOTE>.+{quote_token}                                                {yytext[yyleng-6] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                      BEGIN CONTEUDO_PAGE;}
+<QUOTE>.+{quote_token}''                                              {yytext[yyleng-8] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                      BEGIN CONTEUDO_PAGE;}
+<QUOTE>.+{quote_token}'''                                             {yytext[yyleng-9] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                      BEGIN CONTEUDO_PAGE;}
+
 
 
 
