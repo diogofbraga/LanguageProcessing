@@ -16,8 +16,8 @@ letras          ([A-Za-z]+)
 especiais       (\[)
 
 %x PAGE
-%x CONTEUDO_PAGE CONTEUDO_TURQ_BUL_CHI_HOL CONTEUDO_VEN_POL CONTEUDO_RUS CONTEUDO_GAL_JAP_ALE_LAT CONTEUDO_CORS_EGI CONTEUDO_ITA CONTEUDO_ISR CONTEUDO_ESP CONTEUDO_FRA CONTEUDO_TUN
-%x QUOTE QUOTE_TURQ_BUL_CHI_HOL QUOTE_VEN_POL QUOTE_RUS QUOTE_GAL_JAP_ALE_LAT QUOTE_CORS_EGI QUOTE_ITA QUOTE_ISR QUOTE_ESP QUOTE_FRA QUOTE_TUN
+%x CONTEUDO_PAGE CONTEUDO_TURQ_BUL_CHI_HOL CONTEUDO_VEN_POL CONTEUDO_RUS CONTEUDO_GAL_JAP_ALE_LAT CONTEUDO_CORS_EGI CONTEUDO_ITA CONTEUDO_ISR CONTEUDO_ESP CONTEUDO_FRA CONTEUDO_TUN CONTEUDO_ARA
+%x QUOTE QUOTE_TURQ_BUL_CHI_HOL QUOTE_VEN_POL QUOTE_RUS QUOTE_GAL_JAP_ALE_LAT QUOTE_CORS_EGI QUOTE_ITA QUOTE_ISR QUOTE_ESP QUOTE_FRA QUOTE_TUN QUOTE_ARA
 %%
 {nova_pagina}                                   {paginas++; BEGIN PAGE;}
 
@@ -75,6 +75,9 @@ especiais       (\[)
 <PAGE>{inicio_titulo}Provérbios{espacos}tunisianos{fim_titulo}     {yytext = yytext+7; paginas_titulo++; yytext[yyleng-15] = '\0';
                                                                   printf("\nTitle: %s\n\n",yytext); BEGIN CONTEUDO_TUN;}
 
+<PAGE>{inicio_titulo}Provérbios{espacos}árabes{fim_titulo}     {yytext = yytext+7; paginas_titulo++; yytext[yyleng-15] = '\0';
+                                                                      printf("\nTitle: %s\n\n",yytext); BEGIN CONTEUDO_ARA;}
+
 <PAGE>{inicio_titulo}Provérbios.*{fim_titulo}                            {yytext = yytext+7; paginas_titulo++; yytext[yyleng-15] = '\0';
                                                                          printf("\nTitle: %s\n\n",yytext); BEGIN CONTEUDO_PAGE;}
 
@@ -126,6 +129,7 @@ especiais       (\[)
 
 <CONTEUDO_TUN>\*{espacos}“''                                          {quote++; BEGIN QUOTE_TUN;}
 
+<CONTEUDO_ARA>\n\*{espacos}                                             {quote++; BEGIN QUOTE_ARA;}
 
 
 
@@ -203,8 +207,12 @@ especiais       (\[)
                                                                      BEGIN CONTEUDO_FRA;}
 
 
-<QUOTE_TUN>.+\,/&lt;ref&gt;JUSTO,                                                  {yytext[yyleng-1] = '\0'; printf("    - Quote: %s\n",yytext);
+<QUOTE_TUN>.+\,/&lt;ref&gt;JUSTO,                                   {yytext[yyleng-1] = '\0'; printf("    - Quote: %s\n",yytext);
                                                                     BEGIN CONTEUDO_TUN;}
+
+<QUOTE_ARA>[^\n]+                                                     {yytext[yyleng-1] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                    BEGIN CONTEUDO_ARA;}
+
 
 
 <*>{fim_pagina}                                 {BEGIN INITIAL;}
