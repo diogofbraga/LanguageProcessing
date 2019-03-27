@@ -85,7 +85,7 @@ Em páginas de autor investigámos de que forma aparecem a maior parte das cita�
 \label{img:quote}
 \end{figure}
 
-Conseguimos identificar que a maior parte das citações de autores se encontram no meio de \textbf{\&quot;} e apenas teríamos de filtrar o que estivesse entre duas marcas deste tipo. Mas com a análise de mais casos deparámo-nos com situações desta natureza: 
+Conseguimos identificar que a maior parte das citações de autores se encontram no meio de \textbf{\&quot;} e apenas teríamos de filtrar o que estivesse entre duas marcas deste tipo. Mas com a análise de mais casos deparámo-nos com situações desta natureza:
 
 \begin{figure}[H]
 \centering
@@ -99,14 +99,70 @@ Contudo surgiram muitos mais casos durante esta análise podemos referir casos e
 Estes casos e muitos mais serão tratados nos capítulos seguintes.
 
 
+\newpage
+
 \subsection{Lista de Provérbios}
 
 Nesta segunda alínea do exercício, era requerido um filtro que criasse uma lista de provérbios (citações contidas em páginas cujo título começa por "Provérbios").
+
+Procedendo à análise do ficheiro \textit{XML} foi possível entender a forma como se organiza a informação nas páginas que referem provérbios:
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.45]{pagina_titulo.png}
+\caption{Exemplo de uma página de provérbios.}
+\label{img:pagina_titulo}
+\end{figure}
+
+Neste caso, está exemplificada a página na qual o título é \textbf{Provérbios cipriotas}, visto que este se encontra entre as marcas \underline{<title>} e \underline{</title>}. É, portanto, desta forma que são identificadas as páginas que temos interesse em aceder. Tal facto aparece sublinhado a vermelho na figura.
+
+Aquando da análise do ficheiro foram encontrados casos em que o título continha a palavra "Provérbio", mas não era inicializado por esta. É importante, de facto, ter em conta este caso pois tal é requirido no enunciado do exercício.
+
+Filtrando os títulos das páginas, procuramos saber quais as marcas que indicam o início de um provérbio. Neste caso, sublinhado a verde, é possível concluir que a marca de início é \underline{* '''\&quot;} , enquanto a marca de fim é \underline{\&quot;'''}.
+
+Realizada a análise das páginas de provérbios, foi possível concluir que existem inúmeras formas de identificar o início e o fim dum provérbio. Tal acontece porque o ficheiro contém muita variedade de idiomas e, consequentemente, diferentes ideias das diferentes pessoas que decidem quais as marcas a usar nas citações.
+
+	\vspace{0.2cm}
+
+Alguns exemplos de marcas de início de provérbios presentes no ficheiro são:
+\begin{enumerate}
+ \item *\&quot;
+ \item *\&quot;''
+ \item **''\&quot;
+ \item :'''
+\end{enumerate}
+
+	\vspace{0.2cm}
+
+Por outro lado, alguns exemplos de marcas de final de provérbios presentes no ficheiro são:
+\begin{enumerate}
+ \item \&quot;
+ \item \&quot;''
+ \item ''\&quot;
+ \item '''
+\end{enumerate}
+
+	\vspace{0.2cm}
+
+A ideia inicial foi generalizar as expressões regulares para qualquer página de provérbios, mas devido ao facto de existirem inúmeras marcas diversificadas foi necessário criar alguns contextos específicos para cada país, de forma a que não houvessem conflitos entre marcas e fosse possível criar um output perceptível.
+
+Nos capítulos seguintes serão abordados pormenorizadamente estes casos.
 
 
 \subsection{Lista de Provérbios Adulterados}
 
 Nesta terceira alínea do exercício, era requerida a listagem dos provérbios "adulterados" e o seu original. Era suposto procurar um padrão que identificasse estes provérbios.
+
+Ao proceder à análise do ficheiro \textit{XML} foi possível concluir que os provérbios adulterados e alternativos seriam apresentados da seguinte forma:
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.60]{pagina_adulterados.png}
+\caption{Exemplo de uma página com provérbios adulterados e alternativos.}
+\label{img:pagina_adulterados}
+\end{figure}
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! INCOMPLETO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
 
 \subsection{Estatísticas dos elementos encontrados}
 
