@@ -102,6 +102,7 @@ Estes casos e muitos mais serão tratados nos capítulos seguintes.
 \newpage
 
 \subsection{Lista de Provérbios}
+\label{subsec:analise2}
 
 Nesta segunda alínea do exercício, era requerido um filtro que criasse uma lista de provérbios (citações contidas em páginas cujo título começa por "Provérbios").
 
@@ -162,7 +163,9 @@ Ao proceder à análise do ficheiro \textit{XML} foi possível concluir que os p
 \label{img:pagina_adulterados}
 \end{figure}
 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! INCOMPLETO !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+A seleção das páginas a filtrar é realizada tal como na subsecção \ref{subsec:analise2}, isto é, selecionamos as páginas cujo título começa por "Provérbios". Tendo em conta este requisito, o filtro a seguir é também aplicado ao que se encontra entre as marcas \underline{<title>} e \underline{</title>} duma página.
+
+Filtrando os títulos das páginas, procuramos depois saber quais as marcas que indicam um provérbio adulterado e um provérbio alternativo. Neste caso, sublinhado a verde, é possível concluir que a marca de início é \underline{* '''\&quot;} , enquanto a marca de fim é \underline{\&quot;'''}.
 
 \subsection{Estatísticas dos elementos encontrados}
 

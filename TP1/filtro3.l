@@ -17,8 +17,6 @@ quote_token     {espacos}\&quot\;
 adulteracao     '''Adulteração:'''
 alternativos    '''Alternativos:'''
 adulterados     '''Adulterados:'''
-portugal        {espacos}(Portugal)
-brasil          {espacos}(Brasil)
 
 %x PAGE CONTEUDO_PAGE QUOTE ADULTERACAO ALTERNATIVOS QUOTES_ADULTERACAO QUOTES_ALTERNATIVOS QUOTE_CONT
 %%
@@ -35,28 +33,10 @@ brasil          {espacos}(Brasil)
 <QUOTE_CONT>\n\*\*{espacos}{adulterados}                       {quote++;printf("    - Quote: %s\n",citacao);
                                                                BEGIN ADULTERACAO;}
 
-<QUOTE_CONT>{portugal}\n\*\*{espacos}{adulterados}             {quote++;printf("    - Quote: %s\n",citacao);
-                                                               BEGIN ADULTERACAO;}
-
-<QUOTE_CONT>{brasil}\n\*\*{espacos}{adulterados}               {quote++;printf("    - Quote: %s\n",citacao);
-                                                               BEGIN ADULTERACAO;}
-
 <QUOTE_CONT>\n\*\*{espacos}{adulteracao}                       {quote++;printf("    - Quote: %s\n",citacao);
                                                                BEGIN ADULTERACAO;}
 
-<QUOTE_CONT>{portugal}\n\*\*{espacos}{adulteracao}             {quote++;printf("    - Quote: %s\n",citacao);
-                                                               BEGIN ADULTERACAO;}
-
-<QUOTE_CONT>{brasil}\n\*\*{espacos}{adulteracao}               {quote++;printf("    - Quote: %s\n",citacao);
-                                                               BEGIN ADULTERACAO;}
-
 <QUOTE_CONT>\n\*\*{espacos}{alternativos}                      {quote++;printf("    - Quote: %s\n",citacao);
-                                                               BEGIN ALTERNATIVOS;}
-
-<QUOTE_CONT>{portugal}\n\*\*{espacos}{alternativos}            {quote++;printf("    - Quote: %s\n",citacao);
-                                                               BEGIN ALTERNATIVOS;}
-
-<QUOTE_CONT>{brasil}\n\*\*{espacos}{alternativos}              {quote++;printf("    - Quote: %s\n",citacao);
                                                                BEGIN ALTERNATIVOS;}
 
 <ADULTERACAO>\*\*\*{quote_token}                               {BEGIN QUOTES_ADULTERACAO;}
