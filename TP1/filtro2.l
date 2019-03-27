@@ -63,45 +63,45 @@ especiais       (\[)
 <PAGE>{inicio_titulo}Provérbios{espacos}egípcios{fim_titulo}    {yytext = yytext+7; paginas_titulo++; yytext[yyleng-15] = '\0';
                                                                 printf("\nTitle: %s\n\n",yytext); BEGIN CONTEUDO_CORS_EGI;}
 
-<PAGE>{inicio_titulo}Provérbios{espacos}israelenses{fim_titulo}    {yytext = yytext+7; paginas_titulo++; yytext[yyleng-15] = '\0';
-                                                                   printf("\nTitle: %s\n\n",yytext); BEGIN CONTEUDO_ISR;}
+<PAGE>{inicio_titulo}Provérbios{espacos}israelenses{fim_titulo} {yytext = yytext+7; paginas_titulo++; yytext[yyleng-15] = '\0';
+                                                                printf("\nTitle: %s\n\n",yytext); BEGIN CONTEUDO_ISR;}
 
-<PAGE>{inicio_titulo}Provérbios{espacos}espanhóis{fim_titulo}     {yytext = yytext+7; paginas_titulo++; yytext[yyleng-15] = '\0';
-                                                                   printf("\nTitle: %s\n\n",yytext); BEGIN CONTEUDO_ESP;}
+<PAGE>{inicio_titulo}Provérbios{espacos}espanhóis{fim_titulo}   {yytext = yytext+7; paginas_titulo++; yytext[yyleng-15] = '\0';
+                                                                printf("\nTitle: %s\n\n",yytext); BEGIN CONTEUDO_ESP;}
 
-<PAGE>{inicio_titulo}Provérbios{espacos}franceses{fim_titulo}     {yytext = yytext+7; paginas_titulo++; yytext[yyleng-15] = '\0';
-                                                                      printf("\nTitle: %s\n\n",yytext); BEGIN CONTEUDO_FRA;}
+<PAGE>{inicio_titulo}Provérbios{espacos}franceses{fim_titulo}   {yytext = yytext+7; paginas_titulo++; yytext[yyleng-15] = '\0';
+                                                                printf("\nTitle: %s\n\n",yytext); BEGIN CONTEUDO_FRA;}
 
-<PAGE>{inicio_titulo}Provérbios{espacos}tunisianos{fim_titulo}     {yytext = yytext+7; paginas_titulo++; yytext[yyleng-15] = '\0';
-                                                                  printf("\nTitle: %s\n\n",yytext); BEGIN CONTEUDO_TUN;}
+<PAGE>{inicio_titulo}Provérbios{espacos}tunisianos{fim_titulo}  {yytext = yytext+7; paginas_titulo++; yytext[yyleng-15] = '\0';
+                                                                printf("\nTitle: %s\n\n",yytext); BEGIN CONTEUDO_TUN;}
 
-<PAGE>{inicio_titulo}Provérbios{espacos}árabes{fim_titulo}     {yytext = yytext+7; paginas_titulo++; yytext[yyleng-15] = '\0';
-                                                                      printf("\nTitle: %s\n\n",yytext); BEGIN CONTEUDO_ARA;}
+<PAGE>{inicio_titulo}Provérbios{espacos}árabes{fim_titulo}      {yytext = yytext+7; paginas_titulo++; yytext[yyleng-15] = '\0';
+                                                                printf("\nTitle: %s\n\n",yytext); BEGIN CONTEUDO_ARA;}
 
-<PAGE>{inicio_titulo}Provérbios.*{fim_titulo}                            {yytext = yytext+7; paginas_titulo++; yytext[yyleng-15] = '\0';
-                                                                         printf("\nTitle: %s\n\n",yytext); BEGIN CONTEUDO_PAGE;}
+<PAGE>{inicio_titulo}Provérbios.*{fim_titulo}                   {yytext = yytext+7; paginas_titulo++; yytext[yyleng-15] = '\0';
+                                                                printf("\nTitle: %s\n\n",yytext); BEGIN CONTEUDO_PAGE;}
 
-<CONTEUDO_PAGE>\*{espacos}{quote_token}{espacos}                        {quote++; BEGIN QUOTE;}
-<CONTEUDO_PAGE>\*{espacos}{quote_token}{espacos}''                      {quote++; BEGIN QUOTE;}
-<CONTEUDO_PAGE>\*{espacos}{quote_token}{espacos}'''                     {quote++; BEGIN QUOTE;}
-<CONTEUDO_PAGE>\*{espacos}''{espacos}{quote_token}                      {quote++; BEGIN QUOTE;}
-<CONTEUDO_PAGE>\*{espacos}'''{espacos}{quote_token}                     {quote++; BEGIN QUOTE;}
-<CONTEUDO_PAGE>\*\*{espacos}''{espacos}{quote_token}                    {quote++; BEGIN QUOTE;}
-<CONTEUDO_PAGE>:{espacos}'''{espacos}{quote_token}                      {quote++; BEGIN QUOTE;}
+<CONTEUDO_PAGE>\*{espacos}{quote_token}{espacos}                {quote++; BEGIN QUOTE;}
+<CONTEUDO_PAGE>\*{espacos}{quote_token}{espacos}''              {quote++; BEGIN QUOTE;}
+<CONTEUDO_PAGE>\*{espacos}{quote_token}{espacos}'''             {quote++; BEGIN QUOTE;}
+<CONTEUDO_PAGE>\*{espacos}''{espacos}{quote_token}              {quote++; BEGIN QUOTE;}
+<CONTEUDO_PAGE>\*{espacos}'''{espacos}{quote_token}             {quote++; BEGIN QUOTE;}
+<CONTEUDO_PAGE>\*\*{espacos}''{espacos}{quote_token}            {quote++; BEGIN QUOTE;}
+<CONTEUDO_PAGE>:{espacos}'''{espacos}{quote_token}              {quote++; BEGIN QUOTE;}
 
-<CONTEUDO_TURQ_BUL_CHI_HOL>\*{espacos}{quote_token}{espacos}            {quote++; BEGIN QUOTE_TURQ_BUL_CHI_HOL;}
-<CONTEUDO_TURQ_BUL_CHI_HOL>\*{espacos}                                  {quote++; BEGIN QUOTE_TURQ_BUL_CHI_HOL;}
+<CONTEUDO_TURQ_BUL_CHI_HOL>\*{espacos}{quote_token}{espacos}    {quote++; BEGIN QUOTE_TURQ_BUL_CHI_HOL;}
+<CONTEUDO_TURQ_BUL_CHI_HOL>\*{espacos}                          {quote++; BEGIN QUOTE_TURQ_BUL_CHI_HOL;}
 
-<CONTEUDO_VEN_POL>\*{espacos}{quote_token}{espacos}                     {quote++; BEGIN QUOTE_VEN_POL;}
-<CONTEUDO_VEN_POL>\*{espacos}/{letras}                                  {quote++; BEGIN QUOTE_VEN_POL;}
-<CONTEUDO_VEN_POL>\*{espacos}/{especiais}                               {quote++; BEGIN QUOTE_VEN_POL;}
+<CONTEUDO_VEN_POL>\*{espacos}{quote_token}{espacos}             {quote++; BEGIN QUOTE_VEN_POL;}
+<CONTEUDO_VEN_POL>\*{espacos}/{letras}                          {quote++; BEGIN QUOTE_VEN_POL;}
+<CONTEUDO_VEN_POL>\*{espacos}/{especiais}                       {quote++; BEGIN QUOTE_VEN_POL;}
 
-<CONTEUDO_RUS>\n\*{espaco}                                              {quote++; BEGIN QUOTE_RUS;}
-<CONTEUDO_RUS>\*{espacos}{quote_token}                                  {quote++; BEGIN QUOTE_RUS;} // tinha {espacos} aqui no final da condicao
+<CONTEUDO_RUS>\n\*{espaco}                                      {quote++; BEGIN QUOTE_RUS;}
+<CONTEUDO_RUS>\*{espacos}{quote_token}                          {quote++; BEGIN QUOTE_RUS;} // tinha {espacos} aqui no final da condicao
 
-<CONTEUDO_GAL_JAP_ALE>\n\*{espacos}'''                                  {quote++; BEGIN QUOTE_GAL_JAP_ALE;}
-<CONTEUDO_GAL_JAP_ALE>\n\*{espacos}''                                   {quote++; BEGIN QUOTE_GAL_JAP_ALE;}
-<CONTEUDO_GAL_JAP_ALE>\n\*{espacos}''{quote_token}                      {quote++; BEGIN QUOTE_GAL_JAP_ALE;}
+<CONTEUDO_GAL_JAP_ALE>\n\*{espacos}'''                          {quote++; BEGIN QUOTE_GAL_JAP_ALE;}
+<CONTEUDO_GAL_JAP_ALE>\n\*{espacos}''                           {quote++; BEGIN QUOTE_GAL_JAP_ALE;}
+<CONTEUDO_GAL_JAP_ALE>\n\*{espacos}''{quote_token}              {quote++; BEGIN QUOTE_GAL_JAP_ALE;}
 
 
 <CONTEUDO_LAT>\n\*{espacos}''                                   {quote++; BEGIN QUOTE_LAT;}
@@ -109,124 +109,124 @@ especiais       (\[)
 <CONTEUDO_LAT>\n\*{espacos}/{letras}                            {quote++; BEGIN QUOTE_LAT;}
 
 
-<CONTEUDO_CORS_EGI>\*{espacos}'''                                         {quote++; BEGIN QUOTE_CORS_EGI;}
-<CONTEUDO_CORS_EGI>\:{espacos}'''                                         {quote++; BEGIN QUOTE_CORS_EGI;}
-<CONTEUDO_CORS_EGI>^'''                                                   {quote++; BEGIN QUOTE_CORS_EGI;}
+<CONTEUDO_CORS_EGI>\*{espacos}'''                               {quote++; BEGIN QUOTE_CORS_EGI;}
+<CONTEUDO_CORS_EGI>\:{espacos}'''                               {quote++; BEGIN QUOTE_CORS_EGI;}
+<CONTEUDO_CORS_EGI>^'''                                         {quote++; BEGIN QUOTE_CORS_EGI;}
 
 
-<CONTEUDO_ITA>\n\*{espacos}''                                         {quote++; BEGIN QUOTE_ITA;}
-<CONTEUDO_ITA>\n\*{espacos}''{quote_token}                            {quote++; BEGIN QUOTE_ITA;}
+<CONTEUDO_ITA>\n\*{espacos}''                                   {quote++; BEGIN QUOTE_ITA;}
+<CONTEUDO_ITA>\n\*{espacos}''{quote_token}                      {quote++; BEGIN QUOTE_ITA;}
 
 
-<CONTEUDO_ISR>\n\*{espacos}'''                                          {quote++; BEGIN QUOTE_ISR;}
-<CONTEUDO_ISR>\n\*{espacos}/{letras}                                    {quote++; BEGIN QUOTE_ISR;}
+<CONTEUDO_ISR>\n\*{espacos}'''                                  {quote++; BEGIN QUOTE_ISR;}
+<CONTEUDO_ISR>\n\*{espacos}/{letras}                            {quote++; BEGIN QUOTE_ISR;}
 
 
-<CONTEUDO_ESP>\n\*{espacos}/{letras}                                  {quote++; BEGIN QUOTE_ESP;}
-<CONTEUDO_ESP>\n\*{espacos}''/{letras}                                {quote++; BEGIN QUOTE_ESP;}
-<CONTEUDO_ESP>\n\*{espacos}'''/{letras}                               {quote++; BEGIN QUOTE_ESP;}
-<CONTEUDO_ESP>\n\*{espacos}{quote_token}                              {quote++; BEGIN QUOTE_ESP;}
+<CONTEUDO_ESP>\n\*{espacos}/{letras}                            {quote++; BEGIN QUOTE_ESP;}
+<CONTEUDO_ESP>\n\*{espacos}''/{letras}                          {quote++; BEGIN QUOTE_ESP;}
+<CONTEUDO_ESP>\n\*{espacos}'''/{letras}                         {quote++; BEGIN QUOTE_ESP;}
+<CONTEUDO_ESP>\n\*{espacos}{quote_token}                        {quote++; BEGIN QUOTE_ESP;}
 
 
-<CONTEUDO_FRA>\n\*{espacos}{quote_token}                              {quote++; BEGIN QUOTE_FRA;}
-<CONTEUDO_FRA>\n/[QD]                                                 {quote++; BEGIN QUOTE_FRA;}
+<CONTEUDO_FRA>\n\*{espacos}{quote_token}                        {quote++; BEGIN QUOTE_FRA;}
+<CONTEUDO_FRA>\n/[QD]                                           {quote++; BEGIN QUOTE_FRA;}
 
-<CONTEUDO_TUN>\*{espacos}“''                                          {quote++; BEGIN QUOTE_TUN;}
+<CONTEUDO_TUN>\*{espacos}“''                                    {quote++; BEGIN QUOTE_TUN;}
 
-<CONTEUDO_ARA>\n\*{espacos}                                             {quote++; BEGIN QUOTE_ARA;}
-
-
-
-<QUOTE>.+'''{quote_token}                                             {yytext[yyleng-9] = '\0'; printf("    - Quote: %s\n",yytext);
-                                                                      BEGIN CONTEUDO_PAGE;}
-<QUOTE>.+''{quote_token}                                              {yytext[yyleng-8] = '\0'; printf("    - Quote: %s\n",yytext);
-                                                                      BEGIN CONTEUDO_PAGE;}
-<QUOTE>.+{quote_token}                                                {yytext[yyleng-6] = '\0'; printf("    - Quote: %s\n",yytext);
-                                                                      BEGIN CONTEUDO_PAGE;}
-<QUOTE>.+{quote_token}''                                              {yytext[yyleng-8] = '\0'; printf("    - Quote: %s\n",yytext);
-                                                                      BEGIN CONTEUDO_PAGE;}
-<QUOTE>.+{quote_token}'''                                             {yytext[yyleng-9] = '\0'; printf("    - Quote: %s\n",yytext);
-                                                                      BEGIN CONTEUDO_PAGE;}
-
-
-<QUOTE_TURQ_BUL_CHI_HOL>.+{quote_token}\n                             {yytext[yyleng-7] = '\0'; printf("    - Quote: %s\n",yytext);
-                                                                      BEGIN CONTEUDO_TURQ_BUL_CHI_HOL;}
-<QUOTE_TURQ_BUL_CHI_HOL>.+{quote_token}.\n                            {yytext[yyleng-8] = '\0'; printf("    - Quote: %s\n",yytext);
-                                                                      BEGIN CONTEUDO_TURQ_BUL_CHI_HOL;}
-<QUOTE_TURQ_BUL_CHI_HOL>.+\n                                          {yytext[yyleng-1] = '\0'; printf("    - Quote: %s\n",yytext);
-                                                                      BEGIN CONTEUDO_TURQ_BUL_CHI_HOL;}
-
-
-<QUOTE_VEN_POL>.+{quote_token}\n                                      {yytext[yyleng-7] = '\0'; printf("    - Quote: %s\n",yytext);
-                                                                      BEGIN CONTEUDO_VEN_POL;}
-<QUOTE_VEN_POL>.+\n                                                   {yytext[yyleng-1] = '\0'; printf("    - Quote: %s\n",yytext);
-                                                                      BEGIN CONTEUDO_VEN_POL;}
-
-
-<QUOTE_RUS>.+{quote_token}\n                                          {yytext[yyleng-7] = '\0'; printf("    - Quote: %s\n",yytext);
-                                                                      BEGIN CONTEUDO_RUS;}
-<QUOTE_RUS>.+\n                                                       {yytext[yyleng-1] = '\0'; printf("    - Quote: %s\n",yytext);
-                                                                      BEGIN CONTEUDO_RUS;}
-
-
-<QUOTE_GAL_JAP_ALE>.+''\n                                         {yytext[yyleng-3] = '\0'; printf("    - Quote: %s\n",yytext);
-                                                                      BEGIN CONTEUDO_GAL_JAP_ALE;}
-<QUOTE_GAL_JAP_ALE>.+'''\n                                        {yytext[yyleng-4] = '\0'; printf("    - Quote: %s\n",yytext);
-                                                                      BEGIN CONTEUDO_GAL_JAP_ALE;}
-<QUOTE_GAL_JAP_ALE>.+''.\n                                        {yytext[yyleng-4] = '\0'; printf("    - Quote: %s\n",yytext);
-                                                                      BEGIN CONTEUDO_GAL_JAP_ALE;}
-<QUOTE_GAL_JAP_ALE>.+\n                                           {yytext[yyleng-1] = '\0'; printf("    - Quote: %s\n",yytext);
-                                                                      BEGIN CONTEUDO_GAL_JAP_ALE;}
-<QUOTE_GAL_JAP_ALE>.+{quote_token}.''\n                           {yytext[yyleng-10] = '\0'; printf("    - Quote: %s\n",yytext);
-                                                                      BEGIN CONTEUDO_GAL_JAP_ALE;}
-
-
-<QUOTE_LAT>.+''\n                                         {yytext[yyleng-3] = '\0'; printf("    - Quote: %s\n",yytext);
-                                                            BEGIN CONTEUDO_LAT;}
-<QUOTE_LAT>.+\n                                         {yytext[yyleng-1] = '\0'; printf("    - Quote: %s\n",yytext);
-                                                            BEGIN CONTEUDO_LAT;}
-
-
-<QUOTE_CORS_EGI>.+'''                                                    {yytext[yyleng-3] = '\0'; printf("    - Quote: %s\n",yytext);
-                                                                     BEGIN CONTEUDO_CORS_EGI;}
-
-
-<QUOTE_ITA>.+''                                                      {yytext[yyleng-2] = '\0'; printf("    - Quote: %s\n",yytext);
-                                                                     BEGIN CONTEUDO_ITA;}
-<QUOTE_ITA>.+{quote_token}''\n                                       {yytext[yyleng-9] = '\0'; printf("    - Quote: %s\n",yytext);
-                                                                     BEGIN CONTEUDO_ITA;}
-
-<QUOTE_ISR>.+'''\n                                                   {yytext[yyleng-4] = '\0'; printf("    - Quote: %s\n",yytext);
-                                                                     BEGIN CONTEUDO_ISR;}
-<QUOTE_ISR>.+\n                                                      {yytext[yyleng-1] = '\0'; printf("    - Quote: %s\n",yytext);
-                                                                     BEGIN CONTEUDO_ISR;}
-
-
-<QUOTE_ESP>.+'''\n                                                   {yytext[yyleng-4] = '\0'; printf("    - Quote: %s\n",yytext);
-                                                                     BEGIN CONTEUDO_ESP;}
-<QUOTE_ESP>.+''\n                                                    {yytext[yyleng-3] = '\0'; printf("    - Quote: %s\n",yytext);
-                                                                     BEGIN CONTEUDO_ESP;}
-<QUOTE_ESP>.+{quote_token}\n                                         {yytext[yyleng-7] = '\0'; printf("    - Quote: %s\n",yytext);
-                                                                     BEGIN CONTEUDO_ESP;}
-<QUOTE_ESP>.+\n                                                      {yytext[yyleng-1] = '\0'; printf("    - Quote: %s\n",yytext);
-                                                                     BEGIN CONTEUDO_ESP;}
-
-<QUOTE_FRA>.+{quote_token}\n                                         {yytext[yyleng-7] = '\0'; printf("    - Quote: %s\n",yytext);
-                                                                     BEGIN CONTEUDO_FRA;}
-<QUOTE_FRA>.+\n                                                      {yytext[yyleng-1] = '\0'; printf("    - Quote: %s\n",yytext);
-                                                                     BEGIN CONTEUDO_FRA;}
-
-
-<QUOTE_TUN>.+\,/&lt;ref&gt;JUSTO,                                   {yytext[yyleng-1] = '\0'; printf("    - Quote: %s\n",yytext);
-                                                                    BEGIN CONTEUDO_TUN;}
-
-<QUOTE_ARA>[^\n]+                                                     {yytext[yyleng-1] = '\0'; printf("    - Quote: %s\n",yytext);
-                                                                    BEGIN CONTEUDO_ARA;}
+<CONTEUDO_ARA>\n\*{espacos}                                     {quote++; BEGIN QUOTE_ARA;}
 
 
 
-<*>{fim_pagina}                                 {BEGIN INITIAL;}
-<*>.|\n                                         {;}
+<QUOTE>.+'''{quote_token}                                       {yytext[yyleng-9] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                BEGIN CONTEUDO_PAGE;}
+<QUOTE>.+''{quote_token}                                        {yytext[yyleng-8] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                BEGIN CONTEUDO_PAGE;}
+<QUOTE>.+{quote_token}                                          {yytext[yyleng-6] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                BEGIN CONTEUDO_PAGE;}
+<QUOTE>.+{quote_token}''                                        {yytext[yyleng-8] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                BEGIN CONTEUDO_PAGE;}
+<QUOTE>.+{quote_token}'''                                       {yytext[yyleng-9] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                BEGIN CONTEUDO_PAGE;}
+
+
+<QUOTE_TURQ_BUL_CHI_HOL>.+{quote_token}\n                       {yytext[yyleng-7] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                BEGIN CONTEUDO_TURQ_BUL_CHI_HOL;}
+<QUOTE_TURQ_BUL_CHI_HOL>.+{quote_token}.\n                      {yytext[yyleng-8] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                BEGIN CONTEUDO_TURQ_BUL_CHI_HOL;}
+<QUOTE_TURQ_BUL_CHI_HOL>.+\n                                    {yytext[yyleng-1] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                BEGIN CONTEUDO_TURQ_BUL_CHI_HOL;}
+
+
+<QUOTE_VEN_POL>.+{quote_token}\n                                {yytext[yyleng-7] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                BEGIN CONTEUDO_VEN_POL;}
+<QUOTE_VEN_POL>.+\n                                             {yytext[yyleng-1] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                BEGIN CONTEUDO_VEN_POL;}
+
+
+<QUOTE_RUS>.+{quote_token}\n                                    {yytext[yyleng-7] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                BEGIN CONTEUDO_RUS;}
+<QUOTE_RUS>.+\n                                                 {yytext[yyleng-1] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                BEGIN CONTEUDO_RUS;}
+
+
+<QUOTE_GAL_JAP_ALE>.+''\n                                       {yytext[yyleng-3] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                BEGIN CONTEUDO_GAL_JAP_ALE;}
+<QUOTE_GAL_JAP_ALE>.+'''\n                                      {yytext[yyleng-4] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                BEGIN CONTEUDO_GAL_JAP_ALE;}
+<QUOTE_GAL_JAP_ALE>.+''.\n                                      {yytext[yyleng-4] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                BEGIN CONTEUDO_GAL_JAP_ALE;}
+<QUOTE_GAL_JAP_ALE>.+\n                                         {yytext[yyleng-1] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                BEGIN CONTEUDO_GAL_JAP_ALE;}
+<QUOTE_GAL_JAP_ALE>.+{quote_token}.''\n                         {yytext[yyleng-10] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                BEGIN CONTEUDO_GAL_JAP_ALE;}
+
+
+<QUOTE_LAT>.+''\n                                               {yytext[yyleng-3] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                BEGIN CONTEUDO_LAT;}
+<QUOTE_LAT>.+\n                                                 {yytext[yyleng-1] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                BEGIN CONTEUDO_LAT;}
+
+
+<QUOTE_CORS_EGI>.+'''                                           {yytext[yyleng-3] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                BEGIN CONTEUDO_CORS_EGI;}
+
+
+<QUOTE_ITA>.+''                                                 {yytext[yyleng-2] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                BEGIN CONTEUDO_ITA;}
+<QUOTE_ITA>.+{quote_token}''\n                                  {yytext[yyleng-9] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                BEGIN CONTEUDO_ITA;}
+
+<QUOTE_ISR>.+'''\n                                              {yytext[yyleng-4] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                BEGIN CONTEUDO_ISR;}
+<QUOTE_ISR>.+\n                                                 {yytext[yyleng-1] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                BEGIN CONTEUDO_ISR;}
+
+
+<QUOTE_ESP>.+'''\n                                              {yytext[yyleng-4] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                BEGIN CONTEUDO_ESP;}
+<QUOTE_ESP>.+''\n                                               {yytext[yyleng-3] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                BEGIN CONTEUDO_ESP;}
+<QUOTE_ESP>.+{quote_token}\n                                    {yytext[yyleng-7] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                BEGIN CONTEUDO_ESP;}
+<QUOTE_ESP>.+\n                                                 {yytext[yyleng-1] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                BEGIN CONTEUDO_ESP;}
+
+<QUOTE_FRA>.+{quote_token}\n                                    {yytext[yyleng-7] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                BEGIN CONTEUDO_FRA;}
+<QUOTE_FRA>.+\n                                                 {yytext[yyleng-1] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                BEGIN CONTEUDO_FRA;}
+
+
+<QUOTE_TUN>.+\,/&lt;ref&gt;JUSTO,                               {yytext[yyleng-1] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                BEGIN CONTEUDO_TUN;}
+
+<QUOTE_ARA>[^\n]+                                               {yytext[yyleng-1] = '\0'; printf("    - Quote: %s\n",yytext);
+                                                                BEGIN CONTEUDO_ARA;}
+
+
+
+<*>{fim_pagina}                                                 {BEGIN INITIAL;}
+<*>.|\n                                                         {;}
 %%
 
 int yywrap(){ return 1; }
