@@ -65,6 +65,19 @@ Nas secções seguintes serão apresentados os objetivos de cada alínea do exer
 
 Na primeira alínea do exercício, era requerido um filtro que criasse uma lista de citações com o respetivo autor, somente se estas citações se encontrarem numa página de autor.
 
+Ao proceder à análise do ficheiro \emph{XML} reparamos que uma página seria de autor se contivesse o seguinte cenário dentro da mesma:
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.75]{pagina_autor.png}
+\caption{Estrutura descritiva de um autor.}
+\label{img:pagina_autor}
+\end{figure}
+
+Obviamente existem páginas que contém informações mais volumosas sobre um autor e outras páginas que contém menos. Posto isto reparamos que o campo \textbf{Nome}, pode ou não estar preenchido. Para os casos em que não está preenchido, o grupo achou por bem não considerar que a página se trataria de um autor, ignorando todos as citações na página contidas. O campo \textbf{Nome} possuía ainda outro pormenor. Muitas vezes surge referenciado noutra língua como por exemplo espanhol (\emph{Nombre}) e inglês (\emph{Name}).
+
+
+
 
 \subsection{Lista de Provérbios}
 
