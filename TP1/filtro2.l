@@ -116,8 +116,8 @@ especiais       (\[)
 
 
 <CONTEUDO_ESP>\n\*{espacos}/{letras}                                  {quote++; BEGIN QUOTE_ESP;}
-<CONTEUDO_ESP>\n\*{espacos}''/{letras}                                         {quote++; BEGIN QUOTE_ESP;}
-<CONTEUDO_ESP>\n\*{espacos}'''/{letras}                                         {quote++; BEGIN QUOTE_ESP;}
+<CONTEUDO_ESP>\n\*{espacos}''/{letras}                                {quote++; BEGIN QUOTE_ESP;}
+<CONTEUDO_ESP>\n\*{espacos}'''/{letras}                               {quote++; BEGIN QUOTE_ESP;}
 <CONTEUDO_ESP>\n\*{espacos}{quote_token}                              {quote++; BEGIN QUOTE_ESP;}
 
 
