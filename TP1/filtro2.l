@@ -102,7 +102,7 @@ especiais       (\[)
 <CONTEUDO_GAL_JAP_ALE>\n\*{espacos}'''                                  {quote++; BEGIN QUOTE_GAL_JAP_ALE;}
 <CONTEUDO_GAL_JAP_ALE>\n\*{espacos}''                                   {quote++; BEGIN QUOTE_GAL_JAP_ALE;}
 <CONTEUDO_GAL_JAP_ALE>\n\*{espacos}''{quote_token}                      {quote++; BEGIN QUOTE_GAL_JAP_ALE;}
-<CONTEUDO_GAL_JAP_ALE>\n\*{espacos}/{letras}                            {quote++; BEGIN QUOTE_GAL_JAP_ALE;}
+
 
 <CONTEUDO_LAT>\n\*{espacos}''                                   {quote++; BEGIN QUOTE_LAT;}
 <CONTEUDO_LAT>\n\*{espacos}{quote_token}                        {quote++; BEGIN QUOTE_LAT;}
