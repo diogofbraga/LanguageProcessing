@@ -76,7 +76,27 @@ Ao proceder à análise do ficheiro \emph{XML} reparamos que uma página seria d
 
 Obviamente existem páginas que contém informações mais volumosas sobre um autor e outras páginas que contém menos. Posto isto reparamos que o campo \textbf{Nome}, pode ou não estar preenchido. Para os casos em que não está preenchido, o grupo achou por bem não considerar que a página se trataria de um autor, ignorando todos as citações na página contidas. O campo \textbf{Nome} possuía ainda outro pormenor. Muitas vezes surge referenciado noutra língua como por exemplo espanhol (\emph{Nombre}) e inglês (\emph{Name}).
 
+Em páginas de autor investigámos de que forma aparecem a maior parte das citações que estes fazem. Chegamos à conclusão que na maior parte dos casos as citações surgem da seguinte forma:
 
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.75]{quote.png}
+\caption{Estrutura duma citação.}
+\label{img:quote}
+\end{figure}
+
+Conseguimos identificar que a maior parte das citações de autores se encontram no meio de \textbf{\&quot;} e apenas teríamos de filtrar o que estivesse entre duas marcas deste tipo. Mas com a análise de mais casos deparámo-nos com situações desta natureza: 
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{marca_dentro_quote.png}
+\caption{Exemplo de quatro marcas dentro duma citação.}
+\label{img:marca_in_quote}
+\end{figure}
+
+Contudo surgiram muitos mais casos durante esta análise podemos referir casos em que citações não terminam com a marca \textbf{\&quot;} mas em vez disso acabam com por exemplo \textbf{::-}, ou \textbf{:-}, e ainda \textbf{**}.
+
+Estes casos e muitos mais serão tratados nos capítulos seguintes.
 
 
 \subsection{Lista de Provérbios}
