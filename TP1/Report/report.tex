@@ -11,6 +11,7 @@
 \usepackage{listings}
 \usepackage{amsmath}
 \usepackage{mathtools}
+\usepackage{tikz}
 \renewcommand{\familydefault}{\sfdefault}
 
 % packages que adicionei do stor
@@ -239,6 +240,66 @@ Desta forma criamos uma estrutura \textbf{TodasCitações}, que contém uma \tex
 
 \section{Algoritmos}
 \subsection{Lista de Citações}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.2]
+\tikzstyle{every node}+=[inner sep=0pt]
+\draw [black] (9.2,-21.5) circle (3);
+\draw (9.2,-21.5) node {$INITIAL$};
+\draw [black] (31.7,-21.5) circle (3);
+\draw (31.7,-21.5) node {$PAGE$};
+\draw [black] (50.8,-21.5) circle (3);
+\draw (50.8,-21.5) node {$AUTOR$};
+\draw [black] (71.9,-21.5) circle (3);
+\draw (71.9,-21.5) node {$QUOTE$};
+\draw [black] (50.1,-39.8) circle (3);
+\draw (50.1,-39.8) node {$NOME\_AUTOR$};
+\draw [black] (1.6,-21.5) -- (6.2,-21.5);
+\fill [black] (6.2,-21.5) -- (5.4,-21) -- (5.4,-22);
+\draw [black] (28.805,-22.285) arc (-77.1203:-102.8797:37.484);
+\fill [black] (28.81,-22.28) -- (27.91,-21.98) -- (28.14,-22.95);
+\draw (20.45,-23.73) node [below] {$nova\_pagina$};
+\draw [black] (34.7,-21.5) -- (47.8,-21.5);
+\fill [black] (47.8,-21.5) -- (47,-21) -- (47,-22);
+\draw (41.25,-22) node [below] {$inicio\_autor$};
+\draw [black] (48.57,-37.226) arc (-155.15368:-209.22747:14.613);
+\fill [black] (48.57,-37.23) -- (48.69,-36.29) -- (47.78,-36.71);
+\draw (46.67,-30.51) node [left] {$nome\_autor$};
+\draw [black] (52.324,-24.078) arc (24.73681:-29.11795:14.66);
+\fill [black] (52.32,-24.08) -- (52.21,-25.01) -- (53.11,-24.6);
+\draw (54.22,-30.79) node [right] {$nome\mbox{ }>\mbox{ }1$};
+\draw [black] (47.272,-40.784) arc (-77.04436:-192.6434:13.785);
+\fill [black] (30.73,-24.33) -- (30.07,-25) -- (31.04,-25.22);
+\draw (29.84,-37.6) node [below] {$nome\mbox{ }=\mbox{ }"\ "$};
+\draw [black] (68.978,-22.175) arc (-79.12516:-100.87484:40.429);
+\fill [black] (68.98,-22.17) -- (68.1,-21.83) -- (68.29,-22.82);
+\draw (61.35,-23.4) node [below] {$\*quote\_token$};
+\draw [black] (53.54,-20.284) arc (110.13881:69.86119:22.683);
+\fill [black] (53.54,-20.28) -- (54.46,-20.48) -- (54.12,-19.54);
+\draw (61.35,-18.4) node [above] {$fim\_quote$};
+\draw [black] (7.59,-18.983) arc (240.34019:-47.65981:2.25);
+\draw (7.32,-13.86) node [above] {$fim\_pagina$};
+\fill [black] (10.22,-18.69) -- (11.05,-18.24) -- (10.18,-17.75);
+\draw [black] (12.075,-20.647) arc (104.02759:75.97241:34.551);
+\fill [black] (12.08,-20.65) -- (12.97,-20.94) -- (12.73,-19.97);
+\draw (20.45,-19.12) node [above] {$fim\_pagina$};
+\draw [black] (11.541,-19.626) arc (125.94601:54.05399:31.445);
+\fill [black] (11.54,-19.63) -- (12.48,-19.56) -- (11.9,-18.75);
+\draw (30,-13.14) node [above] {$fim\_pagina$};
+\draw [black] (10.875,-19.012) arc (143.70718:36.29282:36.817);
+\fill [black] (10.88,-19.01) -- (11.75,-18.66) -- (10.95,-18.07);
+\draw (40.55,-3.49) node [above] {$fim\_pagina$};
+\end{tikzpicture}
+\end{center}
+
+Definição do autómato:
+
+\begin{itemize}
+	\item Estados do autómato:
+	\item Estado inicial:
+	\item Estados finais:
+	\item Funções de Transição:
+\end{itemize}
 
 
 \subsection{Lista de Provérbios}
