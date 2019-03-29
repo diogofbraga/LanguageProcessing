@@ -307,6 +307,93 @@ Definição do autómato:
 
 \subsection{Lista de Provérbios Adulterados}
 
+\begin{center}
+\begin{tikzpicture}[scale=0.2]
+\tikzstyle{every node}+=[inner sep=0pt]
+\draw [black] (8.9,-4.7) circle (3);
+\draw (8.9,-4.7) node {$INITIAL$};
+\draw [black] (25.8,-4.7) circle (3);
+\draw (25.8,-4.7) node {$PAGE$};
+\draw [black] (57.8,-4.7) circle (3);
+\draw (57.8,-4.7) node {$PC$};
+\draw [black] (40.4,-18.5) circle (3);
+\draw (40.4,-18.5) node {$QUOTE$};
+\draw [black] (40.4,-29.9) circle (3);
+\draw (40.4,-29.9) node {$QC$};
+\draw [black] (17.1,-38.6) circle (3);
+\draw (17.1,-38.6) node {$ADULT$};
+\draw [black] (63.3,-38.6) circle (3);
+\draw (63.3,-38.6) node {$ALTER$};
+\draw [black] (17.1,-56.4) circle (3);
+\draw (17.1,-56.4) node {$QADULT$};
+\draw [black] (63.3,-56.4) circle (3);
+\draw (63.3,-56.4) node {$QALTER$};
+\draw [black] (10.223,-7.38) arc (54:-234:2.25);
+\draw (8.9,-11.95) node [below] {$fim\_pag$};
+\fill [black] (7.58,-7.38) -- (6.7,-7.73) -- (7.51,-8.32);
+\draw [black] (11.9,-4.7) -- (22.8,-4.7);
+\fill [black] (22.8,-4.7) -- (22,-4.2) -- (22,-5.2);
+\draw (17.35,-5.2) node [below] {$nova\_pag$};
+\draw [black] (2.1,-4.7) -- (5.9,-4.7);
+\fill [black] (5.9,-4.7) -- (5.1,-4.2) -- (5.1,-5.2);
+\draw [black] (28.8,-4.7) -- (54.8,-4.7);
+\fill [black] (54.8,-4.7) -- (54,-4.2) -- (54,-5.2);
+\draw (41.8,-5.2) node [below] {$ini\_titProverbios.*fim\_tit$};
+\draw [black] (55.45,-6.56) -- (42.75,-16.64);
+\fill [black] (42.75,-16.64) -- (43.69,-16.53) -- (43.07,-15.75);
+\draw (55.33,-12.1) node [below] {$\*quote\_token$};
+\draw [black] (39.563,-27.024) arc (-169.37552:-190.62448:15.318);
+\fill [black] (39.56,-27.02) -- (39.91,-26.15) -- (38.92,-26.33);
+\draw (38.8,-24.2) node [left] {$.*quote\_token$};
+\draw [black] (37.697,-31.201) arc (-65.0152:-74.03449:120.165);
+\fill [black] (19.99,-37.81) -- (20.9,-38.07) -- (20.63,-37.11);
+\draw (35.41,-35.52) node [below] {$**adulterados$};
+\draw [black] (43.398,-29.835) arc (88.28203:50.11313:28.961);
+\fill [black] (61.1,-36.56) -- (60.81,-35.66) -- (60.17,-36.43);
+\draw (59.34,-31.05) node [above] {$**alternativos$};
+\draw [black] (19.719,-37.137) arc (118.00528:102.94504:72.268);
+\fill [black] (19.72,-37.14) -- (20.66,-37.2) -- (20.19,-36.32);
+\draw (21.94,-32.57) node [above] {$**adulteracao$};
+\draw [black] (17.156,-35.604) arc (-185.50339:-272.93049:19.371);
+\fill [black] (37.43,-18.12) -- (36.65,-17.58) -- (36.6,-18.57);
+\draw (17.55,-22.3) node [above] {$\*quote\_token$};
+\draw [black] (16.426,-53.478) arc (-169.60117:-190.39883:33.118);
+\fill [black] (16.43,-53.48) -- (16.77,-52.6) -- (15.79,-52.78);
+\draw (15.38,-47.5) node [left] {$\*\*\*quote\_token$};
+\draw [black] (62.681,-53.466) arc (-170.46728:-189.53272:36.021);
+\fill [black] (62.68,-53.47) -- (63.04,-52.59) -- (62.06,-52.76);
+\draw (61.68,-47.5) node [left] {$\*\*\*quote\_token$};
+\draw [black] (43.381,-18.188) arc (91.55223:5.89903:19.419);
+\fill [black] (43.38,-18.19) -- (44.19,-18.67) -- (44.17,-17.67);
+\draw (62.95,-22.52) node [above] {$\*quote\_token$};
+\draw [black] (60.305,-38.77) arc (-86.97892:-93.02108:381.471);
+\fill [black] (20.1,-38.77) -- (20.87,-39.31) -- (20.92,-38.31);
+\draw (40.2,-39.8) node [below] {$\*\*adulterados$};
+\draw [black] (60.532,-39.755) arc (-68.8716:-111.1284:56.405);
+\fill [black] (19.87,-39.76) -- (20.43,-40.51) -- (20.79,-39.58);
+\draw (40.2,-44.05) node [below] {$\*\*adulteracao$};
+\draw [black] (17.873,-41.497) arc (11.97339:-11.97339:28.935);
+\fill [black] (17.87,-41.5) -- (17.55,-42.38) -- (18.53,-42.18);
+\draw (19,-47.5) node [right] {$.*quote\_token$};
+\draw [black] (64.243,-41.446) arc (14.72619:-14.72619:23.817);
+\fill [black] (64.24,-41.45) -- (63.96,-42.35) -- (64.93,-42.09);
+\draw (65.53,-47.5) node [right] {$.*quote\_token$};
+\draw [black] (41.089,-21.416) arc (8.65405:-8.65405:18.5);
+\fill [black] (41.09,-21.42) -- (40.72,-22.28) -- (41.7,-22.13);
+\draw (41.8,-24.2) node [right] {$\*quote\_token$};
+\end{tikzpicture}
+\end{center}
+
+Definição do autómato:
+
+\begin{itemize}
+	\item Estados do autómato:
+	\item Estado inicial:
+	\item Estados finais:
+	\item Funções de Transição:
+\end{itemize}
+
+
 
 
 \chapter{Codificação e Testes}
