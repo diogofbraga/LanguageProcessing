@@ -18,46 +18,46 @@ adulteracao     {espacos}'''Adulteração:'''
 alternativos    {espacos}'''Alternativos:'''
 adulterados     {espacos}'''Adulterados:'''
 
-%x PAGE P_C QUOTE ADULT ALTER Q_ADULT Q_ALTER Q_C
+%x PAGE PAGE_CONTEUDO QUOTE ADULTERACAO ALTERNATIVOS QUOTES_ADULTERACAO QUOTES_ALTERNATIVOS QUOTE_CONT
 %%
 {nova_pag}                                    {paginas++; BEGIN PAGE;}
 
 <PAGE>{ini_tit}Provérbios.*{fim_tit}          {yytext = yytext+7; paginas_titulo++; yytext[yyleng-15] = '\0';
-                                              printf("\nTitle: %s\n\n",yytext); BEGIN P_C;}
+                                              printf("\nTitle: %s\n\n",yytext); BEGIN PAGE_CONTEUDO;}
 
-<P_C,Q_C>\*{quote_token}                      {citacao = "";BEGIN QUOTE;}
+<PAGE_CONTEUDO,QUOTE_CONT>\*{quote_token}     {citacao = "";BEGIN QUOTE;}
 
 <QUOTE>.*{quote_token}                        {yytext[yyleng-6] = '\0';citacao=strdup(yytext);
-                                              BEGIN Q_C;}
+                                              BEGIN QUOTE_CONT;}
 
-<Q_C>\*\*{adulterados}                      {quote++;printf("    - Quote: %s\n",citacao);
-                                              BEGIN ADULT;}
+<QUOTE_CONT>\*\*{adulterados}                 {quote++;printf("    - Quote: %s\n",citacao);
+                                              BEGIN ADULTERACAO;}
 
-<Q_C>\*\*{adulteracao}                      {quote++;printf("    - Quote: %s\n",citacao);
-                                              BEGIN ADULT;}
+<QUOTE_CONT>\*\*{adulteracao}                 {quote++;printf("    - Quote: %s\n",citacao);
+                                              BEGIN ADULTERACAO;}
 
-<Q_C>\*\*{alternativos}                     {quote++;printf("    - Quote: %s\n",citacao);
-                                              BEGIN ALTER;}
+<QUOTE_CONT>\*\*{alternativos}                {quote++;printf("    - Quote: %s\n",citacao);
+                                              BEGIN ALTERNATIVOS;}
 
-<ADULT>\*\*\*{quote_token}                    {BEGIN Q_ADULT;}
+<ADULTERACAO>\*\*\*{quote_token}              {BEGIN QUOTES_ADULTERACAO;}
 
-<ADULT>\*{quote_token}                        {BEGIN QUOTE;}
+<ADULTERACAO>\*{quote_token}                  {BEGIN QUOTE;}
 
-<ALTER>\*\*\*{quote_token}                    {BEGIN Q_ALTER;}
+<ALTERNATIVOS>\*\*\*{quote_token}             {BEGIN QUOTES_ALTERNATIVOS;}
 
-<ALTER>\*{quote_token}                        {BEGIN QUOTE;}
+<ALTERNATIVOS>\*{quote_token}                 {BEGIN QUOTE;}
 
-<ALTER>\*\*{adulterados}                      {yytext[yyleng-20] = '\0'; BEGIN ADULT;}
+<ALTERNATIVOS>\*\*{adulterados}               {yytext[yyleng-20] = '\0'; BEGIN ADULTERACAO;}
 
-<ALTER>\*\*{adulteracao}                      {yytext[yyleng-20] = '\0'; BEGIN ADULT;}
+<ALTERNATIVOS>\*\*{adulteracao}               {yytext[yyleng-20] = '\0'; BEGIN ADULTERACAO;}
 
-<Q_ADULT>.*{quote_token}                      {adulterados++; yytext[yyleng-6] = '\0';
+<QUOTES_ADULTERACAO>.*{quote_token}           {adulterados++; yytext[yyleng-6] = '\0';
                                               printf("        - Adulterado: %s\n",yytext);
-                                              BEGIN ADULT;}
+                                              BEGIN ADULTERACAO;}
 
-<Q_ALTER>.*{quote_token}                      {alternativos++; yytext[yyleng-6] = '\0';
+<QUOTES_ALTERNATIVOS>.*{quote_token}          {alternativos++; yytext[yyleng-6] = '\0';
                                               printf("        - Alternativo: %s\n",yytext);
-                                              BEGIN ALTER;}
+                                              BEGIN ALTERNATIVOS;}
 
 <*>{fim_pag}                                  {BEGIN INITIAL;}
 <*>.|\n                                       {;}
