@@ -345,7 +345,9 @@ Importante referir que o grupo tomou a decisão de apresentar tais resultados in
 \end{tikzpicture}
 \end{center}
 
-\underline{Nota:} No autômato aqui representado ...
+	\vspace{1.0cm}
+
+\underline{Nota:} O autômato aqui representado apenas apresenta a generalização de todos os casos particulares desenvolvidos para a resolução do enunciado do exercício.
 
 	\vspace{1.0cm}
 
@@ -369,13 +371,20 @@ Importante referir que o grupo tomou a decisão de apresentar tais resultados in
 \begin{itemize}
 	\item Estados do autómato:
 		\begin{itemize}
-			\item -
+			\item INIT $\Rightarrow$ INITIAL
+			\item PAGE
+			\item PC $\Rightarrow$ PAGE\_CONTEUDO
+			\item Q $\Rightarrow$ QUOTE
 		\end{itemize}
 	\item Estado inicial: INIT
-	\item Estados finais: ---
+	\item Estados finais: EOF (end of file)
 	\item Funções de Transição:
 		\begin{itemize}
-			\item -
+			\item INITIAL $\rightarrow$ $\{nova\_pag\}$ $\rightarrow$ PAGE
+			\item PAGE $\rightarrow$ $\{ini\_tit\}$Proverbios.*$\{fim\_tit\}$ $\rightarrow$ PAGE\_CONTEUDO
+			\item PAGE\_CONTEUDO $\rightarrow$ $inicio\_quote$ $\rightarrow$ QUOTE
+			\item QUOTE $\rightarrow$ .* $fim\_quote$ $\rightarrow$ PAGE\_CONTEUDO
+			\item * $\rightarrow$ $\{fim\_pag\}$ $\rightarrow$ INITIAL
 		\end{itemize}
 \end{itemize}
 
@@ -498,7 +507,7 @@ Importante referir que o grupo tomou a decisão de apresentar tais resultados in
 			\item QALT $\Rightarrow$ QUOTES\_ALTERNATIVOS
 		\end{itemize}
 	\item Estado inicial: INIT
-	\item Estados finais: ---
+	\item Estados finais: EOF (end of file)
 	\item Funções de Transição:
 		\begin{itemize}
 			\item INITIAL $\rightarrow$ $\{nova\_pag\}$ $\rightarrow$ PAGE

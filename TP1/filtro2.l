@@ -140,7 +140,7 @@ especiais       (\[)
 <CONTEUDO_TUN>\*{espacos}“''                           {quote++; BEGIN QUOTE_TUN;}
 
 
-<CONTEUDO_ARA>\n\*{espacos}                            {quote++; BEGIN QUOTE_ARA;}
+<CONTEUDO_ARA>\n\*{espaco}                            {quote++; BEGIN QUOTE_ARA;}
 
 
 
@@ -230,7 +230,7 @@ especiais       (\[)
                                                        BEGIN CONTEUDO_TUN;}
 
 
-<QUOTE_ARA>[^\n]+                                      {yytext[yyleng-1] = '\0'; printf("    - Quote: %s\n",yytext);
+<QUOTE_ARA>.*\n                                      {yytext[yyleng-1] = '\0'; printf("    - Quote: %s\n",yytext);
                                                        BEGIN CONTEUDO_ARA;}
 
 
