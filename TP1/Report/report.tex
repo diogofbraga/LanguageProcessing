@@ -32,7 +32,7 @@
 
 \begin{abstract}
 	Neste relatório é apresentada a resolução de um exercício referente ao TP1, que tem como objetivos a utilização de Expressões Regulares para descrição de padrões de frases, e a utilização do Flex para gerar filtros de texto em C.
-Outro objetivo será ainda desenvolver, apartir de ERs, sistemática e automaticamente Processadores de Linguagens Regulares, que filtrem ou transformem textos com base no conceito de regras de produção Condição-Ação.
+Outro objetivo será ainda desenvolver, a partir de ERs, sistemática e automaticamente Processadores de Linguagens Regulares, que filtrem ou transformem textos com base no conceito de regras de produção Condição-Ação.
 \end{abstract}
 
 \tableofcontents
@@ -292,12 +292,37 @@ Desta forma criamos uma estrutura \textbf{TodasCitações}, que contém uma \tex
 \end{tikzpicture}
 \end{center}
 
-Definição do autómato:
+
+\underline{Definições: }
+\begin{itemize}
+	\item espacos $\Rightarrow$ [\ ]*
+	\item nova\_pag $\Rightarrow$ <page>
+	\item fim\_pag $\Rightarrow$ </page>
+	\item nome\_linguas $\Rightarrow$ (Nome|Nombre|Name)
+	\item inicio\_autor $\Rightarrow$ \{\{(?i:Autor)
+	\item fim\_autor $\Rightarrow$ \}\}
+	\item nome\_autor $\Rightarrow$ |\{espacos\}\{nome\_linguas\}\{espacos\}=\{espacos\}
+	\item quote\_token $\Rightarrow$ \{espacos\}\&quot;
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Definição do autómato:}
 
 \begin{itemize}
 	\item Estados do autómato:
+		\begin{itemize}
+			\item INITIAL
+			\item PAGE
+			\item AUTOR
+			\item NOME\_AUTOR
+			\item QUOTE
+		\end{itemize}
 	\item Estado inicial:
-	\item Estados finais:
+		\begin{itemize}
+			\item INITIAL
+		\end{itemize}
+	\item Estados finais:  ---
 	\item Funções de Transição:
 \end{itemize}
 
