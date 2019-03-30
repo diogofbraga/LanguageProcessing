@@ -386,7 +386,22 @@ Definição do autómato:
 \end{tikzpicture}
 \end{center}
 
-\underline{Nota:} Todos os estados do autômato possuem uma condição \textit{fim\_pag}. Na figura este só está representado no estado INIT.
+\underline{Nota:} Todos os estados do autômato possuem uma condição \textit{fim\_pag} para o estado INIT. Neste autômato só está representado no próprio estado INIT.
+
+	\vspace{0.5cm}
+
+\underline{Definições: }
+\begin{itemize}
+	\item espacos $\Rightarrow$ [\ ]*
+	\item nova\_pag $\Rightarrow$ <page>
+	\item fim\_pag $\Rightarrow$ </page>
+	\item ini\_tit $\Rightarrow$ <title>
+	\item fim\_tit $\Rightarrow$ </title>
+	\item quote\_token $\Rightarrow$ \{espacos\}\&quot;\{espacos\}
+	\item adulteracao $\Rightarrow$ \{espacos\}'''Adulteração:'''
+	\item alternativos $\Rightarrow$ \{espacos\}'''Alternativos:'''
+	\item adulterados $\Rightarrow$ \{espacos\}'''Adulterados:'''
+\end{itemize}
 
 	\vspace{0.5cm}
 
@@ -408,6 +423,17 @@ Definição do autómato:
 	\item Estado inicial: INIT
 	\item Estados finais: ---
 	\item Funções de Transição:
+		\begin{itemize}
+			\item INIT $\rightarrow$ $<page>$ $\rightarrow$ PAGE
+			\item INIT $\rightarrow$ $</page>$ $\rightarrow$ INIT
+			\item PAGE $\rightarrow$ $<title>$Proverbios.*$</title>$ $\rightarrow$ PAGE\_CONTEUDO
+			\item PAGE\_CONTEUDO $\rightarrow$ $*[\ ]*\&quot;[\ ]*$ $\rightarrow$ QUOTE
+			\item QUOTE $\rightarrow$ .* $*[\ ]*\&quot;[\ ]*$ $\rightarrow$	QUOTE\_CONT
+			\item QUOTE\_CONT $\rightarrow$ $*[\ ]*\&quot;[\ ]*$ $\rightarrow$ QUOTE
+			\item QUOTE\_CONT $\rightarrow$ $**\{adulterados\}$ $\rightarrow$ QUOTES\_ADULTERADOS
+			\item QUOTE\_CONT $\rightarrow$ $**\{adulteracao\}$ $\rightarrow$ QUOTES\_ADULTERADOS
+			\item QUOTE\_CONT $\rightarrow$ $**\{alternativos\}$ $\rightarrow$ QUOTES\_ALTERNATIVOS
+		\end{itemize}
 \end{itemize}
 
 
