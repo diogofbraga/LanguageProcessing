@@ -413,9 +413,9 @@ Desta forma criamos uma estrutura \textbf{TodasCitações}, que contém uma \tex
 
 \underline{Nota:} Todos os estados do autômato possuem uma condição \textit{fim\_pag} para o estado INIT. Neste autômato só está representado no próprio estado INIT.
 
-	\vspace{0.5cm}
+	\vspace{1.0cm}
 
-\underline{Definições: }
+\textbf{Definições: }
 \begin{itemize}
 	\item espacos $\Rightarrow$ [\ ]*
 	\item nova\_pag $\Rightarrow$ <page>
@@ -428,7 +428,7 @@ Desta forma criamos uma estrutura \textbf{TodasCitações}, que contém uma \tex
 	\item adulterados $\Rightarrow$ \{espacos\}'''Adulterados:'''
 \end{itemize}
 
-	\vspace{0.5cm}
+	\vspace{1.0cm}
 
 \textbf{Definição do autómato:}
 
@@ -449,21 +449,25 @@ Desta forma criamos uma estrutura \textbf{TodasCitações}, que contém uma \tex
 	\item Estados finais: ---
 	\item Funções de Transição:
 		\begin{itemize}
-			\item INIT $\rightarrow$ $<page>$ $\rightarrow$ PAGE
-			\item INIT $\rightarrow$ $</page>$ $\rightarrow$ INIT
-			\item PAGE $\rightarrow$ $<title>$Proverbios.*$</title>$ $\rightarrow$ PAGE\_CONTEUDO
-			\item PAGE\_CONTEUDO $\rightarrow$ $*[\ ]*\&quot;[\ ]*$ $\rightarrow$ QUOTE
-			\item QUOTE $\rightarrow$ .* $*[\ ]*\&quot;[\ ]*$ $\rightarrow$	QUOTE\_CONT
-			\item QUOTE\_CONT $\rightarrow$ $*[\ ]*\&quot;[\ ]*$ $\rightarrow$ QUOTE
-			\item QUOTE\_CONT $\rightarrow$ $**\{adulterados\}$ $\rightarrow$ QUOTES\_ADULTERADOS
-			\item QUOTE\_CONT $\rightarrow$ $**\{adulteracao\}$ $\rightarrow$ QUOTES\_ADULTERADOS
-			\item QUOTE\_CONT $\rightarrow$ $**\{alternativos\}$ $\rightarrow$ QUOTES\_ALTERNATIVOS
+			\item INITIAL $\rightarrow$ $\{nova\_pag\}$ $\rightarrow$ PAGE
+			\item PAGE $\rightarrow$ $\{ini\_tit\}$Proverbios.*$\{fim\_tit\}$ $\rightarrow$ PAGE\_CONTEUDO
+			\item PAGE\_CONTEUDO $\rightarrow$ $*\{quote\_token\}$ $\rightarrow$ QUOTE
+			\item QUOTE $\rightarrow$ .* $*\{quote\_token\}$ $\rightarrow$	QUOTE\_CONT
+			\item QUOTE\_CONT $\rightarrow$ $*\{quote\_token\}$ $\rightarrow$ QUOTE
+			\item QUOTE\_CONT $\rightarrow$ $**\{adulterados\}$ $\rightarrow$ ADULTERADOS
+			\item QUOTE\_CONT $\rightarrow$ $**\{adulteracao\}$ $\rightarrow$ ADULTERADOS
+			\item QUOTE\_CONT $\rightarrow$ $**\{alternativos\}$ $\rightarrow$ ALTERNATIVOS
+			\item ADULTERADOS $\rightarrow$ $***\{quote\_token\}$ $\rightarrow$ QUOTES\_ADULTERADOS
+			\item ADULTERADOS $\rightarrow$ $*\{quote\_token\}$ $\rightarrow$ QUOTE
+			\item ALTERNATIVOS $\rightarrow$ $***\{quote\_token\}$ $\rightarrow$ QUOTES\_ALTERNATIVOS
+			\item ALTERNATIVOS $\rightarrow$ $*\{quote\_token\}$ $\rightarrow$ QUOTE
+			\item ALTERNATIVOS $\rightarrow$ $**\{adulterados\}$ $\rightarrow$ ADULTERADOS
+			\item ALTERNATIVOS $\rightarrow$ $**\{adulteracao\}$ $\rightarrow$ ADULTERADOS
+			\item QUOTES\_ADULTERADOS $\rightarrow$ .* $*\{quote\_token\}$ $\rightarrow$ ADULTERADOS
+			\item QUOTES\_ALTERNATIVOS $\rightarrow$ .* $*\{quote\_token\}$ $\rightarrow$ ALTERNATIVOS
+			\item * $\rightarrow$ $\{fim\_pag\}$ $\rightarrow$ INITIAL
 		\end{itemize}
 \end{itemize}
-
-
-
-
 
 
 \chapter{Codificação e Testes}
