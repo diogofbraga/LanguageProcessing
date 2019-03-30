@@ -214,30 +214,6 @@ Importante referir que o grupo tomou a decisão de apresentar tais resultados in
 \chapter{Concepção/desenho da Resolução}
 \label{chap:concepcao}
 
-\section{Estruturas de Dados}
-\subsection{Lista de Citações}
-
-Quando começamos a desenvolver os primeiros filtros para testar com o ficheiro de input, deparamo-nos com a situação de existir mais que uma página para um mesmo autor. Seria portanto ideal que armazenássemos todas as citações referentes a um autor numa \textbf{Tabela de Hash} e íamos inserindo a esta as citações que aparecessem em diferentes páginas referentes a um mesmo autor.
-
-Adotanto esta abordagem temos que filtrar tudo o que é necessário e só no fim despejar para o ecrã, de forma organizada, tudo aquilo que armazenamos na estrutura.
-
-Desta forma criamos uma estrutura \textbf{TodasCitações}, que contém uma \textbf{GHashTable} cuja chave é o nome do autor e o valor é uma outra estrutura \textbf{Autor} que contém um nome e uma lista de citações. Estas estruturas são apresentadas nas seguintes imagens.
-
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.9]{TodasCitacoes.png}
-\caption{Estrutura TodasCitacoes.}
-\label{img:todas_citacoes}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.9]{Autor.png}
-\caption{Estrutura Autor.}
-\label{img:autor}
-\end{figure}
-
-
 \section{Algoritmos}
 \subsection{Lista de Citações}
 
@@ -472,6 +448,32 @@ Desta forma criamos uma estrutura \textbf{TodasCitações}, que contém uma \tex
 
 \chapter{Codificação e Testes}
 \label{chap:codificacao}
+
+Para a presente secção de codificação e testes baseámo-nos nos capítulos anteriores, pois ambos são extremamente importantes para uma boa implementação desta fase. O capítulo de análise teve a sua relevância pois permitiu-nos ter já uma ideia de que expressões regulares utilizar para filtrar o que desejávamos e o capítulo da conceção da resolução foi relevante pois definimos os autómatos necessários e os contextos precisos para coordenar o processo de filtragem para cada requisito.
+
+\section{Estruturas de Dados}
+\subsection{Lista de Citações}
+
+Quando começamos a desenvolver os primeiros filtros para testar com o ficheiro de input, deparamo-nos com a situação de existir mais que uma página para um mesmo autor. Seria portanto ideal que armazenássemos todas as citações referentes a um autor numa \textbf{Tabela de Hash} e íamos inserindo a esta as citações que aparecessem em diferentes páginas referentes a um mesmo autor.
+
+Adotanto esta abordagem temos que filtrar tudo o que é necessário e só no fim despejar para o ecrã, de forma organizada, tudo aquilo que armazenamos na estrutura.
+
+Desta forma criamos uma estrutura \textbf{TodasCitações}, que contém uma \textbf{GHashTable} cuja chave é o nome do autor e o valor é uma outra estrutura \textbf{Autor} que contém um nome e uma lista de citações. Estas estruturas são apresentadas nas seguintes imagens.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.9]{TodasCitacoes.png}
+\caption{Estrutura TodasCitacoes.}
+\label{img:todas_citacoes}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.9]{Autor.png}
+\caption{Estrutura Autor.}
+\label{img:autor}
+\end{figure}
+
 
 \section{Alternativas, Decisões e Problemas de Implementação}
 \subsection{Lista de Citações}
