@@ -327,7 +327,7 @@ Importante referir que o grupo tomou a decisão de apresentar tais resultados in
 \draw (18.4,-28.16) node [above] {$fim\_pag$};
 \draw [black] (29.9,-32.9) -- (54.8,-32.9);
 \fill [black] (54.8,-32.9) -- (54,-32.4) -- (54,-33.4);
-\draw (42.35,-32.4) node [above] {$ini\_titProverbios.*fim\_tit$};
+\draw (42.35,-32.4) node [above] {$ini\_tit$Proverbios.*$fim\_tit$};
 \draw [black] (72.378,-33.574) arc (-79.65641:-100.34359:32.458);
 \fill [black] (72.38,-33.57) -- (71.5,-33.23) -- (71.68,-34.21);
 \draw (66.55,-34.6) node [below] {$inicio\_quote$};
@@ -345,13 +345,21 @@ Importante referir que o grupo tomou a decisão de apresentar tais resultados in
 \end{tikzpicture}
 \end{center}
 
-\underline{Nota:} -
+\underline{Nota:} No autômato aqui representado ...
 
 	\vspace{1.0cm}
 
 \textbf{Definições: }
 \begin{itemize}
-	\item -
+	\item espaco $\Rightarrow$ (\ )
+	\item espacos $\Rightarrow$ [\ ]*
+	\item nova\_pag $\Rightarrow$ <page>
+	\item fim\_pag $\Rightarrow$ </page>
+	\item ini\_tit $\Rightarrow$ <title>
+	\item fim\_tit $\Rightarrow$ </title>
+	\item quote\_token $\Rightarrow$ \{espacos\}\&quot;\{espacos\}
+	\item letras $\Rightarrow$ [A-Za-z]+
+	\item especiais $\Rightarrow$ [
 \end{itemize}
 
 	\vspace{1.0cm}
