@@ -323,6 +323,7 @@ Os autómatos criados são uma representação de alto nível dos algoritmos imp
 			\item AUTOR $\rightarrow$ $*\{quote\_token\}$ $\rightarrow$ QUOTE
 			\item AUTOR $\rightarrow$ $\{fim\_pagina\} $ $\rightarrow$ INITIAL
 			\item NOME\_AUTOR $\rightarrow$ $ [ \wedge \setminus n]+\setminus n $ $\rightarrow$ PAGE ou AUTOR
+			\item NOME\_AUTOR $\rightarrow$ $ [ \wedge \setminus |]+\setminus | $ $\rightarrow$ PAGE ou AUTOR
 			\item NOME\_AUTOR $\rightarrow$ $\{fim\_pagina\} $ $\rightarrow$ INITIAL
 			\item QUOTE $\rightarrow$ $\{fim\_quote\} $ $\rightarrow$ AUTOR
 			\item QUOTE $\rightarrow$ $\{fim\_pagina\} $ $\rightarrow$ INITIAL
