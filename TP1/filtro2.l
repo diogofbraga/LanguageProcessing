@@ -230,11 +230,11 @@ especiais       (\[)
                                                        BEGIN CONTEUDO_TUN;}
 
 
-<QUOTE_ARA>.*\n                                      {yytext[yyleng-1] = '\0'; printf("    - Quote: %s\n",yytext);
+<QUOTE_ARA>.*\n                                        {yytext[yyleng-1] = '\0'; printf("    - Quote: %s\n",yytext);
                                                        BEGIN CONTEUDO_ARA;}
 
 
-<*>{fim_pag}                                        {BEGIN INITIAL;}
+<*>{fim_pag}                                           {BEGIN INITIAL;}
 <*>.|\n                                                {;}
 %%
 
@@ -248,6 +248,3 @@ int main(int argc, char* argv[]){
     printf("Número de citações: %d\n", quote);
     return 0;
 }
-
-// invoquem assim:
-// bzcat ptwikiquote-20190301-pages-articles.xml.bz2 | ./filtro2 > saida.txt

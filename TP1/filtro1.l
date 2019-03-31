@@ -64,6 +64,3 @@ int main(int argc, char* argv[]){
     printf("Número de citações: %d\n", quote);
     return 0;
 }
-
-// invoquem assim:
-// bzcat ptwikiquote-20190301-pages-articles.xml.bz2 | ./filtro1 > saida.txt
