@@ -555,7 +555,8 @@ Os autómatos criados são uma representação de alto nível dos algoritmos imp
 		\end{itemize}
 	\item Estado inicial: INIT
 	\item Estados finais:
-		\item INIT $\Rightarrow$ INITIAL
+		\begin{itemize}
+			\item INIT $\Rightarrow$ INITIAL
 			\item PAGE
 			\item PC $\Rightarrow$ PAGE\_CONTEUDO
 			\item Q $\Rightarrow$ QUOTE
@@ -564,6 +565,7 @@ Os autómatos criados são uma representação de alto nível dos algoritmos imp
 			\item ALT $\Rightarrow$ ALTERNATIVOS
 			\item QADU $\Rightarrow$ QUOTES\_ADULTERADOS
 			\item QALT $\Rightarrow$ QUOTES\_ALTERNATIVOS
+		\end{itemize}
 	\item Funções de Transição:
 		\begin{itemize}
 			\item INITIAL $\rightarrow$ $\{nova\_pag\}$ $\rightarrow$ PAGE
@@ -669,7 +671,7 @@ Tal processo acontece também com os provérbios alternativos, sendo que estes t
 
 Aplicando o filtro criado para a primeira questão com o ficheiro de input disponibilizado, podem-se verificar resultados com um formato muito parecido ao da seguinte imagem.
 
-Foram apenas imprimidas citações de autores que existam e no fim do filtro uma estatística daquilo que foi filtrado.
+Foram apenas imprimidas citações de autores que existam e no final é apresentada uma estatística da filtragem, que contempla o número de páginas total, o número de páginas de autor, o número de autores e o número de citações.
 
 \begin{figure}[H]
 \centering
@@ -683,7 +685,7 @@ Foram apenas imprimidas citações de autores que existam e no fim do filtro uma
 
 Tendo em conta a imensa variedade de marcas de início de provérbios, nesta fase os testes tiveram uma enorme importância.
 
-O resultado do filtro está organizado por Título e Citações, sendo que no final é apresentada uma estatística da filtragem, que contempla o número de páginas total, o número de páginas com título começado por 'Provérbios', e o número de citações recolhidas no filtro. Os resultados desta questão foram respetivamente: 13852, 67 e 4106.
+O resultado do filtro está organizado por Título e Citações, sendo que no final é apresentada uma estatística da filtragem, que contempla o número de páginas total, o número de páginas com título começado por 'Provérbios', e o número de citações recolhidas no filtro.
 
 Seguem-se alguns exemplos de provérbios obtidos da filtragem.
 
@@ -704,7 +706,7 @@ Seguem-se alguns exemplos de provérbios obtidos da filtragem.
 
 \subsection{Lista de Provérbios Adulterados}
 
-O resultado do filtro está organizado por Título e Citações (com os seus adulterados), sendo que no final é apresentada uma estatística da filtragem, que contempla o número de páginas total, o número de páginas com título começado por 'Provérbios', o número de adulterações, o número de alternativos, e o número de citações recolhidas no filtro.. Os resultados desta questão foram respetivamente: 13852, 67, 109, 190 e 191.
+O resultado do filtro está organizado por Título e Citações (com os seus adulterados), sendo que no final é apresentada uma estatística da filtragem, que contempla o número de páginas total, o número de páginas com título começado por 'Provérbios', o número de adulterações, o número de alternativos, e o número de citações recolhidas no filtro.
 
 Seguem-se alguns exemplos de provérbios obtidos da filtragem.
 
