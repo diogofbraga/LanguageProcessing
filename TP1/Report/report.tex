@@ -216,7 +216,7 @@ Importante referir que o grupo tomou a decisão de apresentar tais resultados in
 
 Neste capítulo baseando-nos nas análises feitas ao ficheiro \emph{XML}, construímos 3 autómatos que achamos que seriam necessários para a implementação de cada um dos 3 filtros.
 
-Os autómatos criados são uma representação de alto nível dos algoritmos implementados e serviram para criar uma base para a fase de implementação. Não têm por isso, todo o detalhe que deviam uma vez que existem casos muito peculiares de implementação que não devem devem nem podem (por motivos de espaço e compreensão) ser colocados nos autómatos.
+Os autómatos criados são uma representação de alto nível dos algoritmos implementados e serviram para criar uma base para a fase de implementação e ter uma boa noção dos contextos a utilizar. Não têm por isso, todo o detalhe que deviam uma vez que existem casos muito peculiares de implementação que não devem devem nem podem (por motivos de espaço e compreensão) ser colocados nos autómatos.
 
 \section{Algoritmos}
 \subsection{Lista de Citações}
@@ -623,7 +623,18 @@ Desta forma criamos uma estrutura \textbf{TodasCitações}, que contém uma \tex
 
 
 \section{Alternativas, Decisões e Problemas de Implementação}
+
 \subsection{Lista de Citações}
+
+Ao implementar esta questão começou-se por reparar que nem todas as páginas de autor estão de facto identificadas por um autor. Desta forma foi necessário ignorar todas as páginas de autor que não fossem identificadas por um autor que tivesse um nome com tamanho superior a 1.
+
+O maior problema neste filtro foi identificar todas as formas como uma citação acabava e gerir esta questão. Encontrámos ao todo 10 formas diferentes de término duma citação e alguns dos casos são muito parecidos, de facto são especializações de casos mais gerais, pelo que a tarefa de encontrar o término duma citação ficou dificultada.
+
+A propriedade \emph{longest match} do \textbf{flex}, foi outro entrave à implementação uma vez que como tínhamos casos que eram especialização de outros, muitas vezes o caso que era o \emph{longest match} não era o que era pretendido que fosse apanhado. Esta é a razão pela qual aparecem \textbf{\&quot;} no final de algumas citações.
+
+Muita vezes fomo-nos deparando com citações que continham \textbf{\&quot;} não no final mas sim no meio das citações. Decidimos considerar que estes "tokens"  fariam parte da citação uma vez que apanhámos a citação toda até uma situação de término, ignorando o conteúdo de cada citação.
+
+Para a realização deste filtro utilizámos as estruturas descritas acima em conjunto com algumas funções auxiliares que no permitiam inserir citações, autores, e ainda imprimir todas as citações da estrutura existente.
 
 
 \subsection{Lista de Provérbios}
@@ -632,7 +643,7 @@ Tendo em conta a grande variedade de marcas para representar provérbios em dife
 
 Após a análise explicada na secção \ref{subsec:analise2} foi possível concluir quais seriam os casos mais críticos. São exemplo disso os provérbios russos, que têm como marca inicial apenas \underline{*}. Devido à elevada ocorrência desta marca em todo o ficheiro, foi necessário limitar a filtragem com esta marca apenas à parte do ficheiro que pretendiamos, e tal foi possível através do conceito de Estado.
 
-Relembrando o autômato apresentado na secção \ref{sub:algoritmos2}, existem quatro fases importantes no algoritmo.
+Relembrando o autómato apresentado na secção \ref{sub:algoritmos2}, existem quatro fases importantes no algoritmo.
 
 Na fase inicial vamos percorrer as páginas do ficheiro. Na segunda fase vamos interpretar o título da página e, tendo em conta o resultado obtido, o estado seguinte vai ser diferente. Existe o caso \textit{default} que apanha tudo o que aparece em frente à palavra \textit{Provérbios} mas, devido à grande variedade de marcas, tivemos aqui que forçar alguns processos a seguir caminhos particulares, sendo nesses casos a condição o título inteiro, como por exemplo \textit{Provérbios russos}.
 
@@ -655,6 +666,17 @@ Tal processo acontece também com os provérbios alternativos, sendo que estes t
 
 \section{Testes realizados e Resultados}
 \subsection{Lista de Citações}
+
+Aplicando o filtro criado para a primeira questão com o ficheiro de input disponibilizado, podem-se verificar resultados com um formato muito parecido ao da seguinte imagem.
+
+Foram apenas imprimidas citações de autores que existam e no fim do filtro uma estatística daquilo que foi filtrado.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{citacoes_martin.png}
+\caption{Lista de citações de Martin Luther King Junior.}
+\label{img:martin}
+\end{figure}
 
 
 \subsection{Lista de Provérbios}
@@ -691,6 +713,34 @@ Seguem-se alguns exemplos de provérbios obtidos da filtragem.
 \includegraphics[scale=0.60]{proverbios_adulterados.png}
 \caption{Parte do resultado obtido para os provérbios adulterados.}
 \label{img:autor}
+\end{figure}
+
+
+\newpage
+
+\subsection{Estatísticas de cada filtro}
+
+As seguintes imagens representam os resultados de cada filtro realizado, que aparecem no final de cada filtragem.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.60]{estatisticas_filtro1.png}
+\caption{Estatísticas relativas ao primeiro filtro.}
+\label{img:stat1}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.60]{estatisticas_filtro2.png}
+\caption{Estatísticas relativas ao segundo filtro.}
+\label{img:stat2}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.60]{estatisticas_filtro3.png}
+\caption{Estatísticas relativas ao terceiro filtro.}
+\label{img:stat3}
 \end{figure}
 
 
