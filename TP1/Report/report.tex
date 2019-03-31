@@ -211,8 +211,8 @@ Importante referir que o grupo tomou a decisão de apresentar tais resultados in
 
 
 
-\chapter{Concepção/desenho da Resolução}
-\label{chap:concepcao}
+\chapter{Conceção/desenho da Resolução}
+\label{chap:concecao}
 
 \section{Algoritmos}
 \subsection{Lista de Citações}
@@ -298,8 +298,35 @@ Importante referir que o grupo tomou a decisão de apresentar tais resultados in
 		\begin{itemize}
 			\item INITIAL
 		\end{itemize}
-	\item Estados finais:  ---
+	\item Estados finais:
+		\begin{itemize}
+			\item INITIAL
+			\item PAGE
+			\item AUTOR
+			\item NOME\_AUTOR
+			\item QUOTE
+		\end{itemize}  
 	\item Funções de Transição:
+		\begin{itemize}
+			\item INITIAL $\rightarrow$ $\{nova\_pagina\}$ $\rightarrow$ PAGE
+			\item PAGE $\rightarrow$ $\{inicio\_autor\}$ $\rightarrow$ AUTOR
+			\item PAGE $\rightarrow$ $\{fim\_pagina\} $ $\rightarrow$ INITIAL
+			\item AUTOR $\rightarrow$ $\{nome\_autor\}$ $\rightarrow$ NOME\_AUTOR
+			\item AUTOR $\rightarrow$ $*\{quote\_token\}$ $\rightarrow$ QUOTE
+			\item AUTOR $\rightarrow$ $\{fim\_pagina\} $ $\rightarrow$ INITIAL
+			\item NOME\_AUTOR $\rightarrow$ $ ///////// FALTA\ CENAS///// $ $\rightarrow$ PAGE ou AUTOR
+			\item NOME\_AUTOR $\rightarrow$ $\{fim\_pagina\} $ $\rightarrow$ INITIAL
+			\item QUOTE $\rightarrow$ $\{fim\_quote\} $ $\rightarrow$ AUTOR
+			\item QUOTE $\rightarrow$ $\{fim\_pagina\} $ $\rightarrow$ INITIAL
+		\end{itemize}
+\end{itemize}
+	
+\vspace{0.5cm}
+
+\underline{Notas:}
+\begin{itemize}
+	\item De referir que os estados terminais deste autómato podem ser qualquer um, uma vez que que um estado final é atingido quando um filtro atinge EOF (end-of-file).
+	\item O \emph{fim\_quote} no nosso filtro é representado em muitos casos, decidimos colocar tudo como sendo \emph{fim\_quote}.
 \end{itemize}
 
 
@@ -380,7 +407,13 @@ Importante referir que o grupo tomou a decisão de apresentar tais resultados in
 			\item Q $\Rightarrow$ QUOTE
 		\end{itemize}
 	\item Estado inicial: INIT
-	\item Estados finais: EOF (end of file)
+	\item Estados finais:
+		\begin{itemize}
+			\item INIT $\Rightarrow$ INITIAL
+			\item PAGE
+			\item PC $\Rightarrow$ PAGE\_CONTEUDO
+			\item Q $\Rightarrow$ QUOTE
+		\end{itemize}
 	\item Funções de Transição:
 		\begin{itemize}
 			\item INITIAL $\rightarrow$ $\{nova\_pag\}$ $\rightarrow$ PAGE
@@ -391,6 +424,12 @@ Importante referir que o grupo tomou a decisão de apresentar tais resultados in
 		\end{itemize}
 \end{itemize}
 
+\vspace{0.5cm}
+	
+\underline{Notas:}
+\begin{itemize}
+	\item De referir que os estados terminais deste autómato podem ser qualquer um, uma vez que que um estado final é atingido quando um filtro atinge EOF (end-of-file).
+\end{itemize}
 
 
 
@@ -511,7 +550,16 @@ Importante referir que o grupo tomou a decisão de apresentar tais resultados in
 			\item QALT $\Rightarrow$ QUOTES\_ALTERNATIVOS
 		\end{itemize}
 	\item Estado inicial: INIT
-	\item Estados finais: EOF (end of file)
+	\item Estados finais:
+		\item INIT $\Rightarrow$ INITIAL
+			\item PAGE
+			\item PC $\Rightarrow$ PAGE\_CONTEUDO
+			\item Q $\Rightarrow$ QUOTE
+			\item QC $\Rightarrow$ QUOTE\_CONT
+			\item ADU $\Rightarrow$ ADULTERADOS
+			\item ALT $\Rightarrow$ ALTERNATIVOS
+			\item QADU $\Rightarrow$ QUOTES\_ADULTERADOS
+			\item QALT $\Rightarrow$ QUOTES\_ALTERNATIVOS
 	\item Funções de Transição:
 		\begin{itemize}
 			\item INITIAL $\rightarrow$ $\{nova\_pag\}$ $\rightarrow$ PAGE
@@ -534,6 +582,12 @@ Importante referir que o grupo tomou a decisão de apresentar tais resultados in
 		\end{itemize}
 \end{itemize}
 
+\vspace{0.5cm}
+	
+\underline{Notas:}
+\begin{itemize}
+	\item De referir que os estados terminais deste autómato podem ser qualquer um, uma vez que que um estado final é atingido quando um filtro atinge EOF (end-of-file).
+\end{itemize}
 
 \chapter{Codificação e Testes}
 \label{chap:codificacao}
