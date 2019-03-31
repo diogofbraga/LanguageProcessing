@@ -346,7 +346,11 @@ Importante referir que o grupo tomou a decisão de apresentar tais resultados in
 
 	\vspace{0.5cm}
 
-\underline{Nota:} O autômato aqui representado apenas apresenta a generalização de todos os casos particulares desenvolvidos para a resolução do enunciado do exercício.
+\underline{Notas:}
+\begin{itemize}
+	\item O autômato aqui representado apenas apresenta a generalização de todos os casos particulares desenvolvidos para a resolução do enunciado do exercício.
+	\item Devido a questões de perceptibilidade, as condições \textit{inicio\_quote} e \textit{fim\_quote} na representação deste autômato não são funções de transição, mas meramente indicam que nestas ações ocorrem o início e o fim de uma citação, respetivamente.
+\end{itemize}
 
 	\vspace{1.0cm}
 
@@ -393,6 +397,7 @@ Importante referir que o grupo tomou a decisão de apresentar tais resultados in
 \newpage
 
 \subsection{Lista de Provérbios Adulterados}
+\label{sub:algoritmos3}
 
 \begin{center}
 \begin{tikzpicture}[scale=0.2]
@@ -482,7 +487,7 @@ Importante referir que o grupo tomou a decisão de apresentar tais resultados in
 	\item fim\_pag $\Rightarrow$ </page>
 	\item ini\_tit $\Rightarrow$ <title>
 	\item fim\_tit $\Rightarrow$ </title>
-	\item quote\_token $\Rightarrow$ \{espacos\}\&quot;\{espacos\}
+	\item quote\_token $\Rightarrow$ \{espacos\}\&quot;
 	\item adulteracao $\Rightarrow$ \{espacos\}'''Adulteração:'''
 	\item alternativos $\Rightarrow$ \{espacos\}'''Alternativos:'''
 	\item adulterados $\Rightarrow$ \{espacos\}'''Adulterados:'''
@@ -579,7 +584,15 @@ Após a análise total das páginas, e de forma a não ter contextos em exagero,
 
 \subsection{Lista de Provérbios Adulterados}
 
+A abordagem a esta questão é diferente das anteriores. Ao invês de possuir muitos casos particulares, a resolução desta questão possui antes um maior encadeamento de estados, como foi possível concluir na secção \ref{sub:algoritmos3}. Tal acontece porque estamos interessados em saber provérbios que estejam relacionados com outros provérbios.
 
+A fase inicial de filtrar os títulos funciona tal e qual como na questão 2. Depois de estar no conteúdo duma página, o algoritmo é diferente.
+
+Primeiro lemos o provérbio e guardamo-lo em memória, fazendo uso da função \textit{strdup}. Se a linha seguinte for uma das marcas que indicam que vão ser listados os provérbios alternativos ou adulterados, imprimi-mos no ecrã o provérbio que tinha sido guardado. Caso contrário, continuamos a filtragem normalmente.
+
+Caso a marca atingível seja a dos provérbios adulterados, vai ser iniciada na linha seguinte a listagem destes mesmos. Estes provérbios vão ser impressos e marcados como adulterados no output do filtro. A listagem termina quando a marca deixar de ser \underline{***}.
+
+Tal processo acontece também com os provérbios alternativos, sendo que estes têm apenas uma diferença nos estados ao qual se dirigem. Após análise do ficheiro foi possível concluir que os provérbios adulterados, caso existam, sucedem sempre os provérbios alternativos. Desta forma é necessário, depois de listar os provérbios alternativos, verificar também os adulterados do provérbio original, caso surja a marca destes.
 
 
 \section{Testes realizados e Resultados}
@@ -610,6 +623,18 @@ Seguem-se alguns exemplos de provérbios obtidos da filtragem.
 
 
 \subsection{Lista de Provérbios Adulterados}
+
+O resultado do filtro está organizado por Título e Citações (com os seus adulterados), sendo que no final é apresentada uma estatística da filtragem, que contempla o número de páginas total, o número de páginas com título começado por 'Provérbios', o número de adulterações, o número de alternativos, e o número de citações recolhidas no filtro.. Os resultados desta questão foram respetivamente: 13852, 67, 109, 190 e 191.
+
+Seguem-se alguns exemplos de provérbios obtidos da filtragem.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.60]{proverbios_adulterados.png}
+\caption{Parte do resultado obtido para os provérbios adulterados.}
+\label{img:autor}
+\end{figure}
+
 
 
 \chapter{Conclusão}

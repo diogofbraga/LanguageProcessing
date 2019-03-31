@@ -13,7 +13,7 @@ nova_pag        \<page\>
 fim_pag         \<\/page\>
 ini_tit         \<title\>
 fim_tit         \<\/title\>
-quote_token     {espacos}\&quot\;{espacos}
+quote_token     {espacos}\&quot\;
 adulteracao     {espacos}'''Adulteração:'''
 alternativos    {espacos}'''Alternativos:'''
 adulterados     {espacos}'''Adulterados:'''
