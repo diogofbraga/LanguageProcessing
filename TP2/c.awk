@@ -10,8 +10,8 @@ END                     {  make_page_html("verbos"); for(verbo in verbos) {list_
 
 func make_index_html(){
     print "<html>\n" > "index.html";
-    print "<title>Exercício 5.b)</title>" >> "index.html";
-    print "<h1>Exercício 5.b)</h1>" >> "index.html";
+    print "<title>Exercício 5.c)</title>" >> "index.html";
+    print "<h1>Exercício 5.c)</h1>" >> "index.html";
     print "<LI><a href=\"verbos.html\">Verbos</a></LI>\n" >> "index.html";
     print "<LI><a href=\"substantivos.html\">Substantivos</a></LI>\n" >> "index.html";
     print "<LI><a href=\"adjectivos.html\">Adjectivos</a></LI>\n" >> "index.html";
