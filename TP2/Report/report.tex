@@ -22,7 +22,7 @@
 \setlength{\textheight}{23cm}
 
 \title{Processamento de Linguagens (3º ano de Curso)\\
-	\textbf{Trabalho Prático Nº2}\\ Relatório de Desenvolvimento}
+	\textbf{Trabalho Prático Nº2 (GAWK)}\\ Relatório de Desenvolvimento}
 \author{Diogo Braga\\ A82547 \and João Silva\\ A82005 \and Ricardo Caçador\\ A81064}
 \date{\today}
 
@@ -31,8 +31,13 @@
 \maketitle
 
 \begin{abstract}
-	Neste relatório é apresentada a resolução de um exercício referente ao TP1, que tem como objetivos a utilização de Expressões Regulares para descrição de padrões de frases, e a utilização do Flex para gerar filtros de texto em C.
-Outro objetivo será ainda desenvolver, a partir de ERs, sistemática e automaticamente Processadores de Linguagens Regulares, que filtrem ou transformem textos com base no conceito de regras de produção Condição-Ação.
+	Neste relatório é apresentada a resolução de um exercício referente ao TP2, que tem como principais objetivos:
+	\begin{itemize}
+		\item aumentar a experiência de uso do ambiente Linux e de algumas ferramentas de apoio à programação;
+ 		\item aumentar a capacidade de escrever \textbf{Expressões Regulares} para descrição de \textit{padrões de frases};
+ 		\item desenvolver, a partir de ERs, sistemática e automaticamente \textit{Processadores de Linguagens Regulares}, que filtrem ou transformem textos;
+ 		\item utilizar o sistema de produção para filtragem de texto \textbf{GAWK}.
+	\end{itemize}
 \end{abstract}
 
 \tableofcontents
@@ -42,13 +47,15 @@ Outro objetivo será ainda desenvolver, a partir de ERs, sistemática e automati
 \chapter{Introdução}
 \label{chap:intro}
 
-Seguindo a fórmula \emph{exe= (N\_Alu\% 7) + 1} e o número de aluno mais baixo presente no nosso grupo (81064), o enunciado correspondente é o \textbf{5 - WikiQuotes: provérbios}.
+Seguindo a fórmula \emph{exercício = (N\_Alu\% 5)  +  1} e o número de aluno mais baixo presente no nosso grupo (81064), o enunciado correspondente é o \textbf{5 - Processador de textos preanotados com Freeling}.
 
-Este enunciado apresenta-nos um tema relacionado com várias citações de vários autores, vários provérbios de línguas diferentes, e ainda provérbios que são variações dos originais e alguns que são adulterações dos originais. Este tipo de material está armazenado num ficheiro \emph{XML}, onde se encontra muitas vezes organizado e outras vezes não tão bem organizado.
+Este enunciado apresentou-nos um tipo de ficheiro (\textbf{CORPORA}) que agrupam grandes quantidade de textos aos quais adicionam informação de anotação frásica e morfossintática. Estes ficheiros vêm ainda incorporados com o formato \textbf{Freeling} que separa extratos com uma linha em branco, e separa colunas por espaços para a informação morfossintática de cada palavra.
 
-Ao longo deste trabalho produzimos essencialmente 3 filtros cada um com um objetivo bem delimitado. O primeiro filtro atua sobre as citações contidas em páginas de autor, o segundo filtro retém todas as citações cujo título da página comece com "Provérbios" e, por último, o terceiro filtro procura um padrão de provérbios que estejam adulterados. Neste último caso optamos também por filtrar os provérbios que são variações. De referir ainda que ligamos os provérbios adulterados e os que são variações ao respetivo provérbio original. O pergunta 4 do enunciado, o grupo optou por não a fazer separadamente dos outros filtros pelos que cada filtro apresenta estatísticas sobre o seu trabalho.
+Ao longo deste trabalho produzimos principalmente 4 filtros em \textbf{AWK}, cada um com um objetivo bem delimitado. O primeiro visa contar o número de extratos contidos num determinado ficheiro. O segundo calcula uma lista de personagens de \textit{Harry Potter}, bem como o número de ocorrências associado a cada uma. O terceiro calcula uma lista de verbos,  substantivos, adjectivos e advérbios e mostra o resultado num ficheiro \textbf{HTML}. Por último o quarto filtro tem como objetivo determinar o dicionário implícito \textbf{CORPORA} que é uma lista contendo os lema, pos e palavras dele derivadas.
 
-Com este relatório pretendemos apresentar as nossas opções, algoritmos desenvolvidos e ainda estruturas utilizadas para a realização de cada filtro. Pretendemos também apoiar aquelas que foram as nossas soluções, com conhecimento obtido nas aulas teóricas, relembrando por exemplo o caso dos autómatos.
+Com este relatório pretendemos apresentar as nossas opções, algoritmos desenvolvidos e ainda estruturas utilizadas para a realização de cada filtro. Pretendemos também apoiar aquelas que foram as nossas soluções, com conhecimento obtido nas aulas teóricas.
+
+///////////////////////// A REVER NO FINAL /////////////////////
 
 Para uma melhor visão do que irá ser abordado neste relatório deixamos uma breve descrição daquilo que foi feito. No segundo capítulo foi feita uma análise informal e uma especificação dos requisitos deste projeto. No terceiro capítulo foi realizado o desenho da conceção no qual estão envolvidos os algoritmos e estruturas de dados usados. No quarto capítulo mostramos alguns exemplos de implementações e vários resultados de testes realizados. Por último no capítulo 5 fazemos uma retrospetiva do trabalho realizado e concluímos.
 
