@@ -55,16 +55,14 @@ function posExplanation(pos) {
     if(pos=="W") return "W: Date"
 }
 
-#BEGIN             { c = 0; print "Dicionário: \n"} # FS = Separador de campo = ‘ ‘ (valor por omissão)
-#                  { palavra[c] = $2; lema[c] = $3; pos[c] = $5;}
-#                  { res[c] = "Lema: "lema[c]"\t\t\t\t\tPalavra derivada: "palavra[c]"\t\t\t\t\tPart Of Speech: "pos[c] }
-#                  { c++ }
-#END               { asort(res); for(i in res) print res[i] }
 
+# index -> Search the string in for the first occurrence of the string find, and return the position in characters where that occurrence begins in the string in.
 
-#BEGIN             { print "Dicionário: \n"} # FS = Separador de campo = ‘ ‘ (valor por omissão)
-#                  { palavras[$2] = "Lema: "$3"\t\t\t\t\tPart Of Speech: "$5"\t\t\t\t\tPalavra derivada: "$2 }
-#END               { asort(palavras); for(i in palavras) print palavras[i]; }
+# $ awk 'BEGIN { print index("peanut", "an") }'
+# -| 3
+
+# If find is not found, index() returns zero.
+
 
 # asort -> awk sorts the values of 'palavras' and replaces the indices of the sorted values of 'palavras' with sequential integers starting with one
 
