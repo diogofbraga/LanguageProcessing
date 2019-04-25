@@ -53,6 +53,11 @@ function posExplanation(pos) {
     if(pos=="Fpa") return "Fpa: Punctuation Parenthesis Open"
     if(pos=="Fpt") return "Fpt: Punctuation Parenthesis Close"
     if(pos=="W") return "W: Date"
+    if(pos=="Zm") return "Zm: Number Currency"
+    if(pos=="Fca") return "Fca: Ponctuation Squarebracket Open"
+    if(pos=="Fct") return "Fct: Ponctuation Squarebracket Close"
+    if(pos=="Fh") return "Fh: Ponctuation Slash"
+    if(pos=="Fd") return "Fd: Ponctuation Colon"
 }
 
 

@@ -95,7 +95,7 @@ Na figura \ref{img:analise1} é possivel verificar:
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.6]{analise1.png}
-\caption{Exemplo de 2 extratos no ficheiro harrypotter1.}
+\caption{Exemplo de dois extratos no ficheiro harrypotter1.}
 \label{img:analise1}
 \end{figure}
 
@@ -192,12 +192,40 @@ Existe também a possibilidade de um provérbio ter só adulterados ou só alter
 
 \subsection{Dicionário}
 
-///////////////////////// POR FAZER /////////////////////
+Nesta quarta alínea do exercício era requerida a apresentação de um dicionário implícito num ficheiro corpora. Este dicionário deve conter as lemas, as palavras derivadas das lemas, e a informação relativa a essas mesmas palavras. Esta informação vem dividida em colunas.
 
-Nesta quarta alínea do exercício, era requerida a apresentação de estatísticas referentes ao que foi filtrado nas alíneas anteriores.
+Realizando a análise de cada ficheiro concluímos que, para a resolução deste exercício o que nos interessava era:
 
-Importante referir que o grupo tomou a decisão de apresentar tais resultados individualmente nas questões ao invés de tudo nesta parte. Esta decisão assim aconteceu porque achamos mais benéfico saber as estatísticas dos resultados em cada questão, visto ser mais fácil a sua análise.
+\begin{itemize}
+ \item Segunda coluna $\Rightarrow$ Palavra
+ \item Terceira coluna $\Rightarrow$ Lema da Palavra
+ \item Quinta coluna $\Rightarrow$ Tag relativa à informação da Palavra
+\end{itemize}
 
+Apesar de não ser utilizada diretamente, a sexta coluna é também importante, pois é nesta que está contida a informação relacionada com a Tag apresentada na quinta coluna.
+
+\vspace{0.5cm}
+
+Na figura \ref{img:analise4} é possivel verificar:
+
+\begin{enumerate}
+	\item Palavra $\Rightarrow$ Dumbledore ; Lema $\Rightarrow$ dumbledore ; Tag $\Rightarrow$ NP ; Informação $\Rightarrow$ Noun Proper ;
+	\item Palavra $\Rightarrow$ voltou ; Lema $\Rightarrow$ voltar ; Tag $\Rightarrow$ VMI ; Informação $\Rightarrow$ Verb Main Indicative ;
+	\item Palavra $\Rightarrow$ se ; Lema $\Rightarrow$ se ; Tag $\Rightarrow$ PP ; Informação $\Rightarrow$ Pronoun Personal ;
+	\item Palavra $\Rightarrow$ e ; Lema $\Rightarrow$ e ; Tag $\Rightarrow$ CC ; Informação $\Rightarrow$ Conjunction Coordinating ;
+	\item Palavra $\Rightarrow$ desceu ; Lema $\Rightarrow$ descer ; Tag $\Rightarrow$ VMI ; Informação $\Rightarrow$ Verb Main Indicative ;
+	\item Palavra $\Rightarrow$ a ; Lema $\Rightarrow$ o ; Tag $\Rightarrow$ DA ; Informação $\Rightarrow$ Determiner Article ;
+	\item Palavra $\Rightarrow$ rua ; Lema $\Rightarrow$ rua ; Tag $\Rightarrow$ NC ; Informação $\Rightarrow$ Noun Common ;
+	\item Palavra $\Rightarrow$ . ; Lema $\Rightarrow$ . ; Tag $\Rightarrow$ Fp ; Informação $\Rightarrow$ Punctuation Period ;
+\end{enumerate}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{analise4.png}
+\caption{Exemplo de um extrato no ficheiro harrypotter1.}
+\label{img:analise4}
+\end{figure}
 
 
 \chapter{Conceção/desenho da Resolução}
