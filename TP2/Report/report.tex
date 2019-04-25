@@ -146,49 +146,21 @@ Nos capítulos seguintes serão abordados pormenorizadamente estes casos.
 
 \subsection{Palavras por Classes em HTML}
 
-///////////////////////// POR FAZER /////////////////////
+A terceira alínea do exercício requeria que fosse criado um filtro capaz de calcular uma lista de verbos, substantivos, adjectivos e advérbios. Consequentemente deveria ser colocado num ficheiro HTML cada uma destas listas.
 
-Nesta terceira alínea do exercício, era requerida a listagem dos provérbios "adulterados" e o seu original. Era suposto procurar um padrão que identificasse estes provérbios.
+Numa primeira abordagem ao problema foram analisadas as possíveis formas de apresentação de cada classe de palavras a serem filtradas.
 
-Ao proceder à análise do ficheiro \textit{XML} foi possível concluir que os provérbios adulterados e alternativos seriam apresentados da seguinte forma:
+Atendendo ao formato Freeling dum ficheiro CORPORA, foram de fácil verificação os seguintes factos, relativos à 6ª coluna de cada extrato:
 
-
-A seleção das páginas a filtrar é realizada tal como na subsecção \ref{subsec:analise2}, isto é, selecionamos as páginas cujo título começa por "Provérbios". Tendo em conta este requisito, o filtro a seguir é também aplicado ao que se encontra entre as marcas \underline{<title>} e \underline{</title>} duma página.
-
-Filtrando os títulos das páginas, procuramos depois saber quais as marcas que indicam um provérbio adulterado e um provérbio alternativo. Importante referir que decidimos tomar como diferentes estas qualificações.
-
-\vspace{0.2cm}
-
-Segundo a nossa análise, a indicação de provérbios adulterados/alternativos acontece, em regra geral, da seguinte forma:
 \begin{enumerate}
-\item É apresentado um provérbio inicializado com a marca \underline{* \&quot;} e finalizado com a marca \underline{\&quot;} ;
-	\begin{enumerate}
-		\item Caso a linha seguinte seja inicializada da mesma forma, o provérbio não contém adulterações;
-	\end{enumerate}
-\item É apresentada a marca \underline{** '''Alternativos:'''}, ou \underline{** '''Adulteração:'''} ou \underline{** '''Adulterados:'''}, que mostra que a seguir vão ser listados esses provérbios;
-	\begin{enumerate}
-		\item Caso seja \underline{** '''Alternativos:'''}, é inicializada a fase dos provérbios alternativos;
-		\item Caso seja \underline{** '''Adulteração:'''} ou \underline{** '''Adulterados:'''}, é inicializada a fase dos provérbios adulterados;
-	\end{enumerate}
-\item É apresentado um provérbio inicializado com a marca \underline{*** \&quot;} e finalizado com a marca \underline{\&quot;} , que é o alternativo ou o adulterado da citação apresentada no passo 1.
+ \item Se uma palavra for um verbo, então "pos=verb" está contido neste campo;
+ \item Se uma palavra for um substantivo, então "pos=noun" está contido neste campo;
+ \item Se uma palavra for um adjetivo, então "pos=adjective" está contido neste campo;
+ \item Se uma palavra for um advérbio, então "pos=adverb" está contido neste campo;
 \end{enumerate}
 
-\vspace{0.2cm}
+Foram ainda necessárias criar algumas bases na linguagem de programação HTML relativas à estruturação dum ficheiro, à criação dum cabeçalho e à listagens de elementos. Estas foram basicamente todas as operações necessárias, usadas nesta linguagem, para a realização desta alínea.
 
-Na figura \ref{img:pagina_adulterados}, é possível visualizar um caso destes:
-
-\begin{itemize}
-\item Provérbio original que contém adulterações $\Rightarrow$ "A cavalo dado não se olham os dentes."
-\item Provérbio alternativo $\Rightarrow$ "A cavalo dado não se olha o dente."
-\item Provérbio adulterado 1 $\Rightarrow$ "A cavalo dado não se olham os dentes para não levar mordida."
-\item Provérbio adulterado 2 $\Rightarrow$ "A jantar dado, não se olha o molho."
-\item Provérbio sem adulterações $\Rightarrow$ "A cavalo roedor, cabresto curto"
-\item Provérbio indefenido (depende do que aparecer na linha seguinte) $\Rightarrow$ "A chave do almoço é um bocado de pão e, a da zaragata é uma palavra."
-\end{itemize}
-
-\vspace{0.2cm}
-
-Existe também a possibilidade de um provérbio ter só adulterados ou só alternativos. Todos estes casos serão abordados nos capítulos seguintes.
 
 \subsection{Dicionário}
 
