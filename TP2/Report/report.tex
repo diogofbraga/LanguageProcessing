@@ -64,34 +64,45 @@ Para uma melhor visão do que irá ser abordado neste relatório deixamos uma br
 \chapter{Análise e Especificação}
 \label{chap:analise}
 
-Analisando o problema como um todo o que podemos encontrar aquando da observação do ficheiro \textbf{ptwikiquote-20190301-pages-articles.xml}, são várias meticulosidades no que toca à organização das páginas, títulos, citações, provérbios, etc. Contudo o nosso objetivo central é filtrar somente o que achamos necessário para respeitar os requisitos impostos pelo enunciado e descritos nas subsecções seguintes.
+Analisando o problema como um todo o que podemos encontrar aquando da observação dos ficheiros \textbf{fl0}, \textbf{fl1}, \textbf{fl2}, \textbf{harrypotter1} e \textbf{harrypotter2}, é a apresentação de vários extratos com detalhes relacionados com a anotação frásica e morfossintática de cada palavra. O nosso objetivo principal é filtrar o que achamos necessário para cumprir os requisitos impostos pelo enunciado e descritos nas subsecções seguintes.
 
-Nas secções seguintes serão apresentados os objetivos de cada alínea do exercício e ainda as observações que foram feitas ao ficheiro que contém todo o \emph{XML}, por forma a pensar que casos iríamos ter futuramente e começarmos a delinear uma arquitetura duma possível solução.
+Nas secções seguintes serão apresentados os objetivos de cada alínea do exercício e ainda as observações que foram feitas ao ficheiro, por forma a pensar que casos iríamos ter futuramente e começarmos a delinear uma arquitetura duma possível solução.
 
 \section{Análise e Especificação dos Requisitos}
 \subsection{Número de Extratos}
+\label{subsec:analise1}
 
-Na primeira alínea do exercício, era requerido um filtro que criasse uma lista de citações com o respetivo autor, somente se estas citações se encontrarem numa página de autor.
+Na primeira alínea do exercício, era requerido um filtro que contasse o número de extratos de um ficheiro corpora Freeling.
 
-Ao proceder à análise do ficheiro \emph{XML} reparamos que uma página seria de autor se contivesse o seguinte cenário dentro da mesma:
+Ao proceder à análise dos ficheiros concluímos que, como já tinha sido projetado no enunciado, o formato Freeling separa extratos com uma linha em branco.
 
+É importante referir que, no caso destes ficheiros, a pontuação nos extratos é contabilizada como sendo palavras.
 
-Obviamente existem páginas que contém informações mais volumosas sobre um autor e outras páginas que contém menos. Posto isto reparamos que o campo \textbf{Nome}, pode ou não estar preenchido. Para os casos em que não está preenchido, o grupo achou por bem não considerar que a página se trataria de um autor, ignorando todos as citações na página contidas. O campo \textbf{Nome} possuía ainda outro pormenor. Muitas vezes surge referenciado noutra língua como por exemplo espanhol (\emph{Nombre}) e inglês (\emph{Name}).
+\vspace{0.5cm}
 
-Em páginas de autor investigámos de que forma aparecem a maior parte das citações que estes fazem. Chegamos à conclusão que na maior parte dos casos as citações surgem da seguinte forma:
+Na figura \ref{img:analise1} é possivel verificar:
 
-Conseguimos identificar que a maior parte das citações de autores se encontram no meio de \textbf{\&quot;} e apenas teríamos de filtrar o que estivesse entre duas marcas deste tipo. Mas com a análise de mais casos deparámo-nos com situações desta natureza:
+\begin{enumerate}
+ \item Fim de um extrato de 10 palavras finalizada com '.';
+ \item Espaço que indica mudança de extrato;
+ \item Extrato "O senhor Dursley ficou transido.", com 6 palavras;
+ \item Espaço que indica mudança de extrato;
+ \item Extrato "O medo apoderou se de ele.", com 7 palavras;
+ \item Espaço que indica mudança de extrato;
+ \item Início de um extrato iniciado com "Olhou para".
+\end{enumerate}
 
-
-Contudo surgiram muitos mais casos durante esta análise podemos referir casos em que citações não terminam com a marca \textbf{\&quot;} mas em vez disso acabam com por exemplo \textbf{::-}, ou \textbf{:-}, e ainda \textbf{**}.
-
-Estes casos e muitos mais serão tratados nos capítulos seguintes.
-
-
-\newpage
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{analise1.png}
+\caption{Exemplo de 2 extratos no ficheiro harrypotter1.}
+\label{img:analise1}
+\end{figure}
 
 \subsection{Personagens do Harry Potter}
 \label{subsec:analise2}
+
+///////////////////////// POR FAZER /////////////////////
 
 Nesta segunda alínea do exercício, era requerido um filtro que criasse uma lista de provérbios (citações contidas em páginas cujo título começa por "Provérbios").
 
@@ -134,6 +145,8 @@ Nos capítulos seguintes serão abordados pormenorizadamente estes casos.
 
 
 \subsection{Palavras por Classes em HTML}
+
+///////////////////////// POR FAZER /////////////////////
 
 Nesta terceira alínea do exercício, era requerida a listagem dos provérbios "adulterados" e o seu original. Era suposto procurar um padrão que identificasse estes provérbios.
 
@@ -179,6 +192,8 @@ Existe também a possibilidade de um provérbio ter só adulterados ou só alter
 
 \subsection{Dicionário}
 
+///////////////////////// POR FAZER /////////////////////
+
 Nesta quarta alínea do exercício, era requerida a apresentação de estatísticas referentes ao que foi filtrado nas alíneas anteriores.
 
 Importante referir que o grupo tomou a decisão de apresentar tais resultados individualmente nas questões ao invés de tudo nesta parte. Esta decisão assim aconteceu porque achamos mais benéfico saber as estatísticas dos resultados em cada questão, visto ser mais fácil a sua análise.
@@ -188,12 +203,16 @@ Importante referir que o grupo tomou a decisão de apresentar tais resultados in
 \chapter{Conceção/desenho da Resolução}
 \label{chap:concecao}
 
+///////////////////////// POR FAZER /////////////////////
+
 Neste capítulo baseando-nos nas análises feitas ao ficheiro \emph{XML}, construímos 3 autómatos que achamos que seriam necessários para a implementação de cada um dos 3 filtros.
 
 Os autómatos criados são uma representação de alto nível dos algoritmos implementados e serviram para criar uma base para a fase de implementação e ter uma boa noção dos contextos a utilizar. Não têm por isso, todo o detalhe que deviam uma vez que existem casos muito peculiares de implementação que não devem devem nem podem (por motivos de espaço e compreensão) ser colocados nos autómatos.
 
 \section{Algoritmos}
-\subsection{Lista de Citações}
+\subsection{Número de Extratos}
+
+///////////////////////// POR FAZER /////////////////////
 
 \begin{center}
 \begin{tikzpicture}[scale=0.2]
@@ -315,8 +334,10 @@ Os autómatos criados são uma representação de alto nível dos algoritmos imp
 
 
 
-\subsection{Lista de Provérbios}
+\subsection{Personagens do Harry Potter}
 \label{sub:algoritmos2}
+
+///////////////////////// POR FAZER /////////////////////
 
 \begin{center}
 \begin{tikzpicture}[scale=0.2]
@@ -417,8 +438,10 @@ Os autómatos criados são uma representação de alto nível dos algoritmos imp
 
 \newpage
 
-\subsection{Lista de Provérbios Adulterados}
+\subsection{Palavras por Classes em HTML}
 \label{sub:algoritmos3}
+
+///////////////////////// POR FAZER /////////////////////
 
 \begin{center}
 \begin{tikzpicture}[scale=0.2]
@@ -576,13 +599,23 @@ Os autómatos criados são uma representação de alto nível dos algoritmos imp
 	\item De referir que os estados terminais deste autómato podem ser qualquer um, uma vez que que um estado final é atingido quando um filtro atinge EOF (end-of-file).
 \end{itemize}
 
+\subsection{Dicionário}
+\label{sub:algoritmos4}
+
+///////////////////////// POR FAZER /////////////////////
+
+
 \chapter{Codificação e Testes}
 \label{chap:codificacao}
+
+///////////////////////// POR FAZER /////////////////////
 
 Para a presente secção de codificação e testes baseámo-nos nos capítulos anteriores, pois ambos são extremamente importantes para uma boa implementação desta fase. O capítulo de análise teve a sua relevância pois permitiu-nos ter já uma ideia de que expressões regulares utilizar para filtrar o que desejávamos e o capítulo da conceção da resolução foi relevante pois definimos os autómatos necessários e os contextos precisos para coordenar o processo de filtragem para cada requisito.
 
 \section{Estruturas de Dados}
-\subsection{Lista de Citações}
+\subsection{?????????}
+
+///////////////////////// POR FAZER /////////////////////
 
 Quando começamos a desenvolver os primeiros filtros para testar com o ficheiro de input, deparamo-nos com a situação de existir mais que uma página para um mesmo autor. Seria portanto ideal que armazenássemos todas as citações referentes a um autor numa \textbf{Tabela de Hash} e íamos inserindo a esta as citações que aparecessem em diferentes páginas referentes a um mesmo autor.
 
@@ -593,7 +626,9 @@ Desta forma criamos uma estrutura \textbf{TodasCitações}, que contém uma \tex
 
 \section{Alternativas, Decisões e Problemas de Implementação}
 
-\subsection{Lista de Citações}
+\subsection{Número de Extratos}
+
+///////////////////////// POR FAZER /////////////////////
 
 Ao implementar esta questão começou-se por reparar que nem todas as páginas de autor estão de facto identificadas por um autor. Desta forma foi necessário ignorar todas as páginas de autor que não fossem identificadas por um autor que tivesse um nome com tamanho superior a 1.
 
@@ -606,7 +641,9 @@ Muita vezes fomo-nos deparando com citações que continham \textbf{\&quot;} nã
 Para a realização deste filtro utilizámos as estruturas descritas acima em conjunto com algumas funções auxiliares que no permitiam inserir citações, autores, e ainda imprimir todas as citações da estrutura existente.
 
 
-\subsection{Lista de Provérbios}
+\subsection{Personagens do Harry Potter}
+
+///////////////////////// POR FAZER /////////////////////
 
 Tendo em conta a grande variedade de marcas para representar provérbios em diferentes países, a resolução desta questão foi condicionada por tal. Desta forma, são muitos os estados criados para as mesmas partes de diferentes páginas do ficheiro.
 
@@ -623,7 +660,9 @@ Após a análise total das páginas, e de forma a não ter contextos em exagero,
 
 \newpage
 
-\subsection{Lista de Provérbios Adulterados}
+\subsection{Palavras por Classes em HTML}
+
+///////////////////////// POR FAZER /////////////////////
 
 A abordagem a esta questão é diferente das anteriores. Ao invês de possuir muitos casos particulares, a resolução desta questão possui antes um maior encadeamento de estados, como foi possível concluir na secção \ref{sub:algoritmos3}. Tal acontece porque estamos interessados em saber provérbios que estejam relacionados com outros provérbios.
 
@@ -636,9 +675,15 @@ Caso a marca atingível seja a dos provérbios adulterados, vai ser iniciada na 
 Tal processo acontece também com os provérbios alternativos, sendo que estes têm apenas uma diferença nos estados ao qual se dirigem. Após análise do ficheiro foi possível concluir que os provérbios adulterados, caso existam, sucedem sempre os provérbios alternativos. Desta forma é necessário, depois de listar os provérbios alternativos, verificar também os adulterados do provérbio original, caso surja a marca destes.
 
 
+\subsection{Dicionário}
+
+///////////////////////// POR FAZER /////////////////////
+
 
 \section{Testes realizados e Resultados}
-\subsection{Lista de Citações}
+\subsection{Número de Extratos}
+
+///////////////////////// POR FAZER /////////////////////
 
 Aplicando o filtro criado para a primeira questão com o ficheiro de input disponibilizado, podem-se verificar resultados com um formato muito parecido ao da seguinte imagem.
 
@@ -646,6 +691,8 @@ Foram apenas imprimidas citações de autores que existam e no final é apresent
 
 
 \subsection{Lista de Provérbios}
+
+///////////////////////// POR FAZER /////////////////////
 
 Tendo em conta a imensa variedade de marcas de início de provérbios, nesta fase os testes tiveram uma enorme importância.
 
@@ -656,16 +703,20 @@ Seguem-se alguns exemplos de provérbios obtidos da filtragem.
 
 \newpage
 
-\subsection{Lista de Provérbios Adulterados}
+\subsection{Palavras por Classes em HTML}
+
+///////////////////////// POR FAZER /////////////////////
 
 O resultado do filtro está organizado por Título e Citações (com os seus adulterados), sendo que no final é apresentada uma estatística da filtragem, que contempla o número de páginas total, o número de páginas com título começado por 'Provérbios', o número de adulterações, o número de alternativos, e o número de citações recolhidas no filtro.
 
 Seguem-se alguns exemplos de provérbios obtidos da filtragem.
 
-
 \newpage
 
-\subsection{Estatísticas de cada filtro}
+\subsection{Dicionário}
+
+
+///////////////////////// POR FAZER /////////////////////
 
 As seguintes imagens representam os resultados de cada filtro realizado, que aparecem no final de cada filtragem.
 
@@ -673,6 +724,8 @@ As seguintes imagens representam os resultados de cada filtro realizado, que apa
 
 \chapter{Conclusão}
 \label{chap:concl}
+
+///////////////////////// POR FAZER /////////////////////
 
 Tendo em conta os requisitos deste projeto, e o trabalho realizado pelo grupo, achamos que os objetivos fundamentais foram atingidos, sendo estes a capacidade de criar padrões com uso de \textbf{Expressões Regulares}, o entendimento da utilização da ferramenta \textbf{flex} para a criação destes padrões, a capacidade de analisar ficheiros de entrada e criar algoritmos de resolução recorrendo a \textbf{autómatos}.
 
