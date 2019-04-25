@@ -17,6 +17,13 @@ function posGenSub(p){
 }
 
 
+# gsub(regexp, replacement [, target]) -> Search target for all of the longest, leftmost, nonoverlapping matching substrings it can find and replace them with replacement.
+
+#    { gsub(/Britain/, "United Kingdom"); print }
+
+#    replaces all occurrences of the string ‘Britain’ with ‘United Kingdom’ for all input records.
+
+
 # index -> Search the string in for the first occurrence of the string find, and return the position in characters where that occurrence begins in the string in.
 
 # $ awk 'BEGIN { print index("peanut", "an") }'
