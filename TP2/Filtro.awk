@@ -1,4 +1,4 @@
-BEGIN                                               { }
+BEGIN                                               { "mkdir RESULTADOS_HTML" | getline ;}
 $1=="1"                                             { extratos++; }
 $2=="Harry" || $2=="Harry_Potter" || $2=="Potter"   { c["Harry Potter"]++; }
 $2=="Hermione" || $2=="Hermione_Granger"		    { c["Hermione Ganger"]++; }
@@ -28,38 +28,38 @@ END                                                 { make_index_html(extratos) 
                                                       }
 
 function make_index_html(extr){
-    print "<html>\n" > "index.html";
-    print "<title>Resultados dos Exercícios</title>" >> "index.html";
-    print "<h1>Exercício 5.a)</h1>" >> "index.html";
-    print "<LI> Número de Extratos: " extr " </LI>\n" >> "index.html";
-    print "<h1>Exercício 5.b)</h1>" >> "index.html";
-    print "<LI><a href=\"personagens.html\">Personagens</a></LI>\n" >> "index.html";
-    print "<h1>Exercício 5.c)</h1>" >> "index.html";
-    print "<LI><a href=\"verbos.html\">Verbos</a></LI>\n" >> "index.html";
-    print "<LI><a href=\"substantivos.html\">Substantivos</a></LI>\n" >> "index.html";
-    print "<LI><a href=\"adjectivos.html\">Adjectivos</a></LI>\n" >> "index.html";
-    print "<LI><a href=\"adverbios.html\">Advérbios</a></LI>\n" >> "index.html";
-    print "<h1>Exercício 5.d)</h1>" >> "index.html";
-    print "<LI><a href=\"dicionario.html\">Dicionário</a></LI>\n" >> "index.html";
-    print "</html>" >> "index.html"
+    print "<html>\n" > "RESULTADOS_HTML/index.html";
+    print "<title>Resultados dos Exercícios</title>" >> "RESULTADOS_HTML/index.html";
+    print "<h1>Exercício 5.a)</h1>" >> "RESULTADOS_HTML/index.html";
+    print "<LI> Número de Extratos: " extr " </LI>\n" >> "RESULTADOS_HTML/index.html";
+    print "<h1>Exercício 5.b)</h1>" >> "RESULTADOS_HTML/index.html";
+    print "<LI><a href=\"personagens.html\">Personagens</a></LI>\n" >> "RESULTADOS_HTML/index.html";
+    print "<h1>Exercício 5.c)</h1>" >> "RESULTADOS_HTML/index.html";
+    print "<LI><a href=\"verbos.html\">Verbos</a></LI>\n" >> "RESULTADOS_HTML/index.html";
+    print "<LI><a href=\"substantivos.html\">Substantivos</a></LI>\n" >> "RESULTADOS_HTML/index.html";
+    print "<LI><a href=\"adjectivos.html\">Adjectivos</a></LI>\n" >> "RESULTADOS_HTML/index.html";
+    print "<LI><a href=\"adverbios.html\">Advérbios</a></LI>\n" >> "RESULTADOS_HTML/index.html";
+    print "<h1>Exercício 5.d)</h1>" >> "RESULTADOS_HTML/index.html";
+    print "<LI><a href=\"dicionario.html\">Dicionário</a></LI>\n" >> "RESULTADOS_HTML/index.html";
+    print "</html>" >> "RESULTADOS_HTML/index.html"
 }
 
 function make_page_html(arg){
-    print "<html>" > arg ".html" ;
-    print "<title>" arg "</title>" >> arg ".html";
-    print "<h1>" arg "</h1>" >> arg ".html";
+    print "<html>" > "RESULTADOS_HTML/" arg ".html" ;
+    print "<title>" arg "</title>" >> "RESULTADOS_HTML/" arg ".html";
+    print "<h1>" arg "</h1>" >> "RESULTADOS_HTML/" arg ".html";
 }
 
 function list_elem_html(elem,filename){
-    print "<LI>" elem "</LI>" >> filename ".html";
+    print "<LI>" elem "</LI>" >> "RESULTADOS_HTML/" filename ".html";
 }
 
 function write_elem_html(elem,filename){
-    print "<p>" elem "</p>" >> filename ".html";
+    print "<p>" elem "</p>" >> "RESULTADOS_HTML/" filename ".html";
 }
 
 function make_end_html(arg){
-    print "</html>" >> arg ".html";
+    print "</html>" >> "RESULTADOS_HTML/" arg ".html";
 }
 
 function palavrasFunc(pal,l) {

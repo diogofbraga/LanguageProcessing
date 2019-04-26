@@ -104,44 +104,6 @@ Na figura \ref{img:analise1} é possivel verificar:
 
 ///////////////////////// POR FAZER /////////////////////
 
-Nesta segunda alínea do exercício, era requerido um filtro que criasse uma lista de provérbios (citações contidas em páginas cujo título começa por "Provérbios").
-
-Procedendo à análise do ficheiro \textit{XML} foi possível entender a forma como se organiza a informação nas páginas que referem provérbios:
-
-
-Neste caso, está exemplificada a página na qual o título é \textbf{Provérbios cipriotas}, visto que este se encontra entre as marcas \underline{<title>} e \underline{</title>}. É, portanto, desta forma que são identificadas as páginas que temos interesse em aceder. Tal facto aparece sublinhado a vermelho na figura.
-
-Aquando da análise do ficheiro foram encontrados casos em que o título continha a palavra "Provérbio", mas não era inicializado por esta. É importante, de facto, ter em conta este caso pois tal é requirido no enunciado do exercício.
-
-Filtrando os títulos das páginas, procuramos saber quais as marcas que indicam o início de um provérbio. Neste caso, sublinhado a verde, é possível concluir que a marca de início é \underline{* '''\&quot;} , enquanto a marca de fim é \underline{\&quot;'''}.
-
-Realizada a análise das páginas de provérbios, foi possível concluir que existem inúmeras formas de identificar o início e o fim dum provérbio. Tal acontece porque o ficheiro contém muita variedade de idiomas e, consequentemente, diferentes ideias das diferentes pessoas que decidem quais as marcas a usar nas citações.
-
-	\vspace{0.2cm}
-
-Alguns exemplos de marcas de início de provérbios presentes no ficheiro são:
-\begin{itemize}
- \item *\&quot;
- \item *\&quot;''
- \item **''\&quot;
- \item :'''
-\end{itemize}
-
-	\vspace{0.2cm}
-
-Por outro lado, alguns exemplos de marcas de final de provérbios presentes no ficheiro são:
-\begin{itemize}
- \item \&quot;
- \item \&quot;''
- \item ''\&quot;
- \item '''
-\end{itemize}
-
-	\vspace{0.2cm}
-
-A ideia inicial foi generalizar as expressões regulares para qualquer página de provérbios, mas devido ao facto de existirem inúmeras marcas diversificadas foi necessário criar alguns contextos específicos para cada país, de forma a que não houvessem conflitos entre marcas e fosse possível criar um output perceptível.
-
-Nos capítulos seguintes serão abordados pormenorizadamente estes casos.
 
 
 \subsection{Palavras por Classes em HTML}
@@ -717,6 +679,11 @@ Seguem-se alguns exemplos de provérbios obtidos da filtragem.
 ///////////////////////// POR FAZER /////////////////////
 
 As seguintes imagens representam os resultados de cada filtro realizado, que aparecem no final de cada filtragem.
+
+
+
+\chapter{Extras}
+\label{chap:extras}
 
 
 
