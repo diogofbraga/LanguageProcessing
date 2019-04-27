@@ -170,7 +170,15 @@ Neste capítulo baseando-nos nas análises feitas aos ficheiros que serviram de 
 \section{Algoritmos}
 \subsection{Número de Extratos}
 
-///////////////////////// POR FAZER /////////////////////
+Para este filtro, os valores associados ao \textbf{Register Separator} e ao \textbf{Field Separator} mantiveram-se os pré-definidos.
+
+Tendo em conta a secção \ref{subsec:analise1}, no qual foi concluído que os extratos eram separados por uma linha em branco, é também característica dum ficheiro CORPORA Freeling o facto dos extratos conterem as posições das suas palavras.
+
+Desta forma, a implementação deste filtro passa por utilizador um contador, inicializado a 0 no bloco \textbf{BEGIN}, que é incrementado cada vez que a primeira coluna duma linha é \textbf{"1"} (string).
+
+Esta abordagem faz sentido pois, para estarmos perante um extrato, este tem que ser inicializado com uma primeira palavra, e desta forma, estamos a contabilizar o número de vezes que um extrato é inicializado. Ou seja, estamos a contabilizar o número de extratos que existem.
+
+No final, no bloco de \textbf{END}, é impresso o contador que contêm o número de extratos presentes no ficheiro.
 
 
 \subsection{Personagens do Harry Potter}
@@ -189,7 +197,7 @@ Consoante a análise realizada no capítulo anterior, a parte do uso de express�
 \begin{itemize}
 	\item \$6 $\sim$ /pos=verb/
 	\item \$6 $\sim$ /pos=adjective/
-	\item \$6 $\sim$ /pos=adverb/ 
+	\item \$6 $\sim$ /pos=adverb/
 	\item \$6 $\sim$ /pos=noun/
 \end{itemize}
 
@@ -227,9 +235,6 @@ As funções \textbf{make\_page\_html(arg)} e \textbf{make\_end\_html(arg)} são
 Para a presente secção de codificação e testes baseámo-nos nos capítulos anteriores, pois ambos são extremamente importantes para uma boa implementação desta fase. O capítulo de análise teve a sua relevância pois permitiu-nos ter já uma ideia de que expressões regulares utilizar para filtrar o que desejávamos e o capítulo da conceção da resolução foi relevante pois definimos os algoritmos necessários para coordenar o processo de filtragem para cada requisito.
 
 \section{Estruturas de Dados}
-
-\subsection{Número de Extratos}
-///////////////////////// POR FAZER /////////////////////
 
 \subsection{Personagens do Harry Potter}
 ///////////////////////// POR FAZER /////////////////////
@@ -299,7 +304,7 @@ A informação fornecido é o número de extratos.
 \end{figure}
 
 
-\subsection{Lista de Provérbios}
+\subsection{Personagens do Harry Potter}
 
 ///////////////////////// POR FAZER /////////////////////
 
