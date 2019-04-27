@@ -401,163 +401,9 @@ Os autómatos criados são uma representação de alto nível dos algoritmos imp
 \subsection{Palavras por Classes em HTML}
 \label{sub:algoritmos3}
 
-///////////////////////// POR FAZER /////////////////////
+Inicialmente no bloco de \textbf{BEGIN} não alteramos nada que fosse relativo ao \textbf{Register Separator}, nem ao \textbf{Field Separator}, pelo que os valores associados a estes campos se mantiveram os pré-definidos. Neste bloco é realizada a criação duma pasta \textbf{C\_HTML} que albergará todos os ficheiros HTML necessários, e ainda é criado o ficheiro \textit{index.html} que corresponde ao ficheiro que é um índice de redirecionamento para outros.
 
-\begin{center}
-\begin{tikzpicture}[scale=0.2]
-\tikzstyle{every node}+=[inner sep=0pt]
-\draw [black] (8.9,-4.7) circle (3);
-\draw (8.9,-4.7) node {$INIT$};
-\draw [black] (25.8,-4.7) circle (3);
-\draw (25.8,-4.7) node {$PAGE$};
-\draw [black] (57.8,-4.7) circle (3);
-\draw (57.8,-4.7) node {$PC$};
-\draw [black] (40.4,-18.5) circle (3);
-\draw (40.4,-18.5) node {$Q$};
-\draw [black] (40.4,-29.9) circle (3);
-\draw (40.4,-29.9) node {$QC$};
-\draw [black] (17.1,-38.6) circle (3);
-\draw (17.1,-38.6) node {$ADU$};
-\draw [black] (63.3,-38.6) circle (3);
-\draw (63.3,-38.6) node {$ALT$};
-\draw [black] (17.1,-56.4) circle (3);
-\draw (17.1,-56.4) node {$QADU$};
-\draw [black] (63.3,-56.4) circle (3);
-\draw (63.3,-56.4) node {$QALT$};
-\draw [black] (10.223,-7.38) arc (54:-234:2.25);
-\draw (8.9,-11.95) node [below] {$fim\_pag$};
-\fill [black] (7.58,-7.38) -- (6.7,-7.73) -- (7.51,-8.32);
-\draw [black] (11.9,-4.7) -- (22.8,-4.7);
-\fill [black] (22.8,-4.7) -- (22,-4.2) -- (22,-5.2);
-\draw (17.35,-5.2) node [below] {$nova\_pag$};
-\draw [black] (2.1,-4.7) -- (5.9,-4.7);
-\fill [black] (5.9,-4.7) -- (5.1,-4.2) -- (5.1,-5.2);
-\draw [black] (28.8,-4.7) -- (54.8,-4.7);
-\fill [black] (54.8,-4.7) -- (54,-4.2) -- (54,-5.2);
-\draw (41.8,-5.2) node [below] {$ini\_tit$Proverbios.*$fim\_tit$};
-\draw [black] (55.45,-6.56) -- (42.75,-16.64);
-\fill [black] (42.75,-16.64) -- (43.69,-16.53) -- (43.07,-15.75);
-\draw (55.33,-12.1) node [below] {$*quote\_token$};
-\draw [black] (39.563,-27.024) arc (-169.37552:-190.62448:15.318);
-\fill [black] (39.56,-27.02) -- (39.91,-26.15) -- (38.92,-26.33);
-\draw (38.8,-24.2) node [left] {.*$quote\_token$};
-\draw [black] (37.697,-31.201) arc (-65.0152:-74.03449:120.165);
-\fill [black] (19.99,-37.81) -- (20.9,-38.07) -- (20.63,-37.11);
-\draw (35.41,-35.52) node [below] {$**adulterados$};
-\draw [black] (43.398,-29.835) arc (88.28203:50.11313:28.961);
-\fill [black] (61.1,-36.56) -- (60.81,-35.66) -- (60.17,-36.43);
-\draw (59.34,-31.05) node [above] {$**alternativos$};
-\draw [black] (19.719,-37.137) arc (118.00528:102.94504:72.268);
-\fill [black] (19.72,-37.14) -- (20.66,-37.2) -- (20.19,-36.32);
-\draw (21.94,-32.57) node [above] {$**adulteracao$};
-\draw [black] (17.156,-35.604) arc (-185.50339:-272.93049:19.371);
-\fill [black] (37.43,-18.12) -- (36.65,-17.58) -- (36.6,-18.57);
-\draw (17.55,-22.3) node [above] {$*quote\_token$};
-\draw [black] (16.426,-53.478) arc (-169.60117:-190.39883:33.118);
-\fill [black] (16.43,-53.48) -- (16.77,-52.6) -- (15.79,-52.78);
-\draw (15.38,-47.5) node [left] {$***quote\_token$};
-\draw [black] (62.681,-53.466) arc (-170.46728:-189.53272:36.021);
-\fill [black] (62.68,-53.47) -- (63.04,-52.59) -- (62.06,-52.76);
-\draw (61.68,-47.5) node [left] {$***quote\_token$};
-\draw [black] (43.381,-18.188) arc (91.55223:5.89903:19.419);
-\fill [black] (43.38,-18.19) -- (44.19,-18.67) -- (44.17,-17.67);
-\draw (62.95,-22.52) node [above] {$*quote\_token$};
-\draw [black] (60.305,-38.77) arc (-86.97892:-93.02108:381.471);
-\fill [black] (20.1,-38.77) -- (20.87,-39.31) -- (20.92,-38.31);
-\draw (40.2,-39.8) node [below] {$**adulterados$};
-\draw [black] (60.532,-39.755) arc (-68.8716:-111.1284:56.405);
-\fill [black] (19.87,-39.76) -- (20.43,-40.51) -- (20.79,-39.58);
-\draw (40.2,-44.05) node [below] {$**adulteracao$};
-\draw [black] (17.873,-41.497) arc (11.97339:-11.97339:28.935);
-\fill [black] (17.87,-41.5) -- (17.55,-42.38) -- (18.53,-42.18);
-\draw (19,-47.5) node [right] {.*$quote\_token$};
-\draw [black] (64.243,-41.446) arc (14.72619:-14.72619:23.817);
-\fill [black] (64.24,-41.45) -- (63.96,-42.35) -- (64.93,-42.09);
-\draw (65.53,-47.5) node [right] {.*$quote\_token$};
-\draw [black] (41.089,-21.416) arc (8.65405:-8.65405:18.5);
-\fill [black] (41.09,-21.42) -- (40.72,-22.28) -- (41.7,-22.13);
-\draw (41.8,-24.2) node [right] {$*quote\_token$};
-\end{tikzpicture}
-\end{center}
-
-\underline{Nota:}
-\begin{itemize}
-	\item Todos os estados do autômato possuem uma condição \textit{fim\_pag} para o estado INIT. Neste autômato só está representado no próprio estado INIT.
-\end{itemize}
-
-	\vspace{1.0cm}
-
-\textbf{Definições: }
-\begin{itemize}
-	\item espacos $\Rightarrow$ [\ ]*
-	\item nova\_pag $\Rightarrow$ <page>
-	\item fim\_pag $\Rightarrow$ </page>
-	\item ini\_tit $\Rightarrow$ <title>
-	\item fim\_tit $\Rightarrow$ </title>
-	\item quote\_token $\Rightarrow$ \{espacos\}\&quot;
-	\item adulteracao $\Rightarrow$ \{espacos\}'''Adulteração:'''
-	\item alternativos $\Rightarrow$ \{espacos\}'''Alternativos:'''
-	\item adulterados $\Rightarrow$ \{espacos\}'''Adulterados:'''
-\end{itemize}
-
-	\vspace{1.0cm}
-
-\textbf{Definição do autómato:}
-
-\begin{itemize}
-	\item Estados do autómato:
-		\begin{itemize}
-			\item INIT $\Rightarrow$ INITIAL
-			\item PAGE
-			\item PC $\Rightarrow$ PAGE\_CONTEUDO
-			\item Q $\Rightarrow$ QUOTE
-			\item QC $\Rightarrow$ QUOTE\_CONT
-			\item ADU $\Rightarrow$ ADULTERADOS
-			\item ALT $\Rightarrow$ ALTERNATIVOS
-			\item QADU $\Rightarrow$ QUOTES\_ADULTERADOS
-			\item QALT $\Rightarrow$ QUOTES\_ALTERNATIVOS
-		\end{itemize}
-	\item Estado inicial: INIT
-	\item Estados finais:
-		\begin{itemize}
-			\item INIT $\Rightarrow$ INITIAL
-			\item PAGE
-			\item PC $\Rightarrow$ PAGE\_CONTEUDO
-			\item Q $\Rightarrow$ QUOTE
-			\item QC $\Rightarrow$ QUOTE\_CONT
-			\item ADU $\Rightarrow$ ADULTERADOS
-			\item ALT $\Rightarrow$ ALTERNATIVOS
-			\item QADU $\Rightarrow$ QUOTES\_ADULTERADOS
-			\item QALT $\Rightarrow$ QUOTES\_ALTERNATIVOS
-		\end{itemize}
-	\item Funções de Transição:
-		\begin{itemize}
-			\item INITIAL $\rightarrow$ $\{nova\_pag\}$ $\rightarrow$ PAGE
-			\item PAGE $\rightarrow$ $\{ini\_tit\}$Proverbios.*$\{fim\_tit\}$ $\rightarrow$ PAGE\_CONTEUDO
-			\item PAGE\_CONTEUDO $\rightarrow$ $*\{quote\_token\}$ $\rightarrow$ QUOTE
-			\item QUOTE $\rightarrow$ .* $*\{quote\_token\}$ $\rightarrow$	QUOTE\_CONT
-			\item QUOTE\_CONT $\rightarrow$ $*\{quote\_token\}$ $\rightarrow$ QUOTE
-			\item QUOTE\_CONT $\rightarrow$ $**\{adulterados\}$ $\rightarrow$ ADULTERADOS
-			\item QUOTE\_CONT $\rightarrow$ $**\{adulteracao\}$ $\rightarrow$ ADULTERADOS
-			\item QUOTE\_CONT $\rightarrow$ $**\{alternativos\}$ $\rightarrow$ ALTERNATIVOS
-			\item ADULTERADOS $\rightarrow$ $***\{quote\_token\}$ $\rightarrow$ QUOTES\_ADULTERADOS
-			\item ADULTERADOS $\rightarrow$ $*\{quote\_token\}$ $\rightarrow$ QUOTE
-			\item ALTERNATIVOS $\rightarrow$ $***\{quote\_token\}$ $\rightarrow$ QUOTES\_ALTERNATIVOS
-			\item ALTERNATIVOS $\rightarrow$ $*\{quote\_token\}$ $\rightarrow$ QUOTE
-			\item ALTERNATIVOS $\rightarrow$ $**\{adulterados\}$ $\rightarrow$ ADULTERADOS
-			\item ALTERNATIVOS $\rightarrow$ $**\{adulteracao\}$ $\rightarrow$ ADULTERADOS
-			\item QUOTES\_ADULTERADOS $\rightarrow$ .* $*\{quote\_token\}$ $\rightarrow$ ADULTERADOS
-			\item QUOTES\_ALTERNATIVOS $\rightarrow$ .* $*\{quote\_token\}$ $\rightarrow$ ALTERNATIVOS
-			\item * $\rightarrow$ $\{fim\_pag\}$ $\rightarrow$ INITIAL
-		\end{itemize}
-\end{itemize}
-
-\vspace{0.5cm}
-
-\underline{Nota:}
-\begin{itemize}
-	\item De referir que os estados terminais deste autómato podem ser qualquer um, uma vez que que um estado final é atingido quando um filtro atinge EOF (end-of-file).
-\end{itemize}
+Consoante a análise realizada no capítulo anterior, a parte do uso de expressões regulares para a filtragem das classes de palavras
 
 \subsection{Dicionário}
 \label{sub:algoritmos4}
@@ -568,21 +414,24 @@ Os autómatos criados são uma representação de alto nível dos algoritmos imp
 \chapter{Codificação e Testes}
 \label{chap:codificacao}
 
-///////////////////////// POR FAZER /////////////////////
-
-Para a presente secção de codificação e testes baseámo-nos nos capítulos anteriores, pois ambos são extremamente importantes para uma boa implementação desta fase. O capítulo de análise teve a sua relevância pois permitiu-nos ter já uma ideia de que expressões regulares utilizar para filtrar o que desejávamos e o capítulo da conceção da resolução foi relevante pois definimos os autómatos necessários e os contextos precisos para coordenar o processo de filtragem para cada requisito.
+Para a presente secção de codificação e testes baseámo-nos nos capítulos anteriores, pois ambos são extremamente importantes para uma boa implementação desta fase. O capítulo de análise teve a sua relevância pois permitiu-nos ter já uma ideia de que expressões regulares utilizar para filtrar o que desejávamos e o capítulo da conceção da resolução foi relevante pois definimos os algoritmos necessários para coordenar o processo de filtragem para cada requisito.
 
 \section{Estruturas de Dados}
-\subsection{?????????}
 
+\subsection{Número de Extratos}
 ///////////////////////// POR FAZER /////////////////////
 
-Quando começamos a desenvolver os primeiros filtros para testar com o ficheiro de input, deparamo-nos com a situação de existir mais que uma página para um mesmo autor. Seria portanto ideal que armazenássemos todas as citações referentes a um autor numa \textbf{Tabela de Hash} e íamos inserindo a esta as citações que aparecessem em diferentes páginas referentes a um mesmo autor.
+\subsection{Personagens do Harry Potter}
+///////////////////////// POR FAZER /////////////////////
 
-Adotanto esta abordagem temos que filtrar tudo o que é necessário e só no fim despejar para o ecrã, de forma organizada, tudo aquilo que armazenamos na estrutura.
+\subsection{Palavras por classes em HTML}
 
-Desta forma criamos uma estrutura \textbf{TodasCitações}, que contém uma \textbf{GHashTable} cuja chave é o nome do autor e o valor é uma outra estrutura \textbf{Autor} que contém um nome e uma lista de citações. Estas estruturas são apresentadas nas seguintes imagens.
+Na terceira alínea foi necessário utilizar fundamentalmente uma estrutura de dados que já vem implementada em \textbf{AWK}, que são os \textbf{arrays associativos}. Foram de imensa utilidade uma vez que mapeiam todos os elementos necessários sem os repetirem.
 
+Para esta alínea utilizamos 4 arrays deste género cada um para cada classe de palavras (verbos, substantivos, adjetivos e advérbios).
+
+\subsection{Dicionário}
+///////////////////////// POR FAZER /////////////////////
 
 \section{Alternativas, Decisões e Problemas de Implementação}
 
