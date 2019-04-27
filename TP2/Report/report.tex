@@ -169,6 +169,7 @@ Neste capítulo baseando-nos nas análises feitas aos ficheiros que serviram de 
 
 \section{Algoritmos}
 \subsection{Número de Extratos}
+\label{subsec:algoritmos1}
 
 Para este filtro, os valores associados ao \textbf{Register Separator} e ao \textbf{Field Separator} mantiveram-se os pré-definidos.
 
@@ -246,43 +247,38 @@ Na terceira alínea foi necessário utilizar fundamentalmente uma estrutura de d
 Para esta alínea utilizamos 4 arrays deste género cada um para cada classe de palavras (verbos, substantivos, adjetivos e advérbios).
 
 \subsection{Dicionário}
+
 ///////////////////////// POR FAZER /////////////////////
+
+Nesta alínea foi necessário utilizar 2 \textbf{arrays associativos}:
+
+\begin{itemize}
+	\item \textbf{palavras}
+		\begin{itemize}
+			\item
+		\end{itemize}
+	\item \textbf{res}
+		\begin{itemize}
+			\item
+		\end{itemize}
+\end{itemize}
 
 \section{Alternativas, Decisões e Problemas de Implementação}
 
 \subsection{Número de Extratos}
 
-///////////////////////// POR FAZER /////////////////////
+Além solução apresentada na secção \ref{subsec:algoritmos1}, foi identificada outra forma de proceder à resolução desta alínea. A solução dessa secção tinha como principal ideia contar o início dos excertos.
 
-Ao implementar esta questão começou-se por reparar que nem todas as páginas de autor estão de facto identificadas por um autor. Desta forma foi necessário ignorar todas as páginas de autor que não fossem identificadas por um autor que tivesse um nome com tamanho superior a 1.
+Por outro lado, e tendo em conta que uma linha em branco marca o final de um excerto, a solução podia passar também por contabilizar as linhas em branco.
 
-O maior problema neste filtro foi identificar todas as formas como uma citação acabava e gerir esta questão. Encontrámos ao todo 10 formas diferentes de término duma citação e alguns dos casos são muito parecidos, de facto são especializações de casos mais gerais, pelo que a tarefa de encontrar o término duma citação ficou dificultada.
+Para atingir essa solução apenas seria necessário alterar a condição que incrementa o contador para: \underline{$\$1==``"$}
 
-A propriedade \emph{longest match} do \textbf{flex}, foi outro entrave à implementação uma vez que como tínhamos casos que eram especialização de outros, muitas vezes o caso que era o \emph{longest match} não era o que era pretendido que fosse apanhado. Esta é a razão pela qual aparecem \textbf{\&quot;} no final de algumas citações.
-
-Muita vezes fomo-nos deparando com citações que continham \textbf{\&quot;} não no final mas sim no meio das citações. Decidimos considerar que estes "tokens"  fariam parte da citação uma vez que apanhámos a citação toda até uma situação de término, ignorando o conteúdo de cada citação.
-
-Para a realização deste filtro utilizámos as estruturas descritas acima em conjunto com algumas funções auxiliares que no permitiam inserir citações, autores, e ainda imprimir todas as citações da estrutura existente.
-
+Desta forma, iriamos contabilizar as linhas no qual o primeiro campo não teria nenhuma informação, ou seja, as linhas em branco.
 
 \subsection{Personagens do Harry Potter}
 
 ///////////////////////// POR FAZER /////////////////////
 
-Tendo em conta a grande variedade de marcas para representar provérbios em diferentes países, a resolução desta questão foi condicionada por tal. Desta forma, são muitos os estados criados para as mesmas partes de diferentes páginas do ficheiro.
-
-Após a análise explicada na secção \ref{subsec:analise2} foi possível concluir quais seriam os casos mais críticos. São exemplo disso os provérbios russos, que têm como marca inicial apenas \underline{*}. Devido à elevada ocorrência desta marca em todo o ficheiro, foi necessário limitar a filtragem com esta marca apenas à parte do ficheiro que pretendiamos, e tal foi possível através do conceito de Estado.
-
-Relembrando o autómato apresentado na secção \ref{sub:algoritmos2}, existem quatro fases importantes no algoritmo.
-
-Na fase inicial vamos percorrer as páginas do ficheiro. Na segunda fase vamos interpretar o título da página e, tendo em conta o resultado obtido, o estado seguinte vai ser diferente. Existe o caso \textit{default} que apanha tudo o que aparece em frente à palavra \textit{Provérbios} mas, devido à grande variedade de marcas, tivemos aqui que forçar alguns processos a seguir caminhos particulares, sendo nesses casos a condição o título inteiro, como por exemplo \textit{Provérbios russos}.
-
-A partir deste momento o estado passa a seguir um caminho particular, que é o \textit{CONTEUDO\_RUS}. Esta é, portanto, a terceira fase. Depois de estar no conteúdo russo e serem atingidas as marcas de início de provérbio, o estado passa a ser o \textit{QUOTE\_RUS}, que vai ler a citação e, de seguida, imprimi-la no ecrã com a formatação desejada. Esta quarta fase regressa depois ao conteúdo da página de provérbios russos para continuar a sua filtragem.
-
-Após a análise total das páginas, e de forma a não ter contextos em exagero, tentamos unificar num só contexto os países que teriam as mesmas marcas, ou marcas que fossem compatíveis. São exemplos deste facto os provérbios turcos, búlgaros, chineses e holandeses, que são compatíveis e deram origem aos estados CONTEUDO\_TURQ\_BUL\_CHI\_HOL e QUOTE\_TURQ\_BUL\_CHI\_HOL.
-
-
-\newpage
 
 \subsection{Dicionário}
 
