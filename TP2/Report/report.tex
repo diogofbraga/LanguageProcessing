@@ -102,9 +102,14 @@ Na figura \ref{img:analise1} é possivel verificar:
 \subsection{Personagens do Harry Potter}
 \label{subsec:analise2}
 
-///////////////////////// POR FAZER /////////////////////
+Na alínea b, foi pedido uma listagem das personagens do Harry Potter e as suas respetivas ocorrências. Depois de uma primeira análise ao ficheiro percebeu-se que todas as personagens do Harry Potter na 7ª coluna dos documentos a analisar conteriam grup-nom-ms:[0-9] e w-ms:[0-9], significando que seriam nomes próprios. Assim não havendo uma forma de distinguir um nome próprio de uma localidade com o nome próprio de uma personagem, o nosso filtro baseou-se então nessa abordagem.
 
-
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.7]{harry1.png}
+\caption{Exemplo uma personagem do Harry Potter no ficheiro a ser analisado}
+\label{img:harry1}
+\end{figure}
 
 \subsection{Palavras por Classes em HTML}
 
@@ -186,7 +191,8 @@ No final, no bloco de \textbf{END}, é impresso o contador que contêm o número
 \subsection{Personagens do Harry Potter}
 \label{sub:algoritmos2}
 
-///////////////////////// POR FAZER /////////////////////
+Neste filtro para as personagens do Harry Potter o método de resolução passou então pela filtragem de todos os nomes que contivessem os campos referidos na secção 2. Para isso foi utilizado um array associativo que em cada índice incrementaria a ocorrência de uma personagem. Assim, tornou-se fácil a apresentação das respetivas ocorrências de cada personagem através da impressão desse mesmo array no terminal.
+Esta abordagem vai apanhar algum "lixo", ou seja, nomes próprios que não sejam personagens do Harry Potter mas foi a única abordagem que o grupo conseguiu desenvolver que apanhasse realmente todas as personagens da história.
 
 
 \subsection{Palavras por Classes em HTML}
@@ -271,7 +277,17 @@ Para a presente secção de codificação e testes baseámo-nos nos capítulos a
 \section{Estruturas de Dados}
 
 \subsection{Personagens do Harry Potter}
-///////////////////////// POR FAZER /////////////////////
+
+Nesta alínea utilizamos os  \textbf{arrays associativos} já implementada em \textbf{AWK} de forma a mapear todas as personagens e incrementar as suas ocorrências.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.9]{harry.png}
+\caption{Codificação do filtro}
+\label{img:harry}
+\end{figure}
+
+
 
 \subsection{Palavras por classes em HTML}
 
@@ -308,7 +324,7 @@ Desta forma, iriamos contabilizar as linhas no qual o primeiro campo não teria 
 
 \subsection{Personagens do Harry Potter}
 
-///////////////////////// POR FAZER /////////////////////
+Antes de chegarmos à solução final que foi apresentada, o grupo optou por tentar fazer uma expressão regular para cada uma das personagens que aparecesse na história porém optamos por não continuar com essa solução pois sentimos que não estávamos a aproveitar de todo a capacidade do AWK e seria díficil apanhar todas as personagens, principalmente as que tivessem poucas ocorrências.
 
 
 \subsection{Dicionário}
@@ -339,7 +355,14 @@ A informação fornecido é o número de extratos.
 
 \subsection{Personagens do Harry Potter}
 
-///////////////////////// POR FAZER /////////////////////
+Como é visível, este filtro não consegue distinguir os nomes próprios de personganes de outro tipo de nomes próprios, porém, todas as personagens que participem na história são apresentadas no resultado.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.7]{resultadoharry.png}
+\caption{Resultado da aplicação do filtro}
+\label{img:resultadoharry}
+\end{figure}
 
 
 \newpage
