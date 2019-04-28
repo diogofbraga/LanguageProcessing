@@ -1,4 +1,4 @@
-BEGIN                   { "mkdir C_HTML" | getline ; make_index_html();}
+BEGIN                   { "mkdir -p C_HTML" | getline ; make_index_html();}
 $6 ~ /pos=verb/         { verbos[$3]++;}
 $6 ~ /pos=adjective/    { adjectivos[$3]++;}
 $6 ~ /pos=adverb/       { adverbios[$3]++;}
