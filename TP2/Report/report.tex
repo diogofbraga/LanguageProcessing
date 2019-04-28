@@ -55,8 +55,6 @@ Ao longo deste trabalho produzimos principalmente 4 filtros em \textbf{AWK}, cad
 
 Com este relatório pretendemos apresentar as nossas opções, algoritmos desenvolvidos e ainda estruturas utilizadas para a realização de cada filtro. Pretendemos também apoiar aquelas que foram as nossas soluções, com conhecimento obtido nas aulas teóricas.
 
-///////////////////////// A REVER NO FINAL /////////////////////
-
 Para uma melhor visão do que irá ser abordado neste relatório deixamos uma breve descrição daquilo que foi feito. No segundo capítulo foi feita uma análise informal e uma especificação dos requisitos deste projeto. No terceiro capítulo foi realizado o desenho da conceção no qual estão envolvidos os algoritmos e estruturas de dados usados. No quarto capítulo mostramos alguns exemplos de implementações e vários resultados de testes realizados. Por último no capítulo 5 fazemos uma retrospetiva do trabalho realizado e concluímos.
 
 
@@ -169,9 +167,7 @@ Na figura \ref{img:analise4} é possivel verificar:
 \chapter{Conceção/desenho da Resolução}
 \label{chap:concecao}
 
-///////////////////////// A REVER E A ACRESCENTAR ALGO /////////////////////
-
-Neste capítulo baseando-nos nas análises feitas aos ficheiros que serviram de input ao filtros, construímos os algoritmos para a resolução de cada alínea requisitada no enunciado.
+Neste capítulo baseamo-nos nas análises feitas aos ficheiros que serviram de input ao filtros, e construímos os algoritmos para a resolução de cada alínea requisitada no enunciado.
 
 \section{Algoritmos}
 \subsection{Número de Extratos}
@@ -194,6 +190,8 @@ No final, no bloco de \textbf{END}, é impresso o contador que contêm o número
 Neste filtro para as personagens do Harry Potter o método de resolução passou então pela filtragem de todos os nomes que contivessem os campos referidos na secção 2. Para isso foi utilizado um array associativo que em cada índice incrementaria a ocorrência de uma personagem. Assim, tornou-se fácil a apresentação das respetivas ocorrências de cada personagem através da impressão desse mesmo array no terminal.
 Esta abordagem vai apanhar algum "lixo", ou seja, nomes próprios que não sejam personagens do Harry Potter mas foi a única abordagem que o grupo conseguiu desenvolver que apanhasse realmente todas as personagens da história.
 
+
+\newpage
 
 \subsection{Palavras por Classes em HTML}
 \label{sub:algoritmos3}
@@ -230,6 +228,7 @@ Finalmente no bloco de \textbf{END} é tratada a maior parte da construção de 
 
 As funções \textbf{make\_page\_html(arg)} e \textbf{make\_end\_html(arg)} são usadas somente uma vez. Entre elas é realizado um ciclo que percorre o array associativo correspondente, e ao ficheiro respetivo é adicionado o elemento que reside no array através da função \textbf{list\_elem\_html(elem,filename)}
 
+\newpage
 
 \subsection{Dicionário}
 \label{subsec:algoritmos4}
@@ -352,6 +351,7 @@ A informação fornecido é o número de extratos.
 \label{img:testes1}
 \end{figure}
 
+\newpage
 
 \subsection{Personagens do Harry Potter}
 
@@ -364,8 +364,6 @@ Como é visível, este filtro não consegue distinguir os nomes próprios de per
 \label{img:resultadoharry}
 \end{figure}
 
-
-\newpage
 
 \subsection{Palavras por Classes em HTML}
 
@@ -453,13 +451,12 @@ As seguintes imagens representam alguns dos resultado em HTML.
 \chapter{Conclusão}
 \label{chap:concl}
 
-///////////////////////// POR FAZER /////////////////////
+Tendo em conta os requisitos deste projeto, e o trabalho realizado pelo grupo, achamos que os objetivos fundamentais foram atingidos, sendo estes a capacidade de criar padrões com uso de \textbf{Expressões Regulares}, o entendimento das capacidades da ferramenta \textbf{AWK} e a capacidade de analisar ficheiros de entrada, assim como a capacidade de criar algoritmos de resolução dos enunciados propostos.
 
-Tendo em conta os requisitos deste projeto, e o trabalho realizado pelo grupo, achamos que os objetivos fundamentais foram atingidos, sendo estes a capacidade de criar padrões com uso de \textbf{Expressões Regulares}, o entendimento da utilização da ferramenta \textbf{flex} para a criação destes padrões, a capacidade de analisar ficheiros de entrada e criar algoritmos de resolução recorrendo a \textbf{autómatos}.
+Ao longo da realização deste projeto o grupo procurou saber sempre mais sobre a resolução de cada pergunta, de forma a chegar à melhor resolução possível. É exemplo disso a procura de muitas funções pré-definidas em AWK.
 
-Ao longo da realização deste projeto o grupo encontrou várias dificuldades, estando estas relacionadas maioritariamente com a quantidade de formas diferentes em que apareciam as citações e os provérbios a serem filtrados. Entendemos portanto, que esta foi a maior dificuldade pois foi necessário a agilização dos membros do grupo para encontrarem soluções para a filtragem de certos padrões.
+O grupo tentou também apurar ao máximo o espírito crítico, de forma a tomar as melhores decisões nos algoritmos tendo em conta as capacidades da ferramenta AWK, sendo que este foi também um dos maiores desafios encontrados.
 
 Em jeito de conclusão o grupo acha que todas as alíneas requisitadas no enunciado foram terminadas com sucesso, e os objetivos principais deste projeto foram atingidos.
-
 
 \end{document}
