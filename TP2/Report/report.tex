@@ -125,6 +125,7 @@ Foram ainda necessárias criar algumas bases na linguagem de programação HTML 
 
 
 \subsection{Dicionário}
+\label{subsec:analise4}
 
 Nesta quarta alínea do exercício era requerida a apresentação de um dicionário implícito num ficheiro corpora. Este dicionário deve conter as lemas, as palavras derivadas das lemas, e a informação relativa a essas mesmas palavras. Esta informação vem dividida em colunas.
 
@@ -225,9 +226,41 @@ As funções \textbf{make\_page\_html(arg)} e \textbf{make\_end\_html(arg)} são
 
 
 \subsection{Dicionário}
-\label{sub:algoritmos4}
+\label{subsec:algoritmos4}
 
-///////////////////////// POR FAZER /////////////////////
+No bloco de \textbf{BEGIN}, como o \textbf{Register Separator} e o \textbf{Field Separator} são os pré-definidos, nada foi alterado. Neste bloco é realizada apenas a impressão duma string a indicar que iriamos estar perante um dicionário.
+
+Tendo em conta a análise realizada na secção \ref{subsec:analise4}, para a conceção desta solução são necessárias a segunda, a terceira, e a sexta coluna, respetivamente, as palavras , as lemas associadas às palavras, e a informação das palavras.
+
+O corpo principal deste filtro divide-se em 3 fases:
+
+\begin{enumerate}
+	\item Associação da informação da palavra à palavra em questão:
+		\begin{itemize}
+			\item Palavra $\Rightarrow$ \$2
+			\item Informação da palavra $\Rightarrow$ \$6
+			\item Função \textbf{posGenSub} que torna mais perceptível a informação da palavra utilizando a função pré-definida em AWK \textbf{gsub};
+			\item Função \textbf{gsub} que substitui "|" por "\hspace{0.12cm} : ", de forma à informação ficar, portanto, mais separada;
+			\item Criação duma string \textbf{palPos} que vai concatenar o \$2 com o resultado da função \textbf{posGenSub};
+		\end{itemize}
+	\item Associação das palavras à lema que as define:
+		\begin{itemize}
+			\item Lema $\Rightarrow$ \$3
+			\item Utilização dum array associativo \textbf{palavras} no qual o indíce é a lema;
+			\item Função \textbf{palavrasFunc} que concatena as palavras que possuem a mesma lema, com auxílio da função pré-definida em AWK \textbf{index};
+			\item Função \textbf{index} que verifica se a palavra e sua informação respetiva ainda não estão associadas à lema em questão, verificando se a palavra e respetiva informação já estão presentes na string da posição do array associativo em que o índice é a lema;
+			\item Caso não esteja presente, ou seja, caso a função \textbf{index} retorne 0, é concatenada a nova palavra e sua respetiva informação com o que já estava definido;
+		\end{itemize}
+	\item Criação duma string que vai concatenar a lema com as palavras derivadas:
+		\begin{itemize}
+			\item Utilização dum array associativo \textbf{res} no qual o indíce é a lema;
+			\item Valor de cada índice é a string que junta a lema \$3 com o valor do array associativo \textbf{palavras} no qual o índice é \$3;
+		\end{itemize}
+\end{enumerate}
+
+No bloco \textbf{END} é utilizada a função pré-definida em AWK \textbf{asort}, que organiza os valores do array associativo \textbf{res} crescentemente. Desta forma, como a lema é a primeira parte das strings do array associativo, o dicionário vai ficar definido por ordem alfabética.
+
+Ainda neste bloco final, é impresso todo o array associativo \textbf{res}, originando assim um dicionário do ficheiro passado como parâmetro ao AWK.
 
 
 \chapter{Codificação e Testes}
@@ -248,18 +281,16 @@ Para esta alínea utilizamos 4 arrays deste género cada um para cada classe de 
 
 \subsection{Dicionário}
 
-///////////////////////// POR FAZER /////////////////////
-
 Nesta alínea foi necessário utilizar 2 \textbf{arrays associativos}:
 
 \begin{itemize}
 	\item \textbf{palavras}
 		\begin{itemize}
-			\item
+			\item Relaciona as palavras à lema que as define;
 		\end{itemize}
 	\item \textbf{res}
 		\begin{itemize}
-			\item
+			\item Concatena a lema com as palavras derivadas;
 		\end{itemize}
 \end{itemize}
 
@@ -267,7 +298,7 @@ Nesta alínea foi necessário utilizar 2 \textbf{arrays associativos}:
 
 \subsection{Número de Extratos}
 
-Além solução apresentada na secção \ref{subsec:algoritmos1}, foi identificada outra forma de proceder à resolução desta alínea. A solução dessa secção tinha como principal ideia contar o início dos excertos.
+Além da solução apresentada na secção \ref{subsec:algoritmos1}, foi identificada outra forma de proceder à resolução desta alínea. A solução dessa secção tinha como principal ideia contar o início dos excertos.
 
 Por outro lado, e tendo em conta que uma linha em branco marca o final de um excerto, a solução podia passar também por contabilizar as linhas em branco.
 
@@ -282,7 +313,13 @@ Desta forma, iriamos contabilizar as linhas no qual o primeiro campo não teria 
 
 \subsection{Dicionário}
 
-///////////////////////// POR FAZER /////////////////////
+Além da solução apresentada na secção \ref{subsec:algoritmos4}, foi identificada outra forma de proceder à resolução desta alínea.
+
+Esta nova solução passava por ter em conta as tags da informação das palavras, que residem na coluna \$5, ao invês da informação mais detalhada que reside na coluna \$6.
+
+A partir das tags, existia uma função que fazia a tradução para a especificação da informação da palavra. Por exemplo, a tag \textbf{VMI} retornava \textbf{"VMI: Verb Main Indicative"}, e seria esta a informação associada à palavra ao invês da que foi apresentada na secção \ref{subsec:algoritmos4}.
+
+Decidimos apresentar como principal solução a resolução anterior porque essa é, de facto, mais detalhada, e achamos que isso seria mais benéfico para o nosso dicionário.
 
 
 \section{Testes realizados e Resultados}
