@@ -56,7 +56,7 @@ PagSimples : Opcoes ',' ListItems
            ;
 
 ListItems : Item
-          | ListItems , Item
+          | ListItems ',' Item
           ;
 
 Item : LI STRING
