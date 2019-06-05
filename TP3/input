@@ -1,0 +1,11 @@
+DIAPOSITIVO {
+	10 ,
+	TITL "primeiro titulo" ,
+	CRED "primeiro credito mpts"
+},
+DIAPOSITIVO {
+	20 ,
+	TITL "segundo titulo imagens" ,
+	IMG "JJ.png" ,
+	IMG "prh.jpg"
+}

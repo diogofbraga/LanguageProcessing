@@ -69,8 +69,8 @@ Video : Opcoes ',' Vid
 Vid : VID STRING
     ;
 
-Opcoes : Titulo ',' Audio
-       | Audio ',' Titulo
+Opcoes : Opcoes ',' Audio
+       | Opcoes ',' Titulo
        | Titulo
        | Audio
        ;
