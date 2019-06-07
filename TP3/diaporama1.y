@@ -43,7 +43,7 @@ Tipo : PagInicial
      | Video
      ;
 
-PagInicial : '[' Creditos ']'
+PagInicial : '(' Creditos ')'
            ;
 
 Creditos : Credito
@@ -53,7 +53,7 @@ Creditos : Credito
 Credito : CRED STRING
         ;
 
-Galeria : '[' Imagens ']'
+Galeria : '(' Imagens ')'
         ;
 
 Imagens : Imagem
@@ -63,7 +63,7 @@ Imagens : Imagem
 Imagem : IMG STRING
        ;
 
-PagSimples : '[' ListItems ']'
+PagSimples : '(' ListItems ')'
            ;
 
 ListItems : Item
