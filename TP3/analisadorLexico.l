@@ -13,7 +13,7 @@ LI                                  {return LI;}
 VID                                 {return VID;}
 TITL                                {return TITL;}
 AUD                                 {return AUD;}
-[\[\],{}()]                         {return yytext[0];}
+[\[\],;{}()]                         {return yytext[0];}
 [0-9]+                              {yylval.num = atof(yytext); return NUM;}
 \"[^\"]*\"                          {yylval.str = strdup(yytext); return STRING;}
 .|\n                                {;}

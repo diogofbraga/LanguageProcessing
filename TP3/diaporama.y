@@ -20,14 +20,14 @@ Elementos : Elemento
 // Elemento : DIAPOSITIVO '{' Tempo ',' Tipo '}'
 //          ;
 
-Elemento : DIAPOSITIVO '{' Tempo ',' Body '}'
+Elemento : DIAPOSITIVO '{' Tempo ';' Body '}'
          ;
 
 // Head : '(' Tempo ',' Nome ')'
 //      ;
 
-Body : Opcoes '[' Tipos ']'
-     | '[' Tipos ']'
+Body : '(' Opcoes ')' ',' Tipos
+     | Tipos
      ;
 
 Tipos : Tipo
