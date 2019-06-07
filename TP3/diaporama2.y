@@ -7,7 +7,7 @@
 %token DIAPOSITIVO CRED IMG LI VID TITL AUD
 %token <str> STRING
 %token <num> NUM
-%type <str> Elementos Elemento Tipo Credito Imagem Item Vid Opcoes Titulo Audio
+%type <str> Elementos Elemento Tipo Credito Imagem Item Video Opcoes Titulo Audio
 %type <num> Tempo
 %%
 Diaporama : Elementos
