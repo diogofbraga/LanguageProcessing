@@ -20,6 +20,21 @@ Elementos : Elemento
 Elemento : DIAPOSITIVO '{' Tempo ',' Tipo '}'
          ;
 
+// Elemento : DIAPOSITIVO '{' Head ',' Body '}'
+//          ;
+
+// Head : '(' Tempo ',' Nome ')'
+//      ;
+
+// caso se coloque o Body para poder ter varios tipos depois tem que se verificar como funciona as Opcoes
+// Body : '[' Tipos ']'
+//      ;
+
+// Tipos : Tipos ',' Tipo
+//       | Tipo
+//       ;
+
+
 Tempo : NUM
       ;
 
