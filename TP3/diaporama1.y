@@ -17,23 +17,22 @@ Elementos : Elemento
           | Elementos ',' Elemento
           ;
 
-Elemento : DIAPOSITIVO '{' Tempo ',' Tipo '}'
-         ;
-
-// Elemento : DIAPOSITIVO '{' Head ',' Body '}'
+// Elemento : DIAPOSITIVO '{' Tempo ',' Tipo '}'
 //          ;
+
+Elemento : DIAPOSITIVO '{' Tempo ',' Body '}'
+         ;
 
 // Head : '(' Tempo ',' Nome ')'
 //      ;
 
-// caso se coloque o Body para poder ter varios tipos depois tem que se verificar como funciona as Opcoes
-// Body : '[' Tipos ']'
-//      ;
+Body : Opcoes '[' Tipos ']'
+     | '[' Tipos ']'
+     ;
 
-// Tipos : Tipos ',' Tipo
-//       | Tipo
-//       ;
-
+Tipos : Tipo
+      | Tipos ',' Tipo
+      ;
 
 Tempo : NUM
       ;
@@ -44,8 +43,7 @@ Tipo : PagInicial
      | Video
      ;
 
-PagInicial : Opcoes ',' Creditos
-           | Creditos
+PagInicial : '[' Creditos ']'
            ;
 
 Creditos : Credito
@@ -55,8 +53,7 @@ Creditos : Credito
 Credito : CRED STRING
         ;
 
-Galeria : Opcoes ',' Imagens
-        | Imagens
+Galeria : '[' Imagens ']'
         ;
 
 Imagens : Imagem
@@ -66,8 +63,7 @@ Imagens : Imagem
 Imagem : IMG STRING
        ;
 
-PagSimples : Opcoes ',' ListItems
-           | ListItems
+PagSimples : '[' ListItems ']'
            ;
 
 ListItems : Item
@@ -77,8 +73,7 @@ ListItems : Item
 Item : LI STRING
      ;
 
-Video : Opcoes ',' Vid
-      | Vid
+Video : Vid
       ;
 
 Vid : VID STRING
