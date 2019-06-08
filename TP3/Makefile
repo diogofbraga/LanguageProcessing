@@ -9,7 +9,7 @@ CFLAGS = -o
 program:
 	$(YACC) $(YACCFLAGS) diaporama.y
 	$(FLEX) analisadorLexico.l
-	$(CC) $(CFLAGS) diap y.tab.c
+	$(CC) $(CFLAGS) diap y.tab.c auxiliares.c
 
 clean:
 	rm diap

@@ -1,6 +1,6 @@
 "PrimeiroExemplo" ,
 DIAPOSITIVO {
-	10 ;
+	5 ;
 	( TITL "primeiro titulo" ) ,
 	CRED "primeiro credito mpts" ,
   	IMG "imagem 1.1" ,
@@ -10,8 +10,23 @@ DIAPOSITIVO {
   	IMG "imagem 2"
 },
 DIAPOSITIVO {
-	20 ;
+	10 ;
 	( TITL "segundo titulo imagens" ) ,
 	IMG "JJ.png" ,
   	IMG "prh.jpg"
+},
+DIAPOSITIVO {
+	10 ;
+	( TITL "Página Simples" ) ,
+	LI "Primeiro item" ,
+	LI "Segundo item" ,
+	LI "Terceiro item" ,
+	LI "Quarto item" ,
+	LI "Quinto item"
+},
+DIAPOSITIVO {
+	74 ;
+	( TITL "Exemplo dum audio" ,
+	  AUD "https://file-examples.com/wp-content/uploads/2017/11/file_example_OOG_1MG.ogg") ,
+	IMG "JJ.png"
 }

@@ -3,16 +3,13 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
-#include <sys/types.h>
-#include <fcntl.h>
+#include "auxiliares.h"
 #define GNUSOURCE
 
 char* pasta;
 int slide_counter = 0;
-int file_descriptor;
+FILE *file;
 
-int criaFicheiro();
-void renameFiles();
 %}
 %union{char* str; int num;}
 %token DIAPOSITIVO CRED IMG LI VID TITL AUD
@@ -21,17 +18,17 @@ void renameFiles();
 %type <str> Nome Elementos Elemento Body Tipos Tipo Credito Imagem Item Video Opcoes Titulo Audio
 %type <num> Tempo
 %%
-Diaporama : Nome ',' Elementos                          {pasta = strdup($1); mkdir(pasta, 0777); renameFiles();}
+Diaporama : Nome ',' Elementos                          {createLastFile(slide_counter, pasta);}
           ;
 
-Nome : STRING
+Nome : STRING                                           {pasta = strdup($1); mkdir(pasta, 0777); }
      ;
 
 Elementos : Elemento
           | Elementos ',' Elemento
           ;
 
-Elemento : DIAPOSITIVO '{' Tempo ';' Body '}'           {slide_counter++; file_descriptor = criaFicheiro();}
+Elemento : DIAPOSITIVO '{' Tempo ';' Body '}'           {fileTermination(file);}
          ;
 
 Body : '(' Opcoes ')' ',' Tipos
@@ -42,7 +39,9 @@ Tipos : Tipo
       | Tipos ',' Tipo
       ;
 
-Tempo : NUM
+Tempo : NUM                                             {slide_counter++;
+                                                         file = createFile(slide_counter, pasta);
+                                                         makeheader($1, file, slide_counter); }
       ;
 
 Tipo : Credito
@@ -57,7 +56,7 @@ Credito : CRED STRING
 Imagem : IMG STRING
        ;
 
-Item : LI STRING
+Item : LI STRING                                        {insertItem(file, $2);}
      ;
 
 Video : VID STRING
@@ -69,30 +68,14 @@ Opcoes : Opcoes ',' Audio
        | Audio
        ;
 
-Titulo : TITL STRING
+Titulo : TITL STRING                                    {insertTitle(file, $2);}
        ;
 
-Audio : AUD STRING
+Audio : AUD STRING                                      {insertAudio(file, $2);}
       ;
 %%
 
 #include "lex.yy.c"
-
-int criaFicheiro(){
-    char file_name[100];
-    sprintf(file_name, "diap%d.html",slide_counter);
-    return open(file_name, O_CREAT | O_RDWR, 0666);
-}
-
-void renameFiles(){
-    for(int i = 1 ; i <= slide_counter ; i++){
-        char old[100], new[100];
-        sprintf(old, "diap%d.html",i);
-        sprintf(new, "%s/%s",pasta,old);
-        rename(old, new);
-    }
-}
-
 
 int yyerror(char* s){
     printf("Erro: %s\n", s);
@@ -101,6 +84,5 @@ int yyerror(char* s){
 
 int main(){
     yyparse();
-    printf("Número de slides: %d\n", slide_counter );
     return 0;
 }
