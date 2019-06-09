@@ -59,7 +59,7 @@ void insertVideoSize(FILE* file, char* video, int width, int height){
 }
 
 void insertLineBreak(FILE* file){
-    char s[1024] = "\t<br>\n";
+    char s[7] = "\t<br>\n";
     fputs(s, file);
 }
 
