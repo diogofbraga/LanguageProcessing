@@ -13,6 +13,7 @@ CRED                                {return CRED;}
 IMG                                 {return IMG;}
 LI                                  {return LI;}
 VID                                 {return VID;}
+LB                                  {return LB;}
 TITL                                {return TITL;}
 AUD                                 {return AUD;}
 [,;{}()]                            {return yytext[0];}

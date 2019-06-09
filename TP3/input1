@@ -3,17 +3,17 @@ DIAPOSITIVO {
 	5 ;
 	( TITL "primeiro titulo" ) ,
 	CRED "primeiro credito mpts" ,
-  	IMG "imagem 1.1" ,
-  	IMG "imagem 1.2" ,
-  	CRED "2.1 credito mpts" ,
-  	CRED "2.2 credito mpts" ,
-  	IMG "imagem 2"
+  IMG "imagem 1.1" ,
+  IMG "imagem 1.2" ,
+  CRED "2.1 credito mpts" ,
+  CRED "2.2 credito mpts" ,
+  IMG "imagem 2"
 },
 DIAPOSITIVO {
 	10 ;
 	( TITL "segundo titulo imagens" ) ,
-	IMG "JJ.png" ,
-  	IMG "prh.jpg"
+	IMG "JJ.jpg" 325 200 ,
+  IMG "PRH.jpg"
 },
 DIAPOSITIVO {
 	10 ;
@@ -27,6 +27,15 @@ DIAPOSITIVO {
 DIAPOSITIVO {
 	74 ;
 	( TITL "Exemplo dum audio" ,
-	  AUD "https://file-examples.com/wp-content/uploads/2017/11/file_example_OOG_1MG.ogg") ,
+	AUD "https://file-examples.com/wp-content/uploads/2017/11/file_example_OOG_1MG.ogg") ,
 	IMG "JJ.png"
+},
+DIAPOSITIVO {
+	74 ;
+	( TITL "Exemplo dum video" ) ,
+	VID "https://www.youtube.com/embed/tgbNymZ7vqY",
+	LB,
+	IMG "JJ.jpg",
+	LB,
+	VID "https://www.youtube.com/embed/tgbNymZ7vqY" 210 170
 }

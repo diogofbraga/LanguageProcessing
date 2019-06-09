@@ -12,11 +12,11 @@ FILE *file;
 
 %}
 %union{char* str; int num;}
-%token DIAPOSITIVO CRED IMG LI VID TITL AUD
+%token DIAPOSITIVO CRED IMG LI VID LB TITL AUD
 %token <str> STRING
 %token <num> NUM
 %type <str> Nome Elementos Elemento Body Tipos Tipo Credito Imagem Item Video Opcoes Titulo Audio
-%type <num> Tempo
+%type <num> Tempo Width Height
 %%
 Diaporama : Nome ',' Elementos                          {createLastFile(slide_counter, pasta);}
           ;
@@ -48,19 +48,31 @@ Tipo : Credito
      | Imagem
      | Item
      | Video
+     | LineBreak
      ;
 
 Credito : CRED STRING
         ;
 
-Imagem : IMG STRING
+Imagem : IMG STRING                                     {insertImage(file, $2);}
+       | IMG STRING Width Height                        {insertImageSize(file, $2, $3, $4);}
        ;
+
+Width : NUM
+      ;
+
+Height : NUM
+      ;
 
 Item : LI STRING                                        {insertItem(file, $2);}
      ;
 
-Video : VID STRING
+Video : VID STRING                                      {insertVideo(file,$2);}
+      | VID STRING Width Height                         {insertVideoSize(file,$2, $3, $4);}
       ;
+
+LineBreak : LB                                          {insertLineBreak(file);}
+          ;
 
 Opcoes : Opcoes ',' Audio
        | Opcoes ',' Titulo
