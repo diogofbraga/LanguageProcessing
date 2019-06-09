@@ -31,17 +31,17 @@ Elementos : Elemento
 Elemento : DIAPOSITIVO '{' Tempo ';' Body '}'           {fileTermination(file);}
          ;
 
+Tempo : NUM                                             {slide_counter++;
+                                                         file = createFile(slide_counter, pasta);
+                                                         makeheader($1, file, slide_counter); }
+      ;
+
 Body : '(' Opcoes ')' ',' Tipos
      | Tipos
      ;
 
 Tipos : Tipo
       | Tipos ',' Tipo
-      ;
-
-Tempo : NUM                                             {slide_counter++;
-                                                         file = createFile(slide_counter, pasta);
-                                                         makeheader($1, file, slide_counter); }
       ;
 
 Tipo : Credito

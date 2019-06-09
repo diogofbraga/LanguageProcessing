@@ -49,30 +49,173 @@
 
 Seguindo a fórmula \emph{exercício = (N\_Alu\% 6)  +  1} e o número de aluno mais alto presente no nosso grupo (82547), o enunciado correspondente é o \textbf{6  -  Construtor de diaporama}.
 
-///////////////////////// Descrever o problema aqui
+Este enunciado apresentou-nos um tipo de apresentações visuais suportadas por um conjunto de diapositivos ou acetatos/slides que é conhecido como \textbf{Diaporama}. O \textbf{diaporama} é uma sequência de elementos. Cada elemento pode ser/conter:
+\begin{itemize}
+	\item Uma página inicial de abertura e créditos;
+	\item imagens;
+	\item páginas simples (exemplo:  uma lista de items);
+	\item video;
+	\item opcionalmente, título;
+	\item opcionalmente, audio.
+\end{itemize}
 
-//////////////////////
+Tendo estes aspetos em conta é requerido que se crie uma sequência de páginas HTML temporizadas, em que cada página HTML corresponderá a um diapositivo.
 
 Com este relatório pretendemos apresentar as nossas opções e algoritmos desenvolvidos para a realização do gerador de diaporamas. Pretendemos também apoiar aquelas que foram as nossas soluções, com conhecimento obtido nas aulas teóricas.
 
-Para uma melhor visão do que irá ser abordado neste relatório deixamos uma breve descrição daquilo que foi feito. No segundo capítulo foi feita uma análise informal e uma especificação dos requisitos deste projeto. No terceiro capítulo foi realizado o desenho da conceção no qual estão envolvidos os algoritmos e estruturas de dados usados. No quarto capítulo mostramos alguns exemplos de implementações e vários resultados de testes realizados. Por último no capítulo 5 fazemos uma retrospetiva do trabalho realizado e concluímos.
+Para uma melhor visão do que irá ser abordado neste relatório deixamos uma breve descrição daquilo que foi feito. No segundo capítulo foi feita uma análise informal e uma especificação dos requisitos deste projeto. No terceiro capítulo foi realizado o desenho da conceção no qual estão envolvidos os algoritmos e estruturas de dados usados. No quarto capítulo mostramos alguns exemplos de implementações e vários resultados de testes realizados. No quinto capítulo apresentamos as funcionalidades estendidas do nosso projeto. Por último no capítulo 6 fazemos uma retrospetiva do trabalho realizado e concluímos.
 
 
 \chapter{Análise e Especificação}
 \label{chap:analise}
 
-//////////////////// FALTA FAZER
+Analisando o problema como um todo, a fase de análise foi bastante simples e curta. Bastou apenas seguir o enunciado para começar a pensar o que seria um \textbf{diaporama}, que elementos poderia conter, que tipo de slides poderia apresentar bem como a disposição do conteúdo a apresentar.
 
-\section{Análise e Especificação dos Requisitos}
+No final desta supervisão do conceito de \textbf{diaporama} apuramos todos os elementos que este poderia conter, que são nomeadamente:
 
-//////////////////// FALTA FAZER
+\begin{itemize}
+	\item Um nome da apresentação;
+	\item Diapositivos, cada um contendo:
+	\begin{itemize}
+		\item Tempo de disposição;
+		\item Body, onde reside conteúdo, que pode ser/conter de diversos tipos, nomeadamente:
+		\begin{itemize}
+			\item Uma página inicial de abertura e créditos;
+			\item Imagens;
+			\item Páginas simples (exemplo:  uma lista de items);
+			\item Vídeo;
+			\item Título;
+			\item Áudio.
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
+
+De referir ainda que cada tipo de diapositivos é aprofundado contendo variados parâmetros que serão apresentados no próximo capítulo.
+
+Por último, após a análise dum diaporama, foi de grande relevância a investigação por conteúdo \textbf{HTML} que pudesse representar numa página cada tipo de diapositivo anteriormente definido.
 
 \chapter{Conceção/desenho da Resolução}
 \label{chap:concecao}
 
+Neste capítulo baseamo-nos nas análises anteriormente efetuadas que serviram de base inicial para a construção duma \textbf{gramática independente de contexto (GIC)} que representasse um diaporama e consequentemente para a construção duma \textbf{gramática tradutora (GT)} que despontasse determinadas ações consoante o momento de parsing em que se encontrava.
+
+
+\section{Gramática Independente de Contexto}
+
+Tendo em conta a análise realizada construímos uma \textit{Gramática Independente de Contexto} \textbf{G = (T, NT , S, P)}, em que \textbf{T} é conjunto de terminais, \textbf{NT} é o conjunto de não terminais, \textbf{S} é o axioma e \textbf{P} é o conjunto de produções. A gramática \textbf{G} pode então ser definida por:
+
+\vspace{0.5cm}
+
+\textbf{T} = \{ DIAPOSITIVO, CRED, IMG, LI, VID, LB, TITL, AUD, ',' , ';' , '\{' , '\}' , '(' , ')' , NUM, STRING\}
+
+\vspace{0.5cm}
+
+\textbf{NT} = \{ Diaporama, Nome, Elementos, Elemento, Body, Tipos, Tipo, Credito, Imagem, Item, Video, Opcoes, Titulo, Audio, Tempo, Width, Height \}
+
+\vspace{0.5cm}
+
+\textbf{S} = \{ Diaporama \}
+
+\vspace{0.5cm}
+
+\textbf{P} = \{ Diaporama $\rightarrow$ Nome ',' Elementos 
+
+\vspace{0.2cm}
+\hspace{1.0cm} Nome $\rightarrow$ STRING
+
+\vspace{0.2cm}
+\hspace{1.0cm} Elementos $\rightarrow$ Elemento
+
+\vspace{0.2cm}
+\hspace{3.05cm} | Elementos ',' Elemento
+
+\vspace{0.2cm}
+\hspace{1.0cm} Elemento $\rightarrow$ DIAPOSITIVO '\{' Tempo ';' Body '\}' 
+
+\vspace{0.2cm}
+\hspace{1.0cm} Tempo $\rightarrow$ NUM
+
+\vspace{0.2cm}
+\hspace{1.0cm} Body $\rightarrow$ '(' Opcoes ')' ',' Tipos
+
+\vspace{0.2cm}
+\hspace{2.3cm} | Tipos
+
+\vspace{0.2cm}
+\hspace{1.0cm} Tipos $\rightarrow$ Tipo
+
+\vspace{0.2cm}
+\hspace{2.3cm} | Tipos ',' Tipo
+
+\vspace{0.2cm}
+\hspace{1.0cm} Tipo $\rightarrow$ Credito
+
+\vspace{0.2cm}
+\hspace{2.2cm} | Imagem
+
+\vspace{0.2cm}
+\hspace{2.2cm} | Item
+
+\vspace{0.2cm}
+\hspace{2.2cm} | Video
+
+\vspace{0.2cm}
+\hspace{2.2cm} | LineBreak
+
+\vspace{0.2cm}
+\hspace{1.0cm} Credito $\rightarrow$ CRED STRING
+
+\vspace{0.2cm}
+\hspace{1.0cm} Imagem $\rightarrow$ IMG STRING
+
+\vspace{0.2cm}
+\hspace{2.65cm} | IMG STRING Width Height
+
+\vspace{0.2cm}
+\hspace{1.0cm} Width $\rightarrow$ NUM
+
+\vspace{0.2cm}
+\hspace{1.0cm} Height $\rightarrow$ NUM
+
+\vspace{0.2cm}
+\hspace{1.0cm} Item $\rightarrow$ LI STRING
+
+\vspace{0.2cm}
+\hspace{1.0cm} Video $\rightarrow$ VID STRING
+
+\vspace{0.2cm}
+\hspace{2.3cm} | VID STRING Width Height 
+
+\vspace{0.2cm}
+\hspace{1.0cm} LineBreak $\rightarrow$ LB 
+
+\vspace{0.2cm}
+\hspace{1.0cm} Opcoes $\rightarrow$ Opcoes ',' Audio
+
+\vspace{0.2cm}
+\hspace{2.6cm} | Opcoes ',' Titulo
+
+\vspace{0.2cm}
+\hspace{2.6cm} | Titulo
+
+\vspace{0.2cm}
+\hspace{2.6cm} | Audio
+
+\vspace{0.2cm}
+\hspace{1.0cm} Titulo $\rightarrow$ TITL STRING 
+
+\vspace{0.2cm}
+\hspace{1.0cm} Audio $\rightarrow$ AUD STRING 
+
+
+\hspace{0.7cm} \}
+
+
+\section{Gramática Tradutora}
+
 //////////////////// FALTA FAZER
 
-\section{Algoritmos}
+\subsection{Funções em C}
 
 //////////////////// FALTA FAZER
 
