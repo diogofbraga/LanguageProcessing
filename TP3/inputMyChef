@@ -3,40 +3,40 @@ STYLE "greenBox.css" ,
 DIAPOSITIVO {
 	10 ;
 	( TITL "MyChef - FeelItaly" ) ,
-  IMG "italyflag.png" ,
-  CRED "Grupo 13" ,
+  	IMG "italyflag.png" ,
+  	CRED "Grupo 13" ,
 	CRED "Diogo Braga A82547" ,
-  CRED "João Silva A82005" ,
-  CRED "Ricardo Caçador A81064"
+  	CRED "João Silva A82005" ,
+  	CRED "Ricardo Caçador A81064"
 },
 DIAPOSITIVO {
 	10 ;
 	( TITL "Contextualização" ) ,
-  LB ,
-  LI "Estudante de Erasmus proveniente da zona de Nápoles." ,
-  LB ,
-  LI "Exportação do negócio familiar para Portugal." ,
-  LB ,
-  LI "Falta de presença da culinária Italiana na cozinha Portuguesa." ,
-  LB ,
-  LI "Tipo de comida particularmente de rápida e fácil confeção."
+  	LB ,
+  	LI "Estudante de Erasmus proveniente da zona de Nápoles." ,
+  	LB ,
+  	LI "Exportação do negócio familiar para Portugal." ,
+  	LB ,
+  	LI "Falta de presença da culinária Italiana na cozinha Portuguesa." ,
+  	LB ,
+  	LI "Tipo de comida particularmente de rápida e fácil confeção."
 },
 DIAPOSITIVO {
 	10 ;
 	( TITL "Objetivos" ) ,
-  LB ,
-  LI "Aumento da produtividade dos utilizadores." ,
-  LB ,
-  LI "Possibilidade de comunicação entre utilizador e dispositivo auxiliar." ,
-  LB ,
-  LI "Organização semanal." ,
-  LB ,
-  LI "Ajuda não só na cozinha mas também na hora de ir às compras."
+  	LB ,
+  	LI "Aumento da produtividade dos utilizadores." ,
+  	LB ,
+  	LI "Possibilidade de comunicação entre utilizador e dispositivo auxiliar." ,
+  	LB ,
+  	LI "Organização semanal." ,
+  	LB ,
+  	LI "Ajuda não só na cozinha mas também na hora de ir às compras."
 },
 DIAPOSITIVO {
 	10 ;
 	( TITL "Maquete do Sistema" ) ,
-  IMG "maquete.png" 840 460
+  	IMG "maquete.png" 840 460
 },
 DIAPOSITIVO {
 	120 ;
@@ -50,20 +50,20 @@ DIAPOSITIVO {
 	VID "https://www.youtube.com/embed/4CI3lhyNKfo" 600 300,
 	LB,
 	CRED "Stamattina mi sono alzato, o bella ciao, bella ciao" ,
-  CRED "Bella ciao ciao ciao, stamattina mi sono alzato," ,
-  CRED "ho trovato I'invasor!" ,
-  CRED "A lavorare laggiù in risaia" ,
-  CRED "Sotto il sol che picchia giù!" ,
-  CRED "E tra gli insetti e le zanzare, o bella ciao, bella ciao" ,
-  CRED "Bella ciao ciao ciao, e tra gli insetti e le zanzare," ,
-  CRED "duro lavoro mi tocca far!" ,
-  CRED "Il capo in piedi col suo bastone, o bella ciao, bella ciao" ,
-  CRED "Bella ciao ciao ciao, il capo in piedi col suo bastone" ,
-  CRED "E noi curve a lavorar!" ,
-  CRED "Lavoro infame, per pochi soldi, o bella ciao bella ciao" ,
-  CRED "Bella ciao ciao ciao, lavoro infame per pochi soldi" ,
-  CRED "E la tua vita a consumar!" ,
-  CRED "Ma verrà il giorno che tutte quante o bella ciao, bella ciao" ,
-  CRED "Bella ciao ciao ciao, ma verrà il giorno che tutte quante" ,
-  CRED "Lavoreremo in libertà! "
+  	CRED "Bella ciao ciao ciao, stamattina mi sono alzato," ,
+  	CRED "ho trovato I'invasor!" ,
+  	CRED "A lavorare laggiù in risaia" ,
+  	CRED "Sotto il sol che picchia giù!" ,
+  	CRED "E tra gli insetti e le zanzare, o bella ciao, bella ciao" ,
+  	CRED "Bella ciao ciao ciao, e tra gli insetti e le zanzare," ,
+  	CRED "duro lavoro mi tocca far!" ,
+  	CRED "Il capo in piedi col suo bastone, o bella ciao, bella ciao" ,
+  	CRED "Bella ciao ciao ciao, il capo in piedi col suo bastone" ,
+  	CRED "E noi curve a lavorar!" ,
+  	CRED "Lavoro infame, per pochi soldi, o bella ciao bella ciao" ,
+  	CRED "Bella ciao ciao ciao, lavoro infame per pochi soldi" ,
+  	CRED "E la tua vita a consumar!" ,
+  	CRED "Ma verrà il giorno che tutte quante o bella ciao, bella ciao" ,
+  	CRED "Bella ciao ciao ciao, ma verrà il giorno che tutte quante" ,
+  	CRED "Lavoreremo in libertà! "
 }

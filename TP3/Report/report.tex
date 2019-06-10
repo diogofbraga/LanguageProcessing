@@ -414,11 +414,27 @@ void createLastFileStyle(int num, char* pasta, char* style_file);
 \chapter{Codificação e Testes}
 \label{chap:codificacao}
 
-//////////////////// FALTA FAZER
+Para a presente secção foram extremamente importantes as duas secções anteriores. Desta forma apresentamos alternativas, decisões, problemas de implementação, testes realizados e ainda exemplos de inputs para a gramática construída.
+
 
 \section{Alternativas, Decisões e Problemas de Implementação}
 
 //////////////////// FALTA FAZER
+
+\section{Estruturas dos Inputs}
+
+Olhando para a gramática construída anteriormente é preciso construir um input para que esta o consuma e crie um output. Um exemplo de \textbf{Input} é o que se encontra a seguir:
+
+\begin{figure}[H]
+\centering
+\frame{\includegraphics[scale=0.7]{input.png}}
+\caption{Estrutura dum Input possível}
+\label{img:input}
+\end{figure}
+
+A prova de que o input acima é aceite pela gramática encontra-se a segui com a seguinte árvore de derivação
+////////////////////////////////// A FAZER
+
 
 \section{Testes realizados e Resultados}
 
@@ -487,6 +503,12 @@ void createLastFileStyle(int num, char* pasta, char* style_file);
 \chapter{Conclusão}
 \label{chap:concl}
 
-//////////////////// FALTA FAZER
+Tendo em conta os requisitos deste projeto, e o trabalho realizado pelo grupo, achamos que os objetivos fundamentais foram atingidos, sendo estes rever e aumentar a capacidade de escrever \textit{gramáticas independentes de contexto (GIC)}, que satisfaçam a condição LR(), para criar Linguagens de Domínio Específico (DSL), desenvolver processadores de linguagens segundo o método da \textit{tradução dirigida pela sintaxe}, suportado numa \textit{gramática tradutora (GT)} e por último utilizar geradores de compiladores como o par \textbf{flex/yacc}.
+
+Ao longo da realização deste projeto o grupo procurou incluir vários parâmetros na gramática de forma a completá-la sempre mais e a chegar à melhor resolução possível. É exemplo disso a inclusão de estilos (CSS) para produzir um resultado que fosse o mais idêntico a uma disposição de slides.
+
+O grupo tentou também apurar ao máximo o espírito crítico, de forma a tomar as melhores decisões nos algoritmos tendo em conta as capacidades das ferramentas usadas, sendo que este foi também um dos maiores desafios encontrados.
+
+Em jeito de conclusão o grupo acha que o problema requisitado no enunciado foi concluído com sucesso, e os objetivos principais deste projeto foram atingidos.
 
 \end{document}
