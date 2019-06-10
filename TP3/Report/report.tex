@@ -12,6 +12,7 @@
 \usepackage{amsmath}
 \usepackage{mathtools}
 \usepackage{tikz}
+\usepackage{qtree}
 \usepackage{listings, xcolor}
 \lstset{
 tabsize = 4, %% Sets tab space width.
@@ -270,9 +271,20 @@ AUD                                 {return AUD;}
 				      				 yylval.str = strdup(str); return STRING;}
 .|\n                                {;}
 %%
+
+int yywrap() {return 1;}
+
+char* removeTokens(char* s){
+    char *p = s;
+    p++;
+    p[strlen(p)-1] = 0;
+    return p;
+}
 \end{lstlisting}
 
 \vspace{0.5cm}
+
+De referir uma pequena particularidade no que toca ao reconhecimento de \textbf{Strings}. Estas têm que vir delimitadas por \textbf{""} uma vez que esta é a forma de saber quando começar a reconhecer e quando parar de filtrar. Após o reconhecimento baseado no requisito aqui colocado esta delimitação é retirada pela função \textbf{removeTokens(char* s)} definida no ficheiro.
 
 Desta forma conseguimos reconhecer e converter todos os símbolos necessários para o parsing da gramática.
 
