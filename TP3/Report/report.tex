@@ -299,11 +299,15 @@ O processo de extensão da gramática independente de contexto com ações semâ
 Antes da GIC, importante referir a existência das seguintes variáveis definidas:
 
 \begin{itemize}
-	\item char* pasta; $\rightarrow$ Caminho para a pasta que contem os diapositivos criados
-	\item int slide\_counter = 0; $\rightarrow$ Contador que possui o número do slide em tradução
-	\item FILE *file; $\rightarrow$ Ficheiro para o qual as traduções em HTML são escritas
-	\item char* style\_file; $\rightarrow$ Caminho para a pasta que contem os ficheiros CSS
-	\item int style = 0; $\rightarrow$ Flag que verifica se existem ficheiros CSS
+	\item \hspace{0.5cm} char* pasta; $\rightarrow$ Caminho para a pasta que contem os diapositivos criados;
+	\item \hspace{0.5cm} int slide\_counter = 0; $\rightarrow$ Contador que possui o número do slide em tradução;
+	\item \hspace{0.5cm} int tempo = 0; $\rightarrow$ Contador que possui o tempo da apresentação;
+	\item \hspace{0.5cm} int imagens = 0; $\rightarrow$ Contador que possui o número de imagens da apresentação;
+	\item \hspace{0.5cm} int videos = 0; $\rightarrow$ Contador que possui o número de vídeos da apresentação;
+	\item \hspace{0.5cm} int audios = 0; $\rightarrow$ Contador que possui o número de áudios da apresentação;
+	\item \hspace{0.5cm} FILE *file; $\rightarrow$ Ficheiro para o qual as traduções em HTML são escritas;
+	\item \hspace{0.5cm} char* style\_file; $\rightarrow$ Caminho para a pasta que contem os ficheiros CSS;
+	\item \hspace{0.5cm} int style = 0; $\rightarrow$ Flag que verifica se existem ficheiros CSS;
 \end{itemize}
 
 
@@ -337,8 +341,8 @@ Para cada símbolo não-terminal, são de seguida exibidas as explicações das 
 	\end{itemize}
 	\item Imagem
 	\begin{itemize}
-		\item \underline{IMG STRING}  $\rightarrow$ Inserção duma imagem no ficheiro em utilização, com recurso à linguagem HTML (tag \textbf{img});
-		\item \underline{IMG STRING Width Height}  $\rightarrow$ Inserção duma imagem com medidas estabelecidas no ficheiro em utilização, com recurso à linguagem HTML (tag \textbf{img});
+		\item \underline{IMG STRING}  $\rightarrow$ Inserção duma imagem no ficheiro em utilização, com recurso à linguagem HTML (tag \textbf{img}); Incremento do contador de imagens;
+		\item \underline{IMG STRING Width Height}  $\rightarrow$ Inserção duma imagem com medidas estabelecidas no ficheiro em utilização, com recurso à linguagem HTML (tag \textbf{img}); Incremento do contador de imagens;
 	\end{itemize}
 	\item Item
 	\begin{itemize}
@@ -346,8 +350,8 @@ Para cada símbolo não-terminal, são de seguida exibidas as explicações das 
 	\end{itemize}
 	\item Video
 	\begin{itemize}
-		\item \underline{VID STRING}  $\rightarrow$ Inserção dum vídeo no ficheiro em utilização, com recurso à linguagem HTML (tag \textbf{iframe});
-		\item \underline{VID STRING Width Height}  $\rightarrow$ Inserção dum vídeo com medidas estabelecidas no ficheiro em utilização, com recurso à linguagem HTML (tag \textbf{iframe});
+		\item \underline{VID STRING}  $\rightarrow$ Inserção dum vídeo no ficheiro em utilização, com recurso à linguagem HTML (tag \textbf{iframe}); Incremento do contador de vídeos;
+		\item \underline{VID STRING Width Height}  $\rightarrow$ Inserção dum vídeo com medidas estabelecidas no ficheiro em utilização, com recurso à linguagem HTML (tag \textbf{iframe}); Incremento do contador de vídeos;
 	\end{itemize}
 	\item LineBreak
 	\begin{itemize}
@@ -360,11 +364,11 @@ Para cada símbolo não-terminal, são de seguida exibidas as explicações das 
 	\end{itemize}
 	\item Audio
 	\begin{itemize}
-		\item \underline{AUD STRING}  $\rightarrow$ Inserção dum áudio no ficheiro em utilização, com recurso à linguagem HTML (tag \textbf{audio});
+		\item \underline{AUD STRING}  $\rightarrow$ Inserção dum áudio no ficheiro em utilização, com recurso à linguagem HTML (tag \textbf{audio}); Incremento do contador de áudios;
 	\end{itemize}
 	\item Tempo
 	\begin{itemize}
-		\item \underline{NUM}  $\rightarrow$ Aumento do contador do número do slide em tradução; Criação dum ficheiro "diapX.html" que vai ser utilizado na tradução e introdução do mesmo na pasta estabelecida; Decisão da utilização do ficheiro CSS consoante a flag style, e consequente inserção do cabeçalho no ficheiro em utilização, com recurso à linguagem HTML (tag \textbf{html}, tag \textbf{head}, tag \textbf{link}, tag \textbf{meta} e tag \textbf{body});
+		\item \underline{NUM}  $\rightarrow$ Aumento do contador do número do slide em tradução; Aumento do tempo da apresentação; Criação dum ficheiro "diapX.html" que vai ser utilizado na tradução e introdução do mesmo na pasta estabelecida; Decisão da utilização do ficheiro CSS consoante a flag style, e consequente inserção do cabeçalho no ficheiro em utilização, com recurso à linguagem HTML (tag \textbf{html}, tag \textbf{head}, tag \textbf{link}, tag \textbf{meta} e tag \textbf{body});
 	\end{itemize}
 	\item Width
 	\item Height
@@ -419,7 +423,11 @@ Para a presente secção foram extremamente importantes as duas secções anteri
 
 \section{Alternativas, Decisões e Problemas de Implementação}
 
-//////////////////// FALTA FAZER
+Nesta secção é importante falar das decisões que são necessárias ser tomadas por exemplo nas imagens, nos vídeos, ou ainda no momento de escolher ou não um estilo associado ao ficheiro HTML.
+
+No caso das imagens, tal acontece porque estas possuem um tamanho, e por predefinição é esse o tamanho apresentado no diaporama. No entanto, este pode ser alterado, e desta forma é necessário decidir qual das vias é tomada, passando os dois parâmetros para a altura e a largura, ou então não o fazendo e ficando a imagem com o tamanho predefinido. Nos vídeos sucede-se a mesma decisão.
+
+Quanto ao caso de inclusão ou não do ficheiro CSS, tal é realizado no momento da criação do \textit{head} do ficheiro HTML. Caso a variável \textbf{style} esteja positiva o estilo é usado, e caso contrário o ficheiro HTML não é associado a nenhum estilo CSS.
 
 \section{Estruturas dos Inputs}
 
@@ -437,6 +445,8 @@ A prova de que o input acima é aceite pela gramática encontra-se a segui com a
 
 
 \section{Testes realizados e Resultados}
+
+Nesta secção são apresentados alguns resultados alcançados com a implementação criada, como por exemplo, títulos, imagens, créditos, itens, áudios, imagens e vídeos.
 
 \begin{figure}[H]
 \centering
@@ -470,7 +480,15 @@ A prova de que o input acima é aceite pela gramática encontra-se a segui com a
 \chapter{Extras}
 \label{chap:extras}
 
-//////////////////// FALTA FAZER
+De forma a tornar os diaporamas mais organizados e apresentáveis, foi desenvolvido um ficheiro CSS para auxiliar o ficheiro HTML criado durante a execução das ações semânticas da gramática tradutora.
+
+O ficheiro CSS realiza alterações ao nível das margens, do alinhamento e das cores, tanto ao nível do \textit{background} como das bordas.
+
+Além do ficheiro CSS, foi também criado um diaporama final que é gerado automaticamente com estatísticas relacionadas com os diversos diaporamas presentes no ficheiro de input.
+
+Por último, foi criada uma makefile de forma a facilitar a geração do executável em causa.
+
+Os resultados são apresentados nas imagens seguintes.
 
 \begin{figure}[H]
 \centering
@@ -498,6 +516,13 @@ A prova de que o input acima é aceite pela gramática encontra-se a segui com a
 \frame{\includegraphics[scale=0.35]{exemplo8.png}}
 \caption{Figura \ref{img:exemplo7} com estilo associado}
 \label{img:exemplo8}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\frame{\includegraphics[scale=0.25]{exemplo9.png}}
+\caption{Diaporama com estatísticas}
+\label{img:exemplo9}
 \end{figure}
 
 \chapter{Conclusão}
