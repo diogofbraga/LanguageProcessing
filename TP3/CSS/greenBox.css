@@ -1,0 +1,11 @@
+.box {
+  background-color: lightgrey;
+  width: 88%;
+  border: 15px solid green;
+  padding: 50px;
+  margin: 20px;
+}
+
+.title {
+  text-align: center;
+}

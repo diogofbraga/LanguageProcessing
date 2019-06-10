@@ -8,6 +8,7 @@ char* removeTokens(char* s);
 %}
 
 %%
+STYLE                               {return STYLE;}
 DIAPOSITIVO                         {return DIAPOSITIVO;}
 CRED                                {return CRED;}
 IMG                                 {return IMG;}

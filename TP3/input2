@@ -1,0 +1,41 @@
+"SegundoExemplo" ,
+STYLE "greenBox.css" ,
+DIAPOSITIVO {
+	10 ;
+    ( TITL "primeiro titulo" ) ,
+	CRED "primeiro credito mpts" ,
+  	IMG "JJ.jpg" ,
+  	CRED "2.1 credito mpts" ,
+  	CRED "2.2 credito mpts" ,
+  	IMG "PRH.jpg"
+},
+DIAPOSITIVO {
+	10 ;
+	( TITL "segundo titulo imagens" ) ,
+	IMG "JJ.jpg" 325 200 ,
+  	IMG "PRH.jpg"
+},
+DIAPOSITIVO {
+	10 ;
+	( TITL "Página Simples" ) ,
+	LI "Primeiro item" ,
+	LI "Segundo item" ,
+	LI "Terceiro item" ,
+	LI "Quarto item" ,
+	LI "Quinto item"
+},
+DIAPOSITIVO {
+	74 ;
+	( TITL "Exemplo dum audio" ,
+	AUD "https://file-examples.com/wp-content/uploads/2017/11/file_example_OOG_1MG.ogg") ,
+	IMG "JJ.jpg"
+},
+DIAPOSITIVO {
+	74 ;
+	( TITL "Exemplo dum video" ) ,
+	VID "https://www.youtube.com/embed/tgbNymZ7vqY",
+	LB,
+	IMG "JJ.jpg",
+	LB,
+	VID "https://www.youtube.com/embed/tgbNymZ7vqY" 210 170
+}

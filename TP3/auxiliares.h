@@ -6,6 +6,8 @@ FILE* createFile(int num, char* pasta);
 
 void makeheader(int tempo, FILE* file, int num);
 
+void makeheaderStyle(int tempo, FILE* file, int num, char* style_file);
+
 void insertTitle(FILE* file, char* title);
 
 void insertAudio(FILE* file, char* audio);
@@ -25,3 +27,5 @@ void insertLineBreak(FILE* file);
 void fileTermination(FILE* file);
 
 void createLastFile(int num, char* pasta);
+
+void createLastFileStyle(int num, char* pasta, char* style_file);

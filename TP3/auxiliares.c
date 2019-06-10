@@ -12,9 +12,15 @@ void makeheader(int tempo, FILE* file, int slide_counter){
     fputs(s, file);
 }
 
+void makeheaderStyle(int tempo, FILE* file, int slide_counter, char* style_file){
+    char s[1024];
+    sprintf(s,"<html>\n<head>\n\t<link rel=\"stylesheet\" type=\"text/css\" href=\"../CSS/%s\">\t<meta charset=\"UTF-8\"/>\n\t<meta http-equiv=\"REFRESH\" content=\"%d ;URL=diap%d.html\">\n</head>\n<body class=\"box\">\n", style_file, tempo, slide_counter+1);
+    fputs(s, file);
+}
+
 void insertTitle(FILE* file, char* title){
     char s[1024];
-    sprintf(s,"\t<h1>%s</h1>\n<hr/>\n", title);
+    sprintf(s,"\t<h1 class=\"title\">%s</h1>\n\t<hr/>\n", title);
     fputs(s, file);
 }
 
@@ -77,5 +83,19 @@ void createLastFile(int slide_counter, char* pasta){
     fputs(s,file);
     insertTitle(file, "Estatísticas do Diaporama");
     fprintf(file, "\t<LI>Número total de slides: %d</LI>\n", slide_counter );
+    sprintf(s,"</html>\n");
+    fputs(s,file);
+    fclose(file);
+}
+
+void createLastFileStyle(int slide_counter, char* pasta, char* style_file){
+    FILE* file = createFile(slide_counter+1, pasta);
+    char s[1024];
+    fprintf(file,"<html>\n\t<link rel=\"stylesheet\" type=\"text/css\" href=\"../CSS/%s\">\n<body class=\"box\">", style_file);
+    fputs(s,file);
+    insertTitle(file, "Estatísticas do Diaporama");
+    fprintf(file, "\t<LI>Número total de slides: %d</LI>\n", slide_counter );
+    sprintf(s,"</body>\n</html>\n");
+    fputs(s,file);
     fclose(file);
 }
