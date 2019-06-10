@@ -106,11 +106,11 @@ Tendo em conta a análise realizada construímos uma \textit{Gramática Independ
 
 \vspace{0.5cm}
 
-\textbf{T} = \{ DIAPOSITIVO, CRED, IMG, LI, VID, LB, TITL, AUD, ',' , ';' , '\{' , '\}' , '(' , ')' , NUM, STRING\}
+\textbf{T} = \{ STYLE, DIAPOSITIVO, CRED, IMG, LI, VID, LB, TITL, AUD, ',' , ';' , '\{' , '\}' , '(' , ')' , NUM, STRING\}
 
 \vspace{0.5cm}
 
-\textbf{NT} = \{ Diaporama, Nome, Elementos, Elemento, Body, Tipos, Tipo, Credito, Imagem, Item, Video, Opcoes, Titulo, Audio, Tempo, Width, Height \}
+\textbf{NT} = \{ Diaporama, Estilo, Nome, Elementos, Elemento, Body, Tipos, Tipo, Credito, Imagem, Item, Video, Opcoes, Titulo, Audio, Tempo, Width, Height \}
 
 \vspace{0.5cm}
 
@@ -119,6 +119,9 @@ Tendo em conta a análise realizada construímos uma \textit{Gramática Independ
 \vspace{0.5cm}
 
 \textbf{P} = \{ Diaporama $\rightarrow$ Nome ',' Elementos 
+
+\vspace{0.2cm}
+\hspace{3.15cm} | Nome ',' STYLE Estilo ',' Elementos 
 
 \vspace{0.2cm}
 \hspace{1.0cm} Nome $\rightarrow$ STRING
