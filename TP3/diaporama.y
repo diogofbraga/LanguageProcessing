@@ -8,10 +8,13 @@
 
 char* pasta;
 int slide_counter = 0;
+int tempo = 0;
+int imagens = 0;
+int videos = 0;
+int audios = 0;
 FILE *file;
 char* style_file;
 int style = 0;
-
 %}
 %union{char* str; int num;}
 %token STYLE DIAPOSITIVO CRED IMG LI VID LB TITL AUD
@@ -20,8 +23,8 @@ int style = 0;
 %type <str> Nome Estilo Elementos Elemento Body Tipos Tipo Credito Imagem Item Video Opcoes Titulo Audio
 %type <num> Tempo Width Height
 %%
-Diaporama : Nome ',' Elementos                          {createLastFile(slide_counter, pasta);}
-          | Nome ',' STYLE Estilo ',' Elementos         {createLastFileStyle(slide_counter, pasta, style_file);}
+Diaporama : Nome ',' Elementos                          {createLastFile(slide_counter, pasta, tempo, imagens, audios, videos);}
+          | Nome ',' STYLE Estilo ',' Elementos         {createLastFileStyle(slide_counter, pasta, style_file, tempo, imagens, audios, videos);}
           ;
 
 Nome : STRING                                           {pasta = strdup($1); mkdir(pasta, 0777); }
@@ -37,7 +40,7 @@ Elementos : Elemento
 Elemento : DIAPOSITIVO '{' Tempo ';' Body '}'           {fileTermination(file);}
          ;
 
-Tempo : NUM                                             {slide_counter++;
+Tempo : NUM                                             {slide_counter++; tempo += $1;
                                                          file = createFile(slide_counter, pasta);
                                                          if(style_file == 0){
                                                              makeheader($1, file, slide_counter);
@@ -64,8 +67,8 @@ Tipo : Credito
 Credito : CRED STRING                                   {insertCred(file, $2);}
         ;
 
-Imagem : IMG STRING                                     {insertImage(file, $2);}
-       | IMG STRING Width Height                        {insertImageSize(file, $2, $3, $4);}
+Imagem : IMG STRING                                     {insertImage(file, $2); imagens++;}
+       | IMG STRING Width Height                        {insertImageSize(file, $2, $3, $4); imagens++;}
        ;
 
 Width : NUM
@@ -77,8 +80,8 @@ Height : NUM
 Item : LI STRING                                        {insertItem(file, $2);}
      ;
 
-Video : VID STRING                                      {insertVideo(file,$2);}
-      | VID STRING Width Height                         {insertVideoSize(file,$2, $3, $4);}
+Video : VID STRING                                      {insertVideo(file,$2); videos++;}
+      | VID STRING Width Height                         {insertVideoSize(file,$2, $3, $4); videos++;}
       ;
 
 LineBreak : LB                                          {insertLineBreak(file);}
@@ -93,7 +96,7 @@ Opcoes : Opcoes ',' Audio
 Titulo : TITL STRING                                    {insertTitle(file, $2);}
        ;
 
-Audio : AUD STRING                                      {insertAudio(file, $2);}
+Audio : AUD STRING                                      {insertAudio(file, $2); audios++;}
       ;
 %%
 

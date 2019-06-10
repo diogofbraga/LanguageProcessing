@@ -78,25 +78,33 @@ void fileTermination(FILE* file){
     fclose(file);
 }
 
-void createLastFile(int slide_counter, char* pasta){
+void createLastFile(int slide_counter, char* pasta, int tempo, int imagens, int audios, int videos){
     FILE* file = createFile(slide_counter+1, pasta);
     char s[1024];
     sprintf(s,"<html>\n");
     fputs(s,file);
     insertTitle(file, "Estatísticas do Diaporama");
-    fprintf(file, "\t<LI>Número total de slides: %d</LI>\n", slide_counter );
+    fprintf(file, "\t<font size=\"5\"><LI>Número total de slides: %d</LI></font>\n", slide_counter );
+    fprintf(file, "\t<font size=\"5\"><LI>Total de tempo do Diaporama: %d</LI></font>\n", tempo );
+    fprintf(file, "\t<font size=\"5\"><LI>Número total de imagens: %d</LI></font>\n", imagens );
+    fprintf(file, "\t<font size=\"5\"><LI>Número total de áudios: %d</LI></font>\n", audios );
+    fprintf(file, "\t<font size=\"5\"><LI>Número total de vídeos: %d</LI></font>\n", videos );
     sprintf(s,"</html>\n");
     fputs(s,file);
     fclose(file);
 }
 
-void createLastFileStyle(int slide_counter, char* pasta, char* style_file){
+void createLastFileStyle(int slide_counter, char* pasta, char* style_file, int tempo, int imagens, int audios, int videos){
     FILE* file = createFile(slide_counter+1, pasta);
     char s[1024];
     fprintf(file,"<html>\n\t<link rel=\"stylesheet\" type=\"text/css\" href=\"../CSS/%s\">\n<body class=\"box\">", style_file);
     fputs(s,file);
     insertTitle(file, "Estatísticas do Diaporama");
-    fprintf(file, "\t<LI>Número total de slides: %d</LI>\n", slide_counter );
+    fprintf(file, "\t<font size=\"5\"><LI>Número total de slides: %d</LI></font>\n", slide_counter );
+    fprintf(file, "\t<font size=\"5\"><LI>Total de tempo do Diaporama: %d</LI></font>\n", tempo );
+    fprintf(file, "\t<font size=\"5\"><LI>Número total de imagens: %d</LI></font>\n", imagens );
+    fprintf(file, "\t<font size=\"5\"><LI>Número total de áudios: %d</LI></font>\n", audios );
+    fprintf(file, "\t<font size=\"5\"><LI>Número total de vídeos: %d</LI></font>\n", videos );
     sprintf(s,"</body>\n</html>\n");
     fputs(s,file);
     fclose(file);

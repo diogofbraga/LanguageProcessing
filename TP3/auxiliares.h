@@ -146,9 +146,13 @@ void fileTermination(FILE* file);
  *   Cria um ficheiro HTML que porventura é o último.
  *
  *   @param num: indica o número do ficheiro a ser criado;
- *   @param pasta: indica a pasta onde o ficheiro deve ser colocado.
+ *   @param pasta: indica a pasta onde o ficheiro deve ser colocado;
+ *   @param tempo: indica o tempo total que o diaporama demora;
+ *   @param imagens: indica o total de imagens contidas no diaporama;
+ *   @param audios: indica o total de audios incluídos no diaporama;
+ *   @param videos: indica o total de vídeos incluídos no diaporama.
  */
-void createLastFile(int num, char* pasta);
+void createLastFile(int num, char* pasta, int tempo, int imagens, int audios, int videos);
 
 /*
  * Função: createLastFile
@@ -157,6 +161,10 @@ void createLastFile(int num, char* pasta);
  *
  *   @param num: indica o número do ficheiro a ser criado;
  *   @param pasta: indica a pasta onde o ficheiro deve ser colocado;
- *   @param style_file: indica o ficheiro CSS onde se encontra o style a usar.
+ *   @param style_file: indica o ficheiro CSS onde se encontra o style a usar;
+ *   @param tempo: indica o tempo total que o diaporama demora;
+ *   @param imagens: indica o total de imagens contidas no diaporama;
+ *   @param audios: indica o total de audios incluídos no diaporama;
+ *   @param videos: indica o total de vídeos incluídos no diaporama.
  */
-void createLastFileStyle(int num, char* pasta, char* style_file);
+void createLastFileStyle(int num, char* pasta, char* style_file, int tempo, int imagens, int audios, int videos);
