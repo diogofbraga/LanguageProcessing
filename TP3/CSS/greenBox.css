@@ -2,10 +2,19 @@
   background-color: lightgrey;
   width: 88%;
   border: 15px solid green;
+  min-width: 1200px;
+  min-height: 550px;
   padding: 50px;
   margin: 20px;
 }
 
 .title {
   text-align: center;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10 10 10 10;
 }

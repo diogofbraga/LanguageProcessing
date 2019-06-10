@@ -14,6 +14,8 @@ void insertAudio(FILE* file, char* audio);
 
 void insertItem(FILE* file, char* item);
 
+void insertCred(FILE* file, char* cred);
+
 void insertImage(FILE* file, char* image);
 
 void insertImageSize(FILE* file, char* image, int width, int height);

@@ -1,0 +1,55 @@
+"MyChef" ,
+STYLE "greenBox.css" ,
+DIAPOSITIVO {
+	10 ;
+	( TITL "MyChef - FeelItaly" ) ,
+  IMG "italyflag.png" ,
+  CRED "Grupo 13" ,
+	CRED "Diogo Braga A82547" ,
+  CRED "João Silva A82005" ,
+  CRED "Ricardo Caçador A81064"
+},
+DIAPOSITIVO {
+	10 ;
+	( TITL "segundo titulo imagens" ) ,
+	IMG "JJ.jpg" 325 200 ,
+  IMG "PRH.jpg"
+},
+DIAPOSITIVO {
+	10 ;
+	( TITL "Página Simples" ) ,
+	LI "Primeiro item" ,
+	LI "Segundo item" ,
+	LI "Terceiro item" ,
+	LI "Quarto item" ,
+	LI "Quinto item"
+},
+DIAPOSITIVO {
+	100 ;
+	( TITL "Hino de Itália - Il Canto degli Italiani" ,
+	AUD "https://hinomp3.com/hinos/i/hino-italia-instrumental.mp3?_=1" ) ,
+	IMG "italyanthem.jpg"
+},
+DIAPOSITIVO {
+	130 ;
+	( TITL "Bella Ciao" ) ,
+	VID "https://www.youtube.com/embed/4CI3lhyNKfo" 600 300,
+	LB,
+	CRED "Stamattina mi sono alzato, o bella ciao, bella ciao" ,
+  CRED "Bella ciao ciao ciao, stamattina mi sono alzato," ,
+  CRED "ho trovato I'invasor!" ,
+  CRED "A lavorare laggiù in risaia" ,
+  CRED "Sotto il sol che picchia giù!" ,
+  CRED "E tra gli insetti e le zanzare, o bella ciao, bella ciao" ,
+  CRED "Bella ciao ciao ciao, e tra gli insetti e le zanzare," ,
+  CRED "duro lavoro mi tocca far!" ,
+  CRED "Il capo in piedi col suo bastone, o bella ciao, bella ciao" ,
+  CRED "Bella ciao ciao ciao, il capo in piedi col suo bastone" ,
+  CRED "E noi curve a lavorar!" ,
+  CRED "Lavoro infame, per pochi soldi, o bella ciao bella ciao" ,
+  CRED "Bella ciao ciao ciao, lavoro infame per pochi soldi" ,
+  CRED "E la tua vita a consumar!" ,
+  CRED "Ma verrà il giorno che tutte quante o bella ciao, bella ciao" ,
+  CRED "Bella ciao ciao ciao, ma verrà il giorno che tutte quante" ,
+  CRED "Lavoreremo in libertà! "
+}

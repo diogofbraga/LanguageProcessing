@@ -61,7 +61,7 @@ Tipo : Credito
      | LineBreak
      ;
 
-Credito : CRED STRING
+Credito : CRED STRING                                   {insertCred(file, $2);}
         ;
 
 Imagem : IMG STRING                                     {insertImage(file, $2);}

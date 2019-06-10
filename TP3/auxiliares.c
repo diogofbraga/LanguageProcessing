@@ -26,7 +26,7 @@ void insertTitle(FILE* file, char* title){
 
 void insertAudio(FILE* file, char* audio){
     char s[1024];
-    sprintf(s,"\t<audio src=\"%s\" controls autoplay loop>\n\t<p>Seu navegador não suporta o elemento audio.</p>\n\t</audio>\n<hr/>\n", audio);
+    sprintf(s,"\t<audio src=\"%s\" controls autoplay loop class=\"center\">\n\t<p>Seu navegador não suporta o elemento audio.</p>\n\t</audio>\n<hr/>\n", audio);
     fputs(s, file);
 }
 
@@ -36,27 +36,33 @@ void insertItem(FILE* file, char* item){
     fputs(s, file);
 }
 
+void insertCred(FILE* file, char* cred){
+    char s[1024];
+    sprintf(s,"\t<p class=\"title\">%s</p>\n", cred);
+    fputs(s, file);
+}
+
 void insertImage(FILE* file, char* image){
     char s[1024];
-    sprintf(s,"\t<img src=\"../Images/%s\">\n", image);
+    sprintf(s,"\t<img src=\"../Images/%s\" class=\"center\">\n", image);
     fputs(s, file);
 }
 
 void insertImageSize(FILE* file, char* image, int width, int height){
     char s[1024];
-    sprintf(s,"\t<img src=\"../Images/%s\" width=\"%d\" height=\"%d\">\n", image, width, height);
+    sprintf(s,"\t<img src=\"../Images/%s\" width=\"%d\" height=\"%d\" class=\"center\">\n", image, width, height);
     fputs(s, file);
 }
 
 void insertVideo(FILE* file, char* video){
     char s[1024];
-    sprintf(s,"\t<iframe src=\"%s\"></iframe>\n", video);
+    sprintf(s,"\t<iframe src=\"%s\" class=\"center\"></iframe>\n", video);
     fputs(s, file);
 }
 
 void insertVideoSize(FILE* file, char* video, int width, int height){
     char s[1024];
-    sprintf(s,"\t<iframe src=\"%s\" width=\"%d\" height=\"%d\"></iframe>\n", video, width, height);
+    sprintf(s,"\t<iframe src=\"%s\" width=\"%d\" height=\"%d\" class=\"center\"></iframe>\n", video, width, height);
     fputs(s, file);
 }
 
