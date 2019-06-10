@@ -3,17 +3,17 @@ STYLE "greenBox.css" ,
 DIAPOSITIVO {
 	10 ;
     ( TITL "primeiro titulo" ) ,
-	CRED "primeiro credito mpts" ,
-  	IMG "JJ.jpg" ,
-  	CRED "2.1 credito mpts" ,
-  	CRED "2.2 credito mpts" ,
-  	IMG "PRH.jpg"
+	CRED "primeiro credito" ,
+  	IMG "img1.jpg" ,
+  	CRED "2.1 credito" ,
+  	CRED "2.2 credito" ,
+  	IMG "img2.jpg"
 },
 DIAPOSITIVO {
 	10 ;
-	( TITL "OS PROFS MAIS FOFOS" ) ,
-	IMG "JJ.jpg" 650 400 ,
-  	IMG "PRH.jpg"
+	( TITL "TITULO" ) ,
+	IMG "img1.jpg" 650 400 ,
+  	IMG "img1.jpg"
 },
 DIAPOSITIVO {
 	10 ;
@@ -28,14 +28,14 @@ DIAPOSITIVO {
 	74 ;
 	( TITL "Exemplo dum audio" ,
 	AUD "https://file-examples.com/wp-content/uploads/2017/11/file_example_OOG_1MG.ogg") ,
-	IMG "JJ.jpg"
+	IMG "img.jpg"
 },
 DIAPOSITIVO {
 	74 ;
 	( TITL "Exemplo dum video" ) ,
 	VID "https://www.youtube.com/embed/tgbNymZ7vqY",
 	LB,
-	IMG "JJ.jpg",
+	IMG "img.jpg",
 	LB,
 	VID "https://www.youtube.com/embed/tgbNymZ7vqY" 210 170
 }
