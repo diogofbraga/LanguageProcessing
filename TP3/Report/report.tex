@@ -374,7 +374,7 @@ Para cada símbolo não-terminal, são de seguida exibidas as explicações das 
 	\item Height
 \end{itemize}
 
-
+\newpage
 
 \subsection{Funções em C}
 
@@ -435,16 +435,44 @@ Olhando para a gramática construída anteriormente é preciso construir um inpu
 
 \begin{figure}[H]
 \centering
-\frame{\includegraphics[scale=0.7]{input.png}}
+\frame{\includegraphics[scale=0.6]{input.png}}
 \caption{Estrutura dum Input possível}
 \label{img:input}
 \end{figure}
 
-A prova de que o input acima é aceite pela gramática encontra-se a segui com a seguinte árvore de derivação
-////////////////////////////////// A FAZER
+A prova de que o input acima é aceite pela gramática encontra-se a seguir com a seguinte árvore de derivação:
 
+% http://ironcreek.net/phpsyntaxtree/?
+%[Diaporama [Nome [STRING "MyChef"]][','] [STYLE] [Estilo [STRING "greenBox.css"]] [','] [Elementos [Elemento [DIAPOSITIVO] ['{'] [Tempo [NUM 10]] [';'] [Body ['('] [Opcoes [Titulo [TITL] [STRING "MyChef - FeelItaly"]]] [')'] [','] [Tipos [Tipos [Tipos [Tipos [Tipos [Tipo [Imagem [IMG] [STRING "italyflag.png"]]]] [','] [Tipo [Credito [CRED] [STRING "Grupo 13"]]]] [','] [Tipo [Credito [CRED] [STRING "Diogo Braga A82547"]]]] [','] [Tipo [Credito [CRED] [STRING "João Silva A82005"]]]] [','] [Tipo [Credito [CRED][STRING "Ricardo Caçador A81064"]]]]] ['}'] ]]]
+
+\begin{figure}[H]
+\centering
+\noindent
+\makebox[\textwidth]{\includegraphics[width=19cm,height=13cm]{arvoreDerivacao.png}}
+\caption{Árvore de Derivação duma frase}
+\label{img:derivacao}
+\end{figure}
+
+Considerando a frase apresentada na figura \ref{img:input}, e após realizar a derivação através da árvore de derivação apresentada na figura \ref{img:derivacao} dá para reparar que as folhas da árvore (pintadas a vermelho) corresponde exatamente à frase apresentada mais acima.
+
+Desta forma a frase pertence à gramática definida.
+
+\newpage
 
 \section{Testes realizados e Resultados}
+
+\subsection{Compilação e Invocação}
+
+Uma vez que criamos uma makefile, o processo de compilação é muito simples e a forma de invocação também o é, contudo um exemplo de como correr o programa é apresentado a seguir:
+
+\begin{lstlisting}[language = Bash , frame = trBL , firstnumber = 1 , escapeinside={(*@}{@*)}]
+> make
+>
+> ./diap < inputMyChef
+\end{lstlisting}
+
+
+\subsection{Resultados}
 
 Nesta secção são apresentados alguns resultados alcançados com a implementação criada, como por exemplo, títulos, imagens, créditos, itens, áudios, imagens e vídeos.
 
@@ -483,6 +511,8 @@ Nesta secção são apresentados alguns resultados alcançados com a implementa�
 De forma a tornar os diaporamas mais organizados e apresentáveis, foi desenvolvido um ficheiro CSS para auxiliar o ficheiro HTML criado durante a execução das ações semânticas da gramática tradutora.
 
 O ficheiro CSS realiza alterações ao nível das margens, do alinhamento e das cores, tanto ao nível do \textit{background} como das bordas.
+
+Como foi criado um CSS para este efeito podem ser criados muitos mais e usá-los como estilo no diaporama a produzir, se bem que o CSS tem que se limitar a um conjunto reduzido de parâmetros que podem ser alterados.
 
 Além do ficheiro CSS, foi também criado um diaporama final que é gerado automaticamente com estatísticas relacionadas com os diversos diaporamas presentes no ficheiro de input.
 
