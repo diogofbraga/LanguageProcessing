@@ -112,6 +112,8 @@ Por último, após a análise dum diaporama, foi de grande relevância a investi
 
 Neste capítulo baseamo-nos nas análises anteriormente efetuadas que serviram de base inicial para a construção duma \textbf{gramática independente de contexto (GIC)} que representasse um diaporama e consequentemente para a construção duma \textbf{gramática tradutora (GT)} que despontasse determinadas ações consoante o momento de parsing em que se encontrava.
 
+Foi também necessário construir um \textbf{Analisador Léxico} que apoiasse a o reconhecimento e conversão de símbolos terminais da gramática.
+
 
 \section{Gramática Independente de Contexto}
 
@@ -229,6 +231,52 @@ Tendo em conta a análise realizada construímos uma \textit{Gramática Independ
 
 \hspace{0.7cm} \}
 
+\vspace{0.5cm}
+
+Tendo em conta que estamos perante a ferramenta \textbf{YACC} temos que considerar que o parsing da gramática é feito \textbf{Bottom-Up} segundo um algoritmo \textbf{LR} pelo que não podem existir conflitos.
+
+Construindo o autómato \textbf{LR} para esta gramática é possível verificar que nem o conflito \textbf{Shift-Reduce}, nem o conflito \textbf{Reduce-Reduce} acontecem pelo que a gramática está pronta para ser usada.
+
+
+\section{Analisador Léxico}
+
+Foi construído um analisador léxico que apoiasse a o reconhecimento e conversão de símbolos terminais da gramática, escrito em \textbf{Flex}.
+
+Este analisador tem duas principais funções:
+
+\begin{itemize}
+	\item \textit{Reconhecimento:} identificação de sequências de caracteres que são instâncias de classes de símbolos terminais;
+	\item \textit{Conversão:} obtenção da representação mais conveniente do símbolo reconhecido.
+\end{itemize}
+
+O analisador desenvolvido encontra-se a seguir:
+
+\vspace{0.5cm}
+
+\begin{lstlisting}[language = Tex , frame = trBL , firstnumber = 1 , escapeinside={(*@}{@*)}]
+%%
+STYLE                               {return STYLE;}
+DIAPOSITIVO                         {return DIAPOSITIVO;}
+CRED                                {return CRED;}
+IMG                                 {return IMG;}
+LI                                  {return LI;}
+VID                                 {return VID;}
+LB                                  {return LB;}
+TITL                                {return TITL;}
+AUD                                 {return AUD;}
+[,;{}()]                            {return yytext[0];}
+[0-9]+                              {yylval.num = atof(yytext); return NUM;}
+\"[^\"]*\"                          {char* str = removeTokens(yytext); 
+				      				 yylval.str = strdup(str); return STRING;}
+.|\n                                {;}
+%%
+\end{lstlisting}
+
+\vspace{0.5cm}
+
+Desta forma conseguimos reconhecer e converter todos os símbolos necessários para o parsing da gramática.
+
+
 
 \section{Gramática Tradutora}
 
@@ -314,7 +362,11 @@ Para cada símbolo não-terminal, são de seguida exibidas as explicações das 
 
 \subsection{Funções em C}
 
-//////////////////// MAIS QQLR CENA SQ
+Uma vez que foi necessário criar ficheiros \textbf{HTML} e consequentemente criar pastas onde residem estes ficheiros, foi necessário o auxílio de funções escritas em \textbf{C} para completar esta tarefa e para que o código presente no ficheiro onde reside a gramática não se tornasse muito extenso.
+
+Deste modo na sequência desta ideia apresentamos abaixo as funções requeridas, que estão declaradas no ficheiro \textbf{auxiliares.h} e definidas no ficheiro \textbf{auxiliares.c}.
+
+\vspace{0.5cm}
 
 \begin{lstlisting}[language = C , frame = trBL , firstnumber = 1 , escapeinside={(*@}{@*)}]
 FILE* createFile(int num, char* pasta);
