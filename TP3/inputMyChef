@@ -12,6 +12,7 @@ DIAPOSITIVO {
 DIAPOSITIVO {
 	10 ;
 	( TITL "Contextualização" ) ,
+  LB ,
   LI "Estudante de Erasmus proveniente da zona de Nápoles." ,
   LB ,
   LI "Exportação do negócio familiar para Portugal." ,
@@ -23,6 +24,7 @@ DIAPOSITIVO {
 DIAPOSITIVO {
 	10 ;
 	( TITL "Objetivos" ) ,
+  LB ,
   LI "Aumento da produtividade dos utilizadores." ,
   LB ,
   LI "Possibilidade de comunicação entre utilizador e dispositivo auxiliar." ,
