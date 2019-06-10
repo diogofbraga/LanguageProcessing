@@ -11,18 +11,30 @@ DIAPOSITIVO {
 },
 DIAPOSITIVO {
 	10 ;
-	( TITL "segundo titulo imagens" ) ,
-	IMG "JJ.jpg" 325 200 ,
-  IMG "PRH.jpg"
+	( TITL "Contextualização" ) ,
+  LI "Estudante de Erasmus proveniente da zona de Nápoles." ,
+  LB ,
+  LI "Exportação do negócio familiar para Portugal." ,
+  LB ,
+  LI "Falta de presença da culinária Italiana na cozinha Portuguesa." ,
+  LB ,
+  LI "Tipo de comida particularmente de rápida e fácil confeção."
 },
 DIAPOSITIVO {
 	10 ;
-	( TITL "Página Simples" ) ,
-	LI "Primeiro item" ,
-	LI "Segundo item" ,
-	LI "Terceiro item" ,
-	LI "Quarto item" ,
-	LI "Quinto item"
+	( TITL "Objetivos" ) ,
+  LI "Aumento da produtividade dos utilizadores." ,
+  LB ,
+  LI "Possibilidade de comunicação entre utilizador e dispositivo auxiliar." ,
+  LB ,
+  LI "Organização semanal." ,
+  LB ,
+  LI "Ajuda não só na cozinha mas também na hora de ir às compras."
+},
+DIAPOSITIVO {
+	10 ;
+	( TITL "Maquete do Sistema" ) ,
+  IMG "maquete.png" 840 460
 },
 DIAPOSITIVO {
 	100 ;

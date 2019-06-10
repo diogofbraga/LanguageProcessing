@@ -32,7 +32,7 @@ void insertAudio(FILE* file, char* audio){
 
 void insertItem(FILE* file, char* item){
     char s[1024];
-    sprintf(s,"\t<LI>%s</LI>\n", item);
+    sprintf(s,"\t<font size=\"5\"><LI>%s</LI></font>\n", item);
     fputs(s, file);
 }
 
