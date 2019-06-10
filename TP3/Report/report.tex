@@ -266,7 +266,7 @@ TITL                                {return TITL;}
 AUD                                 {return AUD;}
 [,;{}()]                            {return yytext[0];}
 [0-9]+                              {yylval.num = atof(yytext); return NUM;}
-\"[^\"]*\"                          {char* str = removeTokens(yytext); 
+\"[^\"]*\"                          {char* str = removeTokens(yytext);
 				      				 yylval.str = strdup(str); return STRING;}
 .|\n                                {;}
 %%
@@ -321,7 +321,7 @@ Para cada símbolo não-terminal, são de seguida exibidas as explicações das 
 	\item Tipo
 	\item Credito
 	\begin{itemize}
-		\item \underline{CRED STRING}  $\rightarrow$  //////////////////// POR FAZER ////////////////////
+		\item \underline{CRED STRING} $\rightarrow$ Inserção dum crédito no ficheiro em utilização, com recurso à linguagem HTML (tag \textbf{p});
 	\end{itemize}
 	\item Imagem
 	\begin{itemize}
@@ -404,22 +404,73 @@ void createLastFileStyle(int num, char* pasta, char* style_file);
 
 //////////////////// FALTA FAZER
 
-\section{Estruturas de Dados}
-
-//////////////////// FALTA FAZER
-
 \section{Alternativas, Decisões e Problemas de Implementação}
 
 //////////////////// FALTA FAZER
 
 \section{Testes realizados e Resultados}
 
-//////////////////// FALTA FAZER
+\begin{figure}[H]
+\centering
+\frame{\includegraphics[scale=0.35]{exemplo1.png}}
+\caption{Diaporama com um título, uma imagem e quatro créditos}
+\label{img:exemplo1}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\frame{\includegraphics[scale=0.35]{exemplo3.png}}
+\caption{Diaporama com um título e quatro itens}
+\label{img:exemplo3}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\frame{\includegraphics[scale=0.35]{exemplo5.png}}
+\caption{Diaporama com um título, um áudio e uma imagem (fundo transparente)}
+\label{img:exemplo5}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\frame{\includegraphics[scale=0.35]{exemplo7.png}}
+\caption{Diaporama com um título, um vídeo e uma coleção de créditos}
+\label{img:exemplo7}
+\end{figure}
+
 
 \chapter{Extras}
 \label{chap:extras}
 
 //////////////////// FALTA FAZER
+
+\begin{figure}[H]
+\centering
+\frame{\includegraphics[scale=0.35]{exemplo2.png}}
+\caption{Figura \ref{img:exemplo1} com estilo associado}
+\label{img:exemplo2}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\frame{\includegraphics[scale=0.35]{exemplo4.png}}
+\caption{Figura \ref{img:exemplo3} com estilo associado}
+\label{img:exemplo4}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\frame{\includegraphics[scale=0.35]{exemplo6.png}}
+\caption{Figura \ref{img:exemplo5} com estilo associado}
+\label{img:exemplo6}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\frame{\includegraphics[scale=0.35]{exemplo8.png}}
+\caption{Figura \ref{img:exemplo7} com estilo associado}
+\label{img:exemplo8}
+\end{figure}
 
 \chapter{Conclusão}
 \label{chap:concl}
