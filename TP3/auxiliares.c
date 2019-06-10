@@ -38,17 +38,13 @@ void insertItem(FILE* file, char* item){
 
 void insertImage(FILE* file, char* image){
     char s[1024];
-    char path[1024];
-    sprintf(path,"../Images/%s", image);
-    sprintf(s,"\t<img src=%s>\n", path);
+    sprintf(s,"\t<img src=\"../Images/%s\">\n", image);
     fputs(s, file);
 }
 
 void insertImageSize(FILE* file, char* image, int width, int height){
     char s[1024];
-    char path[1024];
-    sprintf(path,"../Images/%s", image);
-    sprintf(s,"\t<img src=%s width=\"%d\" height=\"%d\">\n", path, width, height);
+    sprintf(s,"\t<img src=\"../Images/%s\" width=\"%d\" height=\"%d\">\n", image, width, height);
     fputs(s, file);
 }
 

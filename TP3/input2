@@ -11,8 +11,8 @@ DIAPOSITIVO {
 },
 DIAPOSITIVO {
 	10 ;
-	( TITL "segundo titulo imagens" ) ,
-	IMG "JJ.jpg" 325 200 ,
+	( TITL "OS PROFS MAIS FOFOS" ) ,
+	IMG "JJ.jpg" 650 400 ,
   	IMG "PRH.jpg"
 },
 DIAPOSITIVO {

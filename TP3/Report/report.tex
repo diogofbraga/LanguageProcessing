@@ -12,6 +12,19 @@
 \usepackage{amsmath}
 \usepackage{mathtools}
 \usepackage{tikz}
+\usepackage{listings, xcolor}
+\lstset{
+tabsize = 4, %% Sets tab space width.
+showstringspaces = false, %% Prevents space marking in strings, string is defined as the text that is generally printed directly to the console.
+numbers = left, %% Displays line numbers on the left.
+commentstyle = \color{green}, %% Sets comment color.
+keywordstyle = \color{blue}, %% Sets  keyword color.
+stringstyle = \color{red}, %% Sets  string color.
+rulecolor = \color{black}, %% Sets frame color to avoid being affected by text color.
+basicstyle = \small \ttfamily , %% Sets listing font and size.
+breaklines = true, %% Enables line breaking.
+numberstyle = \tiny,
+}
 \renewcommand{\familydefault}{\sfdefault}
 
 % packages que adicionei do stor
@@ -110,7 +123,7 @@ Tendo em conta a análise realizada construímos uma \textit{Gramática Independ
 
 \vspace{0.5cm}
 
-\textbf{NT} = \{ Diaporama, Estilo, Nome, Elementos, Elemento, Body, Tipos, Tipo, Credito, Imagem, Item, Video, Opcoes, Titulo, Audio, Tempo, Width, Height \}
+\textbf{NT} = \{ Diaporama, Nome, Estilo, Elementos, Elemento, Body, Tipos, Tipo, Credito, Imagem, Item, Video, LineBreak, Opcoes, Titulo, Audio, Tempo, Width, Height \}
 
 \vspace{0.5cm}
 
@@ -118,13 +131,16 @@ Tendo em conta a análise realizada construímos uma \textit{Gramática Independ
 
 \vspace{0.5cm}
 
-\textbf{P} = \{ Diaporama $\rightarrow$ Nome ',' Elementos 
+\textbf{P} = \{ Diaporama $\rightarrow$ Nome ',' Elementos
 
 \vspace{0.2cm}
-\hspace{3.15cm} | Nome ',' STYLE Estilo ',' Elementos 
+\hspace{3.15cm} | Nome ',' STYLE Estilo ',' Elementos
 
 \vspace{0.2cm}
 \hspace{1.0cm} Nome $\rightarrow$ STRING
+
+\vspace{0.2cm}
+\hspace{1.0cm} Estilo $\rightarrow$ STRING
 
 \vspace{0.2cm}
 \hspace{1.0cm} Elementos $\rightarrow$ Elemento
@@ -133,7 +149,7 @@ Tendo em conta a análise realizada construímos uma \textit{Gramática Independ
 \hspace{3.05cm} | Elementos ',' Elemento
 
 \vspace{0.2cm}
-\hspace{1.0cm} Elemento $\rightarrow$ DIAPOSITIVO '\{' Tempo ';' Body '\}' 
+\hspace{1.0cm} Elemento $\rightarrow$ DIAPOSITIVO '\{' Tempo ';' Body '\}'
 
 \vspace{0.2cm}
 \hspace{1.0cm} Tempo $\rightarrow$ NUM
@@ -187,10 +203,10 @@ Tendo em conta a análise realizada construímos uma \textit{Gramática Independ
 \hspace{1.0cm} Video $\rightarrow$ VID STRING
 
 \vspace{0.2cm}
-\hspace{2.3cm} | VID STRING Width Height 
+\hspace{2.3cm} | VID STRING Width Height
 
 \vspace{0.2cm}
-\hspace{1.0cm} LineBreak $\rightarrow$ LB 
+\hspace{1.0cm} LineBreak $\rightarrow$ LB
 
 \vspace{0.2cm}
 \hspace{1.0cm} Opcoes $\rightarrow$ Opcoes ',' Audio
@@ -205,10 +221,10 @@ Tendo em conta a análise realizada construímos uma \textit{Gramática Independ
 \hspace{2.6cm} | Audio
 
 \vspace{0.2cm}
-\hspace{1.0cm} Titulo $\rightarrow$ TITL STRING 
+\hspace{1.0cm} Titulo $\rightarrow$ TITL STRING
 
 \vspace{0.2cm}
-\hspace{1.0cm} Audio $\rightarrow$ AUD STRING 
+\hspace{1.0cm} Audio $\rightarrow$ AUD STRING
 
 
 \hspace{0.7cm} \}
@@ -216,11 +232,120 @@ Tendo em conta a análise realizada construímos uma \textit{Gramática Independ
 
 \section{Gramática Tradutora}
 
-//////////////////// FALTA FAZER
+No reconhecimento de linguagens, tanto regulares como não-regulares, é necessário executar ações semâticas ao longo do reconhecimento sintático. Devido ao enunciado proposto, as ações semânticas apresentadas consistem em ações de tradução de frases reconhecidas em novas frases de outra linguagem, neste caso, HTML.
+
+O processo de extensão da gramática independente de contexto com ações semânticas para obtenção duma gramática tradutora é apresentado nesta secção.
+
+Antes da GIC, importante referir a existência das seguintes variáveis definidas:
+
+\begin{itemize}
+	\item char* pasta; $\rightarrow$ Caminho para a pasta que contem os diapositivos criados
+	\item int slide\_counter = 0; $\rightarrow$ Contador que possui o número do slide em tradução
+	\item FILE *file; $\rightarrow$ Ficheiro para o qual as traduções em HTML são escritas
+	\item char* style\_file; $\rightarrow$ Caminho para a pasta que contem os ficheiros CSS
+	\item int style = 0; $\rightarrow$ Flag que verifica se existem ficheiros CSS
+\end{itemize}
+
+
+Para cada símbolo não-terminal, são de seguida exibidas as explicações das ações semânticas relacionadas:
+
+\begin{itemize}
+	\item Diaporama
+	\begin{itemize}
+		\item \underline{Nome ',' Elementos}  $\rightarrow$ Inserção do último diaporama, que contêm estatísticas, no ficheiro em utilização, com recurso à linguagem HTML (tag \textbf{html});
+		\item \underline{Nome ',' STYLE Estilo ',' Elementos}  $\rightarrow$ Inserção do último diaporama, que contêm estatísticas, no ficheiro em utilização, com recurso à linguagem HTML e ao ficheiro CSS estabelecido (tag \textbf{html}, tag \textbf{link} e tag \textbf{body});
+	\end{itemize}
+	\item Nome
+	\begin{itemize}
+		\item \underline{STRING}  $\rightarrow$ Definição do noma pasta a ser criada, e consequente criação da mesma;
+	\end{itemize}
+	\item Estilo
+	\begin{itemize}
+		\item \underline{STRING}  $\rightarrow$ Atribuição do ficheiro CSS à variável style\_file, e ativação da flag style;
+	\end{itemize}
+	\item Elementos
+	\item Elemento
+	\begin{itemize}
+		\item \underline{DIAPOSITIVO '{' Tempo ';' Body '}'}  $\rightarrow$ Inserção das tags que marcam o final do ficheiro em utilização, em linguagem HTML (tag \textbf{body} e tag \textbf{html});
+	\end{itemize}
+	\item Body
+	\item Tipos
+	\item Tipo
+	\item Credito
+	\begin{itemize}
+		\item \underline{CRED STRING}  $\rightarrow$  //////////////////// POR FAZER ////////////////////
+	\end{itemize}
+	\item Imagem
+	\begin{itemize}
+		\item \underline{IMG STRING}  $\rightarrow$ Inserção duma imagem no ficheiro em utilização, com recurso à linguagem HTML (tag \textbf{img});
+		\item \underline{IMG STRING Width Height}  $\rightarrow$ Inserção duma imagem com medidas estabelecidas no ficheiro em utilização, com recurso à linguagem HTML (tag \textbf{img});
+	\end{itemize}
+	\item Item
+	\begin{itemize}
+		\item \underline{LI STRING}  $\rightarrow$ Inserção dum item no ficheiro em utilização, com recurso à linguagem HTML (tag \textbf{LI});
+	\end{itemize}
+	\item Video
+	\begin{itemize}
+		\item \underline{VID STRING}  $\rightarrow$ Inserção dum vídeo no ficheiro em utilização, com recurso à linguagem HTML (tag \textbf{iframe});
+		\item \underline{VID STRING Width Height}  $\rightarrow$ Inserção dum vídeo com medidas estabelecidas no ficheiro em utilização, com recurso à linguagem HTML (tag \textbf{iframe});
+	\end{itemize}
+	\item LineBreak
+	\begin{itemize}
+		\item \underline{LB}  $\rightarrow$ Inserção duma quebra de linha no ficheiro em utilização, com recurso à linguagem HTML (tag \textbf{br});
+	\end{itemize}
+	\item Opcoes
+	\item Titulo
+	\begin{itemize}
+		\item \underline{TITL STRING}  $\rightarrow$ Inserção dum título no ficheiro em utilização, com recurso à linguagem HTML (tag \textbf{h1});
+	\end{itemize}
+	\item Audio
+	\begin{itemize}
+		\item \underline{AUD STRING}  $\rightarrow$ Inserção dum áudio no ficheiro em utilização, com recurso à linguagem HTML (tag \textbf{audio});
+	\end{itemize}
+	\item Tempo
+	\begin{itemize}
+		\item \underline{NUM}  $\rightarrow$ Aumento do contador do número do slide em tradução; Criação dum ficheiro "diapX.html" que vai ser utilizado na tradução e introdução do mesmo na pasta estabelecida; Decisão da utilização do ficheiro CSS consoante a flag style, e consequente inserção do cabeçalho no ficheiro em utilização, com recurso à linguagem HTML (tag \textbf{html}, tag \textbf{head}, tag \textbf{link}, tag \textbf{meta} e tag \textbf{body});
+	\end{itemize}
+	\item Width
+	\item Height
+\end{itemize}
+
+
 
 \subsection{Funções em C}
 
-//////////////////// FALTA FAZER
+//////////////////// MAIS QQLR CENA SQ
+
+\begin{lstlisting}[language = C , frame = trBL , firstnumber = 1 , escapeinside={(*@}{@*)}]
+FILE* createFile(int num, char* pasta);
+
+void makeheader(int tempo, FILE* file, int num);
+
+void makeheaderStyle(int tempo, FILE* file, int num, char* style_file);
+
+void insertTitle(FILE* file, char* title);
+
+void insertAudio(FILE* file, char* audio);
+
+void insertItem(FILE* file, char* item);
+
+void insertImage(FILE* file, char* image);
+
+void insertImageSize(FILE* file, char* image, int width, int height);
+
+void insertVideo(FILE* file, char* video);
+
+void insertVideoSize(FILE* file, char* video, int width, int height);
+
+void insertLineBreak(FILE* file);
+
+void fileTermination(FILE* file);
+
+void createLastFile(int num, char* pasta);
+
+void createLastFileStyle(int num, char* pasta, char* style_file);
+
+\end{lstlisting}
 
 \chapter{Codificação e Testes}
 \label{chap:codificacao}
